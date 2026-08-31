@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TechnoBotz &middot; FTC 23542 &middot; Frisco, Texas</title>
+<meta name="description" content="TechnoBotz is a competitive robotics team of middle and high school students in Frisco, Texas, competing in the FIRST Tech Challenge. We build a robot every season, mentor teams across North Texas, and bring robotics to schools without it.">
+<meta property="og:title" content="TechnoBotz &middot; FTC 23542">
+<meta property="og:description" content="A competitive robotics team of middle and high school students in Frisco, Texas, competing in the FIRST Tech Challenge.">
+<meta property="og:image" content="https://tkk2009.github.io/technobotz-logo.png">
+<link rel="icon" href="technobotz-pig.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- ANALYTICS: paste GA4 / Plausible here -->
+<style>
+:root{
+  --navy:#0B2450; --deep:#061731; --lift:#12315F; --card:#153A72;
+  --orange:#F58B4C; --hot:#E8722E; --yellow:#F5C842; --pink:#F2938E; --mint:#7FD1B9;
+  --paper:#F3F6FB; --warm:#E8EEF7; --ink:#08172E; --soft:#3C506E;
+  --line:rgba(255,255,255,.13); --dline:rgba(8,23,46,.11);
+  --dsp:'Archivo',system-ui,sans-serif; --bdy:'IBM Plex Sans',system-ui,sans-serif; --mn:'IBM Plex Mono',ui-monospace,monospace;
+  --gut:clamp(20px,5vw,80px); --ez:cubic-bezier(.22,.68,.28,1); --ctd:260ms;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:#fff;font-family:var(--bdy);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit} img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+::selection{background:var(--orange);color:var(--deep)}
+
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--gut)}
+.eb{font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--orange)}
+.h2{font-family:var(--dsp);font-weight:900;font-size:clamp(32px,6.6vw,86px);line-height:1.02;letter-spacing:-.042em;margin-top:16px;text-wrap:balance}
+.sub{font-size:clamp(17px,2.05vw,23px);max-width:58ch;margin-top:24px;color:rgba(255,255,255,.82);line-height:1.55;text-wrap:pretty}
+.sec{padding:clamp(90px,13vw,190px) 0;position:relative}
+.lt{background:var(--paper);color:var(--ink)} .lt .eb{color:var(--hot)} .lt .sub{color:var(--soft)}
+.wm{background:var(--warm);color:var(--ink)} .wm .eb{color:var(--hot)} .wm .sub{color:var(--soft)}
+.dp{background:var(--deep)}
+
+/* progress bar */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),var(--yellow));z-index:1200;transition:width .1s linear}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:900;background:rgba(6,23,49,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nvi{max-width:1280px;margin:0 auto;padding:13px var(--gut);display:flex;align-items:center;gap:clamp(20px,2.4vw,34px)}
+.bd{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto;padding-right:16px;flex:none}
+.bd>div{white-space:nowrap}
+.bd img{width:54px;height:51px;object-fit:contain;object-position:center;flex:none;transition:transform .5s var(--ez)}
+.bd:hover img{transform:rotate(-8deg) scale(1.08)}
+.bd b{font-family:var(--dsp);font-weight:900;font-size:20px;letter-spacing:-.028em;white-space:nowrap}
+.bd i{font-family:var(--mn);font-size:13px;color:var(--orange);font-weight:600;font-style:normal}
+.nl{display:flex;gap:clamp(16px,1.7vw,28px);align-items:center}
+.ncta{display:flex;gap:10px;align-items:center}
+.nav .btn{white-space:nowrap}
+@media(max-width:1700px){.ncta .btn.ln{display:none}}
+@media(min-width:1401px) and (max-width:1560px){.nav .bd i{display:none}}
+@media(max-width:1400px){.ncta{display:none}}
+.btn.sm{padding:11px 16px;font-size:12px}
+.nav a.lk{white-space:nowrap;position:relative;font-family:var(--mn);font-size:12.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.72);padding:6px 0;transition:color .2s}
+.nav a.lk::after{content:'';position:absolute;left:0;bottom:0;width:0;height:3px;background:var(--orange);transition:width .35s var(--ez)}
+.nav a.lk:hover{color:#fff} .nav a.lk:hover::after,.nav a.lk[aria-current="page"]::after{width:100%}
+.nav a.lk[aria-current="page"]{color:#fff}
+@media(max-width:1100px){.nl{display:none}}
+.bg{display:none;background:none;border:1px solid var(--line);color:#fff;padding:10px 14px;font-family:var(--mn);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+@media(max-width:1100px){.bg{display:block}}
+/* below the hamburger breakpoint the bar carries brand + Menu only */
+@media(max-width:600px){
+  .nvi{gap:12px;padding:11px var(--gut)}
+  .nvi>.btn.fl,.nvi>.ncta{display:none}
+  .bd img{width:42px;height:42px}
+  .bd b{font-size:18px}
+  .nav .bd i{display:none}
+}
+.mb{display:none;border-top:1px solid var(--line);background:var(--deep)}
+.mb.open{display:block;max-height:calc(100vh - 76px);max-height:calc(100dvh - 76px);overflow-y:auto;overscroll-behavior:contain}
+.mb a{display:block;padding:15px var(--gut);font-family:var(--mn);font-size:14px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.8);border-bottom:1px solid var(--line)}
+.mb a:hover{background:var(--lift);color:var(--orange)}
+
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:14px 24px;border:2px solid transparent;transition:.24s var(--ez);cursor:pointer}
+.btn s{text-decoration:none;transition:transform .28s var(--ez)}
+.btn:hover s{transform:translateX(5px)}
+.fl{background:var(--orange);color:var(--deep)} .fl:hover{background:var(--yellow)}
+.ln{border-color:rgba(255,255,255,.3);color:#fff} .ln:hover{border-color:var(--orange);color:var(--orange)}
+.dk{border-color:rgba(8,23,46,.25);color:var(--ink)} .dk:hover{border-color:var(--hot);color:var(--hot)}
+
+/* tile rules */
+.rule{display:flex;height:8px}
+.rule i{flex:1;transform:scaleY(0);transform-origin:bottom}
+.rule.lit i{animation:ru .55s var(--ez) forwards}
+@keyframes ru{to{transform:scaleY(1)}}
+
+/* curtain */
+#ct{position:fixed;inset:0;z-index:2000;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(6,1fr);pointer-events:none}
+#ct div{background:var(--deep);transform:scale(0);transition:transform var(--ctd) var(--ez)}
+#ct.in div{transform:scale(1.03)} #ct.out div{transform:scale(0)}
+
+/* ============ HERO with scroll-linked motion ============ */
+.hero{position:relative;min-height:clamp(560px,88vh,940px);display:grid;align-items:center;padding:clamp(50px,7vw,90px) 0;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-25%;right:-12%;width:70vw;height:70vw;max-width:940px;max-height:940px;background:radial-gradient(circle,rgba(245,139,76,.14),transparent 62%);pointer-events:none}
+.hg>*{min-width:0}
+.hg{max-width:1280px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(34px,5vw,80px);align-items:center;position:relative;width:100%}
+@media(max-width:980px){.hg{grid-template-columns:1fr;gap:50px}
+  .hero h1{font-size:clamp(52px,13.5vw,124px)}}
+.hero h1{font-family:var(--dsp);font-weight:900;font-size:clamp(42px,6.6vw,88px);line-height:.84;letter-spacing:-.044em;margin:20px 0 0}
+.hero h1 em{display:block;font-style:normal;color:var(--orange)}
+.lede{font-size:clamp(17px,2vw,21px);color:rgba(255,255,255,.8);max-width:41ch;margin-top:26px}
+.hct{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.mt{display:flex;flex-wrap:wrap;gap:9px 22px;margin-top:34px;font-family:var(--mn);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.mt span::before{content:'\25AA';color:var(--orange);margin-right:8px}
+.scroller{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:var(--mn);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.62);display:flex;flex-direction:column;align-items:center;gap:9px}
+@media(max-width:900px){.scroller{display:none}}
+.scroller b{display:block;width:1px;height:34px;background:linear-gradient(180deg,var(--orange),transparent);animation:sd 1.9s ease-in-out infinite}
+@keyframes sd{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+
+.fsh{position:relative;justify-self:center;width:100%;max-width:560px;will-change:transform}
+.fld{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;aspect-ratio:1;position:relative}
+.tl{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:2px;opacity:0;transform:scale(.6);transition:background .45s ease,border-color .45s ease,transform .25s var(--ez),opacity .4s ease}
+.tl.on{opacity:1;transform:scale(1)}
+.tl.nr{background:rgba(245,139,76,.3);border-color:rgba(245,139,76,.55);transform:scale(1.1)}
+.tl.a{background:var(--orange);border-color:var(--orange)} .tl.b{background:var(--yellow);border-color:var(--yellow)}
+.tl.c{background:var(--pink);border-color:var(--pink)} .tl.d{background:var(--card);border-color:rgba(255,255,255,.14)}
+.flg{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.flg img{width:62%;height:auto;object-fit:contain;opacity:0;transform:translateY(20px) scale(.88);transition:all 1s var(--ez) .8s;filter:drop-shadow(0 24px 46px rgba(0,0,0,.55)) drop-shadow(0 0 40px rgba(245,139,76,.28))}
+.flg img:hover{transform:scale(1.03) rotate(-1.5deg)}
+.flg img.on{opacity:1;transform:none}
+.fcp{font-family:var(--mn);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62);text-align:center;margin-top:20px}
+
+/* ============ STATS ============ */
+.st{background:var(--orange);color:var(--deep);overflow:hidden}
+.sti{max-width:1280px;margin:0 auto;padding:clamp(40px,5.2vw,70px) var(--gut);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,48px)}
+@media(max-width:820px){.sti{grid-template-columns:repeat(2,1fr);gap:30px}}
+.s1 b{display:block;font-family:var(--dsp);font-weight:900;font-size:clamp(38px,5.6vw,74px);line-height:1;letter-spacing:-.042em}
+.s1 i{font-style:normal;opacity:.42}
+.s1>span{display:block;font-family:var(--mn);font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-top:11px;color:rgba(6,23,49,.78)}
+.s1 b span{font:inherit;letter-spacing:inherit;text-transform:none;color:inherit;display:inline;margin:0}
+
+/* ============ PINNED SCROLL SECTION ============ */
+.pin{position:relative}
+.pin-track{height:290vh}
+.pin-stage{position:sticky;top:0;height:100vh;display:grid;align-items:center;overflow:hidden}
+.pinh{margin-bottom:28px}
+@media(max-width:920px){.pin-track{height:auto}.pin-stage{position:static;height:auto;padding:70px 0}}
+.pin-grid>*{min-width:0}
+.pin-grid{max-width:1280px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(30px,5vw,80px);align-items:center;width:100%}
+@media(max-width:920px){.pin-grid{grid-template-columns:1fr;gap:36px}}
+.pin-steps{position:relative;min-height:236px}
+@media(max-width:920px){.pin-steps{min-height:0;display:grid;gap:34px}}
+.step{position:absolute;inset:0;opacity:0;transform:translateY(22px);transition:opacity .5s var(--ez),transform .5s var(--ez);pointer-events:none}
+.step.on{opacity:1;transform:none;pointer-events:auto}
+@media(max-width:920px){.step{position:static;opacity:1;transform:none;pointer-events:auto}}
+.step .no{font-family:var(--mn);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.step h3{font-family:var(--dsp);font-weight:900;font-size:clamp(30px,4.8vw,60px);line-height:.98;letter-spacing:-.038em;margin-top:14px}
+.step p{margin-top:18px;font-size:16.5px;color:rgba(255,255,255,.75);max-width:48ch}
+.dots{display:flex;gap:9px;margin-top:34px}
+.dot{width:34px;height:4px;background:rgba(255,255,255,.16);transition:background .4s}
+.dot.on{background:var(--orange)}
+@media(max-width:920px){.dots{display:none}}
+
+/* ============ SPLIT / CARDS ============ */
+.sp>*{min-width:0}
+.sp{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,90px);align-items:start}
+@media(max-width:920px){.sp{grid-template-columns:1fr;gap:34px}}
+.sp p+p{margin-top:17px}
+.stk{position:sticky;top:112px}
+@media(max-width:920px){.stk{position:static}}
+
+.cds{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:64px}
+.c2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:940px){.cds,.c2{grid-template-columns:1fr}}
+.cd{background:#fff;border:1px solid var(--dline);padding:40px 34px 44px;position:relative;overflow:hidden;color:var(--ink);transition:transform .4s var(--ez),box-shadow .4s var(--ez)}
+.cd::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ez)}
+.cd.in::before{transform:scaleX(1)}
+.cd:nth-child(2)::before{background:var(--yellow)} .cd:nth-child(3)::before{background:var(--pink)}
+.cd:nth-child(4)::before{background:var(--mint)} .cd:nth-child(5)::before{background:var(--hot)} .cd:nth-child(6)::before{background:var(--navy)}
+.cd:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(8,23,46,.14)}
+.cd h3{font-family:var(--dsp);font-weight:800;font-size:26px;letter-spacing:-.025em;margin:15px 0 13px}
+.cd p{font-size:15.5px;color:var(--soft);line-height:1.62}
+.cd .tg{font-family:var(--mn);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
+.cdk{background:var(--lift);border-color:var(--line);color:#fff}
+.cdk p{color:rgba(255,255,255,.72)} .cdk .tg{color:var(--orange)}
+.cdk:hover{box-shadow:0 20px 48px rgba(0,0,0,.36)}
+
+/* real photos */
+img.shot{display:block;width:100%;height:auto;object-fit:cover;object-position:center;background:var(--lift)}
+img.shot.fit-contain{object-fit:contain;background:#000}
+/* portrait sources shown whole rather than cropped to death */
+img.shot.fit-pad{object-fit:contain;background:var(--deep)}
+/* a portrait source shown at its own ratio, centred, so there are no side bars */
+img.shot.portraitfit{aspect-ratio:auto;width:auto;height:auto;max-width:min(520px,100%);margin-inline:auto;background:none}
+img.shot.rv{opacity:0;transform:translateY(28px)}
+img.shot.rv.in{opacity:1;transform:none}
+
+/* placeholders */
+.ph{position:relative;display:grid;place-items:center;text-align:center;border:2px dashed rgba(245,139,76,.5);background:repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0 11px,transparent 11px 22px),rgba(255,255,255,.028);padding:26px;color:rgba(255,255,255,.76)}
+.lt .ph,.wm .ph,.cd .ph{border-color:rgba(232,114,46,.45);background:repeating-linear-gradient(45deg,rgba(8,23,46,.033) 0 11px,transparent 11px 22px),rgba(8,23,46,.028);color:var(--soft)}
+.ph b{display:block;font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:9px}
+.lt .ph b,.wm .ph b,.cd .ph b{color:var(--hot)}
+.ph span{display:block;font-size:15px;line-height:1.5;max-width:36ch}
+.ph em{display:block;font-style:normal;font-family:var(--mn);font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.62);margin-top:11px}
+.lt .ph em,.wm .ph em,.cd .ph em{color:var(--soft)}
+.w21{aspect-ratio:21/9} .w16{aspect-ratio:16/9} .w43{aspect-ratio:4/3}
+.w32{aspect-ratio:3/2}
+.fc{aspect-ratio:1;padding:10px;margin-bottom:15px;border-radius:50%}
+.fc b{font-size:9px;letter-spacing:.1em;margin:0}
+.pl{aspect-ratio:5/2;padding:15px}
+.par{will-change:transform}
+
+/* technoblade panel */
+.tb{position:relative;overflow:hidden;background:var(--deep)}
+.tb::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(120vw,1400px);height:min(120vw,1400px);
+  background:radial-gradient(circle,rgba(242,147,142,.13),transparent 58%);pointer-events:none}
+.tbg{max-width:1280px;margin:0 auto;padding:clamp(72px,10vw,140px) var(--gut);
+  display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,90px);align-items:center;position:relative}
+@media(max-width:900px){.tbg{grid-template-columns:1fr;gap:44px;text-align:center}}
+.tbl{justify-self:center;width:100%;max-width:400px;position:relative}
+.tbl img{width:100%;height:auto;object-fit:contain;box-shadow:0 34px 90px rgba(0,0,0,.62),0 0 0 1px rgba(242,147,142,.3),0 0 90px rgba(242,147,142,.2);
+  transition:transform .7s var(--ez)}
+.tbl:hover img{transform:rotate(-3deg) scale(1.04)}
+.tbc{position:absolute;top:-16px;right:-14px;background:var(--yellow);color:var(--deep);
+  font-family:var(--mn);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:8px 14px;transform:rotate(4deg)}
+.tb h2{font-family:var(--dsp);font-weight:900;font-size:clamp(34px,5.6vw,68px);line-height:.97;letter-spacing:-.04em;margin-top:14px}
+.tb p{margin-top:22px;font-size:clamp(16px,1.85vw,19.5px);color:rgba(255,255,255,.78);max-width:56ch}
+@media(max-width:900px){.tb p{margin-left:auto;margin-right:auto}}
+.tb .cro{color:var(--pink)}
+
+.fg .bd img{width:72px;height:68px}
+
+/* page head */
+.ph1{padding:clamp(76px,10vw,156px) 0 clamp(52px,6vw,90px);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.ph1::before{content:'';position:absolute;top:-40%;left:-10%;width:60vw;height:60vw;max-width:780px;max-height:780px;background:radial-gradient(circle,rgba(245,200,66,.09),transparent 62%);pointer-events:none}
+.ph1 h1{font-family:var(--dsp);font-weight:900;font-size:clamp(38px,9.6vw,124px);line-height:.98;letter-spacing:-.042em;margin-top:18px;position:relative}
+
+/* seasons */
+.era{display:grid;grid-template-columns:150px 1fr;gap:clamp(20px,3vw,44px);padding:38px 0;border-bottom:1px solid var(--line);align-items:start}
+@media(max-width:860px){.era{grid-template-columns:1fr;gap:12px}}
+.bdg{display:inline-block;font-family:var(--mn);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:5px 10px;margin-bottom:11px}
+.bf{background:var(--pink);color:var(--deep)} .bt{background:var(--orange);color:var(--deep)}
+.era .lb{font-family:var(--mn);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);padding-top:6px}
+.era p{color:rgba(255,255,255,.7);font-size:15.5px;max-width:62ch}
+.ssn{display:grid;grid-template-columns:150px 1fr;gap:clamp(20px,3vw,44px);padding:46px 0;border-bottom:1px solid var(--line);align-items:start}
+@media(max-width:860px){.ssn{grid-template-columns:1fr;gap:14px}}
+.ssn .yr{font-family:var(--mn);font-size:13.5px;font-weight:600;letter-spacing:.1em;color:var(--orange);padding-top:6px;position:sticky;top:112px}
+@media(max-width:860px){.ssn .yr{position:static}}
+.gm{font-family:var(--dsp);font-weight:900;font-size:clamp(28px,4.6vw,54px);line-height:1;letter-spacing:-.038em}
+.bot{font-family:var(--mn);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-top:11px}
+.bdy{margin-top:17px;color:rgba(255,255,255,.72);font-size:15.5px;max-width:60ch}
+.ssn.now .gm{color:var(--orange)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{font-family:var(--mn);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--line);color:rgba(255,255,255,.78)}
+.chip.w{border-color:var(--yellow);color:var(--yellow)}
+.chip.lv{background:var(--yellow);color:var(--deep);border-color:var(--yellow);font-weight:600}
+
+/* feature panels */
+.ft{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0}
+@media(max-width:920px){.ft{grid-template-columns:1fr}}
+.ft .tx{padding:clamp(48px,6.5vw,100px) clamp(24px,4vw,70px)}
+.ft .md{min-height:380px;overflow:hidden}
+.ft.fp .tx{order:2}
+@media(max-width:920px){.ft.fp .tx{order:0}}
+.kk{font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
+.lt .kk,.wm .kk{color:var(--hot)}
+.ft h3{font-family:var(--dsp);font-weight:900;font-size:clamp(28px,4.2vw,50px);line-height:1;letter-spacing:-.038em;margin-top:13px}
+.ft p{margin-top:18px;font-size:16.5px;line-height:1.65;max-width:52ch}
+.ft ul{margin-top:20px;list-style:none;display:grid;gap:10px}
+.ft li{font-size:15.5px;padding-left:22px;position:relative}
+.ft li::before{content:'\25AA';position:absolute;left:0;color:var(--orange)}
+
+/* events */
+.ev{margin-top:52px;display:grid;gap:14px}
+.evi{display:grid;grid-template-columns:130px 1fr auto;gap:clamp(16px,3vw,36px);align-items:center;padding:26px 28px;background:var(--lift);border:1px solid var(--line);transition:border-color .3s,transform .35s var(--ez)}
+.evi:hover{border-color:rgba(245,139,76,.42);transform:translateX(5px)}
+@media(max-width:860px){.evi{grid-template-columns:1fr;gap:9px}}
+.evd{font-family:var(--mn);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--orange)}
+.evn{font-family:var(--dsp);font-weight:800;font-size:21px;letter-spacing:-.02em}
+.evx{font-size:14.5px;color:rgba(255,255,255,.64);margin-top:6px}
+.evt{font-family:var(--mn);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.68);border:1px solid var(--line);padding:8px 14px;white-space:nowrap}
+
+/* roster showcase */
+.rs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.2vw,30px);margin-top:0}
+@media(max-width:1080px){.rs{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.rs{grid-template-columns:repeat(2,1fr);gap:16px}}
+.pn{margin:0;transition:transform .4s var(--ez)}
+.rs.nophoto{align-items:start}
+.rs.nophoto .pn{border-top:3px solid var(--orange);padding-top:20px}
+.rs.nophoto .pn:nth-child(4n+2){border-top-color:var(--yellow)}
+.rs.nophoto .pn:nth-child(4n+3){border-top-color:var(--pink)}
+.rs.nophoto .pn:nth-child(4n+4){border-top-color:var(--mint)}
+.rs.nophoto .pn:hover{transform:translateY(-4px)}
+.pn:hover{transform:translateY(-6px)}
+.pn .ph.pfc{aspect-ratio:1;padding:16px;margin-bottom:18px;transition:border-color .35s}
+.pn:hover .ph.pfc{border-color:rgba(245,139,76,.9)}
+.pn .ph.pfc b{font-size:12px;letter-spacing:.14em;margin-bottom:8px}
+.pn figcaption b{display:block;font-family:var(--dsp);font-weight:900;font-size:clamp(20px,2.2vw,26px);letter-spacing:-.025em;line-height:1}
+.pn figcaption span{display:block;font-family:var(--mn);font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--orange);margin-top:9px}
+.pbio{margin-top:12px;font-size:15px;line-height:1.55;color:rgba(255,255,255,.72)}
+.grp{font-family:var(--mn);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin:clamp(46px,5vw,72px) 0 0}
+.grp:first-of-type{margin-top:0}
+
+/* tiers */
+.trs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+@media(max-width:940px){.trs{grid-template-columns:1fr}}
+.tr{border:1px solid var(--line);padding:36px 32px 42px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .4s var(--ez)}
+.tr:hover{transform:translateY(-6px)}
+.tr1{background:var(--lift)}
+.tr2{background:linear-gradient(160deg,rgba(245,139,76,.22),var(--lift));border-color:rgba(245,139,76,.55);border-width:2px}
+.tr3{background:linear-gradient(160deg,rgba(245,200,66,.20),var(--lift))}
+.tr .am{font-family:var(--dsp);font-weight:900;font-size:clamp(32px,4.2vw,50px);letter-spacing:-.038em;color:var(--yellow);line-height:1}
+.tr h3{font-family:var(--dsp);font-weight:800;font-size:23px;margin:16px 0 4px}
+.tr ul{list-style:none;margin-top:22px;display:grid;gap:11px}
+.tr li{font-size:15px;color:rgba(255,255,255,.78);padding-left:23px;position:relative}
+.tr li::before{content:'\25AA';position:absolute;left:0;color:var(--orange)}
+.tr .mk{position:absolute;top:16px;right:18px;font-family:var(--mn);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--orange);color:var(--deep);padding:4px 9px;font-weight:600}
+.pst{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pst li{list-style:none;font-family:var(--mn);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:10px 17px;border:1px solid var(--line);color:rgba(255,255,255,.6)}
+.lgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:13px;margin-top:28px}
+
+/* team grid */
+.tms{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:40px}
+.tm{border:1px solid var(--line);padding:22px 20px;background:var(--lift);transition:transform .35s var(--ez),border-color .35s}
+.tm:hover{transform:translateY(-4px);border-color:rgba(127,209,185,.5)}
+.tm b{display:block;font-family:var(--dsp);font-weight:800;font-size:18px;letter-spacing:-.02em}
+.tm span{display:block;font-family:var(--mn);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;margin-top:8px;color:var(--mint)}
+.tm.new span{color:var(--yellow)}
+
+/* band + footer */
+.bn{background:var(--deep);border-top:1px solid var(--line)}
+.bni{max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,116px) var(--gut);display:grid;grid-template-columns:1fr auto;gap:38px;align-items:center}
+@media(max-width:880px){.bni{grid-template-columns:1fr}}
+.bb{display:flex;flex-direction:column;gap:12px}
+.ft2{background:var(--deep);border-top:1px solid var(--line);padding:58px 0 44px}
+.fg{max-width:1280px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+@media(max-width:820px){.fg{grid-template-columns:1fr;gap:32px}}
+.fg h4{font-family:var(--dsp);font-weight:800;font-size:15px;margin-bottom:16px}
+.fg a,.fg p{display:block;font-size:15.5px;color:rgba(255,255,255,.58);text-decoration:none;margin-bottom:11px}
+.fg a:hover{color:var(--orange)}
+.fb{max-width:1280px;margin:44px auto 0;padding:22px var(--gut) 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px 30px;font-family:var(--mn);font-size:12.5px;letter-spacing:.07em;color:rgba(255,255,255,.62)}
+.fb .sp2{margin-left:auto}
+
+/* FLL band on the robots page */
+.fllband{max-width:70ch;margin-top:clamp(44px,5vw,72px);padding-top:clamp(34px,4vw,54px);border-top:1px solid var(--line)}
+.fllh{font-family:var(--dsp);font-weight:900;font-size:clamp(24px,3vw,38px);line-height:1.02;letter-spacing:-.03em;margin-top:14px;text-wrap:balance}
+
+/* accolades band */
+.accsec{background:var(--navy);border-top:1px solid var(--line)}
+.accgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.2vw,30px);margin-top:clamp(38px,4.4vw,58px)}
+@media(max-width:900px){.accgrid{grid-template-columns:1fr}}
+.accitem{border-top:3px solid var(--yellow);padding-top:22px}
+.accno{font-family:var(--mn);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)}
+.accitem h3{font-family:var(--dsp);font-weight:900;font-size:clamp(23px,2.5vw,32px);line-height:1.03;letter-spacing:-.03em;margin:12px 0 12px;text-wrap:balance}
+.accitem p{font-size:16px;color:rgba(255,255,255,.8)}
+
+/* newsletter embed: the provider injects its own markup, so nudge it into the palette */
+.nlembed{min-height:64px}
+.nlembed input[type="email"],.nlembed input[type="text"]{width:100%;max-width:340px;background:var(--lift);border:1px solid var(--line);color:#fff;font-family:var(--bdy);font-size:16px;padding:15px 18px;border-radius:0}
+.nlembed input::placeholder{color:rgba(255,255,255,.5)}
+.nlembed input:focus{border-color:var(--orange);outline:none}
+.nlembed button,.nlembed input[type="submit"]{background:var(--orange);color:var(--deep);border:0;border-radius:0;font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:15px 24px;cursor:pointer}
+.nlembed button:hover,.nlembed input[type="submit"]:hover{background:var(--yellow)}
+.nlembed a{color:var(--yellow)}
+
+/* what is FTC explainer */
+.ftcx{border-top:1px solid var(--line)}
+.ftclogo{height:64px;width:auto;margin-bottom:26px;display:block}
+.ftcgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.2vw,30px);margin-top:clamp(38px,4.4vw,58px)}
+@media(max-width:900px){.ftcgrid{grid-template-columns:1fr}}
+.ftcstep{border-top:3px solid var(--orange);padding-top:22px}
+.ftcstep:nth-child(2){border-top-color:var(--yellow)}
+.ftcstep:nth-child(3){border-top-color:var(--pink)}
+.ftcstep .tg{font-family:var(--mn);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange)}
+.ftcstep:nth-child(2) .tg{color:var(--yellow)}
+.ftcstep:nth-child(3) .tg{color:var(--pink)}
+.ftcstep h3{font-family:var(--dsp);font-weight:900;font-size:clamp(22px,2.4vw,30px);line-height:1.04;letter-spacing:-.028em;margin:12px 0 12px;text-wrap:balance}
+.ftcstep p{font-size:16px;color:rgba(255,255,255,.8)}
+.ftcnote{margin-top:clamp(30px,3.4vw,44px);padding-top:24px;border-top:1px solid var(--line);font-size:16.5px;color:rgba(255,255,255,.8);max-width:74ch}
+
+/* get involved: four routes */
+.ofs.four,.ofs.two{grid-template-columns:repeat(2,1fr)}
+@media(max-width:940px){.ofs.four,.ofs.two{grid-template-columns:1fr}}
+.giband{max-width:74ch;margin-bottom:clamp(34px,4vw,54px)}
+.giband .sub{margin-top:20px}
+.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.jl{font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.82);border:1px solid var(--line);padding:11px 16px;transition:.25s var(--ez)}
+.jl:hover{border-color:var(--orange);color:var(--orange)}
+[id^="gi-"]{scroll-margin-top:96px}
+.oflinks{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:28px}
+.oflinks .btn{margin-top:0}
+.oflink{flex:1 1 100%;display:inline-flex;align-items:center;gap:8px;margin-top:4px;font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);text-decoration:none}
+.oflink:hover{color:#fff}
+.oflink s{text-decoration:none;transition:transform .28s var(--ez)}
+.oflink:hover s{transform:translateX(4px)}
+
+/* home team band */
+.teamband{padding:clamp(56px,7vw,104px) 0 clamp(52px,6.5vw,96px);background:var(--navy)}
+.tbandh{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(26px,3.2vw,44px)}
+.tbandimg{aspect-ratio:16/9}
+@media(max-width:700px){.tbandimg{aspect-ratio:4/3}}
+
+/* sponsors thank-you */
+.thanks .lgs{margin-top:clamp(30px,3.6vw,46px)}
+.lgs.big.four,.lgs.four{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.lgs.big.four,.lgs.four{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.lgs.big.four,.lgs.four{grid-template-columns:1fr}}
+
+/* previews (home) */
+.pvh{display:flex;flex-wrap:wrap;gap:24px 40px;align-items:flex-end;justify-content:space-between}
+.pvstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(40px,5vw,64px)}
+@media(max-width:860px){.pvstrip{grid-template-columns:1fr}}
+.pv43{aspect-ratio:4/3}
+.hero43{aspect-ratio:16/9}
+@media(max-width:640px){.hero43{aspect-ratio:4/3}}
+.pinmedia{position:relative;justify-self:center;width:100%;max-width:640px;will-change:transform}
+
+/* robot cards */
+.rbt>*{min-width:0}
+.rbt{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(28px,4.4vw,72px);align-items:center;padding:clamp(38px,5.5vw,80px) 0;border-bottom:1px solid var(--line)}
+.rbt:first-of-type{padding-top:0}
+/* the current robot leads the page and runs larger than the rest */
+.rbt.lead{grid-template-columns:1fr;gap:clamp(24px,3vw,44px);padding-bottom:clamp(48px,6vw,88px)}
+.rbt.lead .rbtimg{aspect-ratio:2/1}
+@media(max-width:700px){.rbt.lead .rbtimg{aspect-ratio:4/3}}
+.rbt.lead .gm{font-size:clamp(44px,8vw,104px)}
+.rbt.lead .bdy{font-size:clamp(17px,2vw,21px);max-width:62ch}
+.rbt.lead .yrtag{color:var(--orange)}
+.rbt.lead .chips{margin-top:26px}
+.rbt:last-of-type{border-bottom:0}
+@media(max-width:900px){.rbt{grid-template-columns:1fr;gap:28px}}
+.rbt:nth-of-type(even) .rbtimg{order:2}
+@media(max-width:900px){.rbt:nth-of-type(even) .rbtimg{order:0}}
+.rbtimg{aspect-ratio:16/9}
+.yrtag{display:inline-block;font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)}
+.rbt .gm{margin-top:14px}
+.rbt.now .gm{color:var(--orange)}
+.rbt .bdy{margin-top:16px}
+
+/* outreach offers */
+.ofs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(40px,5vw,64px)}
+@media(max-width:940px){.ofs{grid-template-columns:1fr}}
+.of{background:var(--lift);border:1px solid var(--line);padding:clamp(30px,3.6vw,46px);display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .4s var(--ez),border-color .35s}
+.of::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:var(--orange)}
+.of:nth-child(2)::before{background:var(--yellow)}
+.of:nth-child(3)::before{background:var(--pink)}
+.of:hover{transform:translateY(-6px);border-color:rgba(245,139,76,.42)}
+.of .tg{font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.2em;color:var(--orange)}
+.of h3{font-family:var(--dsp);font-weight:900;font-size:clamp(25px,2.9vw,36px);line-height:1.02;letter-spacing:-.032em;margin:16px 0 18px;text-wrap:balance}
+/* only body copy may grow. .tg is a paragraph too, and letting it stretch
+   pushed each card's heading down by a different amount. */
+.of p{font-size:16px;color:rgba(255,255,255,.8)}
+/* photo pinned to the bottom of the free space, and the CTA block given a
+   reserved height so cards with an extra outbound link still line up */
+.of .ofph{margin-top:auto}
+.of .oflinks{margin-top:22px;min-height:138px;align-content:flex-start}
+.of .btn{margin-top:30px;align-self:flex-start}
+
+/* ---- newsletter (EmailOctopus) ----
+   Their script injects its own markup with Bootstrap-ish classes (.form-control,
+   .btn .btn-primary) and mounts a popup to the page body as .modal-container, so
+   the rules below reach it there rather than through our wrapper. */
+.nlg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4vw,72px);align-items:center}
+@media(max-width:880px){.nlg{grid-template-columns:1fr;gap:30px}}
+.newsletter-embed{min-height:52px}
+.nlnote{margin-top:16px;font-family:var(--mn);font-size:12.5px;letter-spacing:.06em;line-height:1.6;color:rgba(255,255,255,.72)}
+.nlnote a{color:var(--yellow)}
+.lt .nlnote,.wm .lt .nlnote{color:var(--soft)}
+.lt .nlnote a{color:var(--hot)}
+
+/* the injected form, wherever it lands */
+.newsletter-embed .emailoctopus-form,
+.newsletter-embed form,
+.modal-container .emailoctopus-form,
+.modal-container form{font-family:var(--bdy)!important;box-shadow:none!important;margin:0!important}
+.newsletter-embed input[type="email"],.newsletter-embed input.form-control,
+.modal-container input[type="email"],.modal-container input.form-control{
+  background:var(--lift)!important;border:1px solid var(--line)!important;border-radius:0!important;
+  color:#fff!important;font-family:var(--bdy)!important;font-size:16px!important;
+  padding:15px 18px!important;box-shadow:none!important;height:auto!important;width:100%!important}
+.newsletter-embed input::placeholder,.modal-container input::placeholder{color:rgba(255,255,255,.5)!important}
+.newsletter-embed input:focus,.modal-container input:focus{border-color:var(--orange)!important;outline:none!important}
+.newsletter-embed input[type="submit"],.newsletter-embed .btn,.newsletter-embed button,
+.modal-container input[type="submit"],.modal-container .btn,.modal-container button[type="submit"]{
+  background:var(--orange)!important;background-image:none!important;border:0!important;border-radius:0!important;
+  color:var(--deep)!important;font-family:var(--mn)!important;font-size:12.5px!important;font-weight:600!important;
+  letter-spacing:.12em!important;text-transform:uppercase!important;padding:15px 24px!important;
+  box-shadow:none!important;cursor:pointer;width:auto!important}
+.newsletter-embed input[type="submit"]:hover,.modal-container input[type="submit"]:hover{background:var(--yellow)!important}
+/* their popup variant renders on a white panel, so keep its own text dark */
+.modal-container-inner,.modal-container .form-container{border-radius:0!important;box-shadow:0 30px 80px rgba(0,0,0,.5)!important}
+@media(max-width:640px){
+  .newsletter-embed input[type="email"],.modal-container input[type="email"]{width:100%!important;margin-bottom:10px!important}
+  .newsletter-embed input[type="submit"],.modal-container input[type="submit"]{width:100%!important}
+}
+
+/* utility copy */
+.mentline{margin-top:clamp(44px,5vw,72px);padding-top:28px;border-top:1px solid var(--line);font-size:16px;color:rgba(255,255,255,.78);max-width:72ch}
+.lt .mentline,.wm .mentline{border-top-color:var(--dline);color:var(--soft)}
+.edit{margin-top:18px;font-family:var(--mn);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);max-width:72ch}
+.fine{margin-top:26px;font-family:var(--mn);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.bn.big .bni{padding:clamp(84px,11vw,164px) var(--gut)}
+.bn.big .h2{font-size:clamp(34px,8vw,104px)}
+
+
+/* ---- visually hidden ---- */
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---- tighter section variants ---- */
+.ph1.tight{padding-bottom:clamp(28px,3.4vw,48px)}
+.sec.tight{padding-top:clamp(38px,4.6vw,68px)}
+
+/* ---- accolades ---- */
+.acc{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:20px;font-family:var(--mn);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.acc span::before{content:'\25AA';color:var(--yellow);margin-right:9px}
+.acc.row{justify-content:flex-start;margin-top:clamp(26px,3vw,40px);padding-top:24px;border-top:1px solid var(--line)}
+
+/* ---- robot showcase: the tile veil peels off the photo ---- */
+.rshowsec{padding:clamp(56px,7vw,104px) 0 clamp(48px,6vw,88px);background:var(--deep)}
+.rshowhead{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(28px,3.4vw,46px)}
+.rshow{position:relative;overflow:hidden}
+.rshowimg{aspect-ratio:16/9}
+.rveil{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(5,1fr);pointer-events:none}
+.rveil i{background:var(--navy);border:1px solid rgba(255,255,255,.05);transform:scale(1.03);transition:transform .55s var(--ez);transition-delay:var(--d,0s)}
+.rshow.in .rveil i{transform:scale(0)}
+
+/* ---- technoblade quote ---- */
+.tbq{font-family:var(--mn);font-size:14px;letter-spacing:.06em;color:var(--yellow);margin-top:26px}
+
+/* ---- card photo ---- */
+.cdph{aspect-ratio:4/3;margin-top:24px}
+.ofph{aspect-ratio:4/3;margin:22px 0 4px}
+
+/* ---- pinned nav arrows ---- */
+.pinnav{display:flex;align-items:center;gap:14px;margin-top:34px;flex-wrap:wrap}
+.pbtn{width:46px;height:46px;display:grid;place-items:center;background:none;border:1px solid var(--line);color:#fff;font-size:17px;cursor:pointer;transition:.25s var(--ez)}
+.pbtn:hover:not(:disabled){border-color:var(--orange);color:var(--orange)}
+.pbtn:disabled{opacity:.3;cursor:default}
+.pcount{font-family:var(--mn);font-size:13px;letter-spacing:.14em;color:rgba(255,255,255,.72);min-width:64px}
+.pinnav .dots{margin-top:0;margin-left:6px}
+
+/* ---- newsletter ---- */
+.nlg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4vw,72px);align-items:center}
+@media(max-width:880px){.nlg{grid-template-columns:1fr;gap:32px}}
+.nlf{display:flex;flex-wrap:wrap;gap:12px}
+.nlf input{flex:1 1 240px;min-width:0;background:var(--lift);border:1px solid var(--line);color:#fff;font-family:var(--bdy);font-size:16px;padding:15px 18px}
+.nlf input::placeholder{color:rgba(255,255,255,.5)}
+.nlf input:focus{border-color:var(--orange);outline:none}
+.nlnote{margin-top:16px;font-family:var(--mn);font-size:12.5px;letter-spacing:.06em;line-height:1.6;color:rgba(255,255,255,.72)}
+.nlnote a{color:var(--yellow)}
+
+/* ---- contact block ---- */
+.ctwrap{background:var(--deep);border-top:1px solid var(--line)}
+.ctb{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:clamp(36px,4vw,56px)}
+@media(max-width:1080px){.ctb{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.ctb{grid-template-columns:1fr}}
+.ct{display:block;text-decoration:none;background:var(--lift);border:1px solid var(--line);padding:26px 22px 28px;transition:transform .35s var(--ez),border-color .3s}
+.ct:hover{transform:translateY(-5px);border-color:rgba(245,139,76,.5)}
+.ct b{display:block;font-family:var(--dsp);font-weight:800;font-size:19px;letter-spacing:-.02em}
+.ct span{display:block;font-size:14.5px;color:rgba(255,255,255,.72);margin-top:9px}
+
+/* ---- logo grid ---- */
+.lgs.big{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px;margin-top:clamp(34px,4vw,52px);
+  width:min(1560px,calc(100vw - 2*var(--gut)));margin-left:50%;transform:translateX(-50%)}
+.lgs.big .pl{aspect-ratio:2/1;padding:18px}
+/* logos are wildly different shapes, so cap the HEIGHT and centre them.
+   Constraining width would let a 3.7:1 wordmark dwarf a 1:1 badge. */
+/* Every tile is identical: same fixed height, same white plate, same rounding.
+   Several of these files ship baked-in backgrounds we cannot strip (C2 a dark
+   square, Chase a blue square), so mixing plates with transparent-on-navy is
+   what made the grid look broken. One treatment for all eight. */
+.logo{height:250px;display:flex;align-items:center;justify-content:center;
+      padding:8px;background:#fff;border:1px solid rgba(8,23,46,.10);border-radius:8px;
+      transition:border-color .3s,transform .35s var(--ez)}
+.logo:hover{border-color:rgba(245,139,76,.55);transform:translateY(-3px)}
+/* the logo is constrained INSIDE the fixed tile, so a 3.7:1 wordmark and a 1:1
+   badge end up with the same optical weight instead of one filling its box */
+/* One uniform cap cannot equalise logos of very different aspect ratios: a wide
+   wordmark hits the width cap and looks huge, a square badge hits nothing and
+   looks tiny. So each logo gets its own height, tuned so the rendered marks
+   carry similar optical weight rather than similar bounding boxes. */
+.logo img{max-width:98%;width:auto;height:auto;object-fit:contain}
+.logo img.l-ally  {max-height:112px}   /* 3.3:1 wordmark */
+.logo img.l-snap  {max-height:116px}   /* 4.6:1, widest — width-bound in a 4-up grid */
+.logo img.l-ti    {max-height:118px}   /* 4.2:1 */
+.logo img.l-c2    {max-height:196px}   /* solid square, reads heavy for its size */
+.logo img.l-chase {max-height:196px}   /* solid square */
+.logo img.l-poly  {max-height:190px}   /* 1.8:1, sparse line art */
+.logo img.l-simple{max-height:196px}   /* 1.2:1, thin line art */
+.logo img.l-cold  {max-height:200px}   /* 1.06:1, lots of internal white */
+@media(max-width:600px){.logo{height:180px;padding:8px}.logo img{max-width:92%;transform:scale(.84);transform-origin:center}}
+
+/* ---- sponsorship comparison table ---- */
+.tblwrap{margin-top:clamp(34px,4vw,54px);overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:900px){.tblwrap{display:none}}
+.sptbl{width:100%;border-collapse:collapse;min-width:820px}
+.sptbl th,.sptbl td{padding:15px 16px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--line)}
+.sptbl thead th{text-align:center;vertical-align:bottom;padding:22px 16px;border-bottom:2px solid var(--line)}
+.sptbl .corner{border-bottom:2px solid var(--line)}
+.sptbl thead .tn{display:block;font-family:var(--mn);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.sptbl thead .ta{display:block;font-family:var(--dsp);font-weight:900;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.03em;margin-top:6px}
+.sptbl tbody th{font-weight:400;font-size:15.5px;color:rgba(255,255,255,.86);max-width:420px}
+.sptbl tr.grp th{font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);padding-top:34px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.sptbl td{text-align:center;width:13%}
+.sptbl .yes{display:inline-block;width:15px;height:15px;background:var(--orange)}
+.sptbl .no{display:inline-block;width:16px;height:2px;background:rgba(255,255,255,.42);vertical-align:middle}
+/* escalating intensity across the columns, Tier 4 in orange */
+/* neutral brightness ramp in the body, navy-to-orange ramp in the header.
+   Orange at low alpha over navy turns brown, so the body stays neutral. */
+.sptbl .t1{background:rgba(255,255,255,.022)}
+.sptbl .t2{background:rgba(255,255,255,.05)}
+.sptbl .t3{background:rgba(255,255,255,.085)}
+.sptbl .t4{background:rgba(255,255,255,.13)}
+.sptbl thead .t1{background:var(--deep);box-shadow:inset 0 0 0 1px var(--line)}
+.sptbl thead .t2{background:var(--lift)}
+.sptbl thead .t3{background:var(--card)}
+.sptbl thead .t4{background:var(--orange);color:var(--deep)}
+.sptbl thead .t3 .tn{color:var(--yellow);opacity:1}
+.sptbl thead .t4 .tn{opacity:.78}
+.sptbl .no{opacity:1}
+
+/* ---- stacked tier cards under 900px ---- */
+.sptiers{display:none;gap:16px;margin-top:34px}
+@media(max-width:900px){.sptiers{display:grid}}
+.sc{border:1px solid var(--line);padding:30px 26px 34px;background:var(--lift)}
+.sc.t2{background:linear-gradient(160deg,rgba(245,139,76,.12),var(--lift))}
+.sc.t3{background:linear-gradient(160deg,rgba(245,139,76,.2),var(--lift))}
+.sc.t4{background:linear-gradient(160deg,rgba(245,139,76,.34),var(--lift));border-color:rgba(245,139,76,.6);border-width:2px}
+.sc-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.sc-h .tn{font-family:var(--mn);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)}
+.sc-h .ta{font-family:var(--dsp);font-weight:900;font-size:34px;letter-spacing:-.03em}
+.sc-g{font-family:var(--mn);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-top:20px}
+.sc ul{list-style:none;margin-top:10px;display:grid;gap:9px}
+.sc li{font-size:15px;color:rgba(255,255,255,.82);padding-left:22px;position:relative}
+.sc li::before{content:'\25AA';position:absolute;left:0;color:var(--orange)}
+.sc .btn{margin-top:28px}
+.taxline{margin-top:clamp(32px,3.6vw,48px);padding:22px 24px;border:1px solid rgba(245,200,66,.42);background:rgba(245,200,66,.07);font-size:16px;color:rgba(255,255,255,.9);max-width:78ch}
+.taxline b{color:var(--yellow)}
+
+/* long-form post */
+.posth1{font-size:clamp(38px,7.4vw,92px)}
+.prose{max-width:68ch}
+.prose p{font-size:17.5px;line-height:1.72;color:rgba(255,255,255,.84);margin-top:20px}
+.prose .plead{font-size:clamp(19px,2.2vw,24px);line-height:1.55;color:#fff}
+.prose h2{font-family:var(--dsp);font-weight:900;font-size:clamp(24px,3vw,36px);line-height:1.04;letter-spacing:-.03em;margin-top:clamp(40px,4.4vw,62px);text-wrap:balance}
+.prose h2::before{content:'';display:block;width:44px;height:3px;background:var(--orange);margin-bottom:18px}
+.postcta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(44px,5vw,70px);padding-top:32px;border-top:1px solid var(--line)}
+
+/* ---- updates / blog ---- */
+.posts{display:grid;gap:clamp(16px,2vw,26px)}
+.posth{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,3.4vw,52px);align-items:center;text-decoration:none;border:1px solid var(--line);background:var(--lift);padding:clamp(18px,2vw,26px);transition:transform .38s var(--ez),border-color .3s}
+@media(max-width:820px){.posth{grid-template-columns:1fr;gap:22px}}
+.posth:hover{transform:translateY(-5px);border-color:rgba(245,139,76,.5)}
+.postimg{aspect-ratio:16/9}
+.pdate{font-family:var(--mn);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.postx h3{font-family:var(--dsp);font-weight:900;font-size:clamp(24px,3vw,38px);line-height:1.03;letter-spacing:-.032em;margin-top:12px;text-wrap:balance}
+.pex{margin-top:14px;font-size:16.5px;color:rgba(255,255,255,.78);max-width:56ch}
+.plink{display:inline-flex;align-items:center;gap:9px;margin-top:20px;font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+.posth:hover .plink s{transform:translateX(5px)}
+.plink s{text-decoration:none;transition:transform .28s var(--ez)}
+
+/* ---- footer + menu extras ---- */
+.fdon{color:var(--orange)!important;font-weight:600}
+.mbc{color:var(--orange)!important;font-weight:600}
+
+/* reveals */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ez),transform .85s var(--ez)}
+.rv.in{opacity:1;transform:none}
+.sg>*{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ez),transform .75s var(--ez)}
+.sg.in>*{opacity:1;transform:none}
+.sg.in>*:nth-child(1){transition-delay:.05s} .sg.in>*:nth-child(2){transition-delay:.12s}
+.sg.in>*:nth-child(3){transition-delay:.19s} .sg.in>*:nth-child(4){transition-delay:.26s}
+.sg.in>*:nth-child(5){transition-delay:.33s} .sg.in>*:nth-child(6){transition-delay:.40s}
+.sg.in>*:nth-child(7){transition-delay:.47s} .sg.in>*:nth-child(8){transition-delay:.54s}
+
+.pg{display:none} .pg.on{display:block}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv,.sg>*{opacity:1!important;transform:none!important;transition:none!important}
+  .tl,.flg img{opacity:1!important;transform:none!important}
+  .cd::before{transform:scaleX(1)!important}
+  .rule i{transform:scaleY(1)!important;animation:none!important}
+  #ct,.scroller{display:none!important}
+  .pin-track{height:auto!important}.pin-stage{position:static!important;height:auto!important;padding:70px 0}
+  .pin-steps{display:grid!important;gap:34px}
+  .step{position:static!important;opacity:1!important;transform:none!important}
+  .par{transform:none!important}
+  /* hover motion is motion too */
+  .cd:hover,.pn:hover,.evi:hover,.tm:hover,.tr:hover,.of:hover,.ct:hover,.posth:hover,.bd:hover img,.tbl:hover img,.flg img:hover,.btn:hover s,.oflink:hover s{transform:none!important}
+  .rveil{display:none!important}
+}
+</style>
+<noscript><style>
+  .pg{display:block!important;border-top:1px solid var(--line)}
+  .rv,.sg>*,.tl,.flg img{opacity:1!important;transform:none!important}
+  .cd::before{transform:scaleX(1)!important}
+  .rule i{transform:scaleY(1)!important}
+  #ct,#prog,.scroller,.dots,.rveil,.pinnav{display:none!important}
+  .pin-track{height:auto!important}.pin-stage{position:static!important;height:auto!important;padding:70px 0}
+  .pin-steps{display:grid;gap:34px}.step{position:static!important;opacity:1!important;transform:none!important}
+</style></noscript>
+</head>
+<body>
+<div id="prog"></div>
+<div id="ct" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="nvi">
+    <a class="bd" href="#" data-go="home"><img src="technobotz-pig.png" alt="" width="319" height="302"><div><b>TechnoBotz</b> <i>23542</i></div></a>
+    <div class="nl">
+      <a class="lk" href="#" data-go="home" aria-current="page">Home</a>
+      <a class="lk" href="#" data-go="team">Meet the Team</a>
+      <a class="lk" href="#" data-go="robots">Our Robots</a>
+      <a class="lk" href="#" data-go="outreach">Outreach</a>
+      <a class="lk" href="#" data-go="updates">Updates</a>
+      <a class="lk" href="#" data-go="sponsors">Sponsors</a>
+      <a class="lk" href="#" data-go="involved">Get Involved</a>
+    </div>
+    <div class="ncta">
+      <a class="btn ln sm" href="#" data-go="team">Meet the team</a>
+      <a class="btn fl sm" href="#" data-go="involved">Join a FIRST team <s aria-hidden="true">&rarr;</s></a>
+    </div>
+    <button class="bg" id="bg" aria-expanded="false" aria-controls="mb">Menu</button>
+  </div>
+  <div class="mb" id="mb">
+    <a href="#" data-go="home">Home</a><a href="#" data-go="team">Meet the Team</a>
+    <a href="#" data-go="robots">Our Robots</a><a href="#" data-go="outreach">Outreach</a>
+    <a href="#" data-go="updates">Updates</a><a href="#" data-go="sponsors">Sponsors</a>
+    <a href="#" data-go="involved">Get Involved</a>
+    <a class="mbc" href="https://hcb.hackclub.com/donations/start/technobotz" target="_blank" rel="noopener">Donate to the team</a>
+  </div>
+</nav>
+
+<!-- ================= HOME ================= -->
+<main class="pg on" id="p-home">
+<header class="hero">
+  <div class="hg">
+    <div id="hcopy">
+      <p class="eb">FIRST Tech Challenge &middot; Team 23542 &middot; Frisco, Texas</p>
+      <h1>TechnoBotz<em>23542</em></h1>
+      <p class="lede">TechnoBotz is a student-run nonprofit that brings robotics to schools and communities that do not have it, through free camps, donated STEM kits, and new teams we help start. We are also a competitive FIRST Tech Challenge team, building a new robot every season.</p>
+      <div class="hct">
+        <a class="btn fl" href="#" data-go="team">Meet the team <s aria-hidden="true">&rarr;</s></a>
+        <a class="btn ln" href="#" data-go="involved">Join a FIRST team</a>
+      </div>
+    </div>
+    <div class="fsh" id="fsh">
+      <div class="fld" id="fld" aria-hidden="true"></div>
+      <div class="flg"><img src="technobotz-mark.png" alt="" id="flg" width="480" height="472"></div>
+    </div>
+  </div>
+  <div class="scroller" aria-hidden="true"><b></b>Scroll</div>
+</header>
+
+<!-- ROBOT SHOWCASE: the tile veil peels off the photo on scroll -->
+<section class="rshowsec">
+  <div class="wrap">
+    <div class="rshowhead">
+      <div><p class="eb">This season</p><h2 class="h2">Porkchop</h2></div>
+      <a class="btn ln" href="#" data-go="robots">Every robot we have built <s aria-hidden="true">&rarr;</s></a>
+    </div>
+    <div class="rshow rv">
+      <img class="shot rshowimg" src="images/web/porkchop.jpg" alt="The robot Porkchop on the competition field, a green game ball in its intake above the 23542 number plate" width="2400" height="1600" loading="lazy" decoding="async">
+      <div class="rveil" aria-hidden="true"><i style="--d:0.000s"></i><i style="--d:0.035s"></i><i style="--d:0.070s"></i><i style="--d:0.105s"></i><i style="--d:0.140s"></i><i style="--d:0.175s"></i><i style="--d:0.210s"></i><i style="--d:0.245s"></i><i style="--d:0.045s"></i><i style="--d:0.080s"></i><i style="--d:0.115s"></i><i style="--d:0.150s"></i><i style="--d:0.185s"></i><i style="--d:0.220s"></i><i style="--d:0.255s"></i><i style="--d:0.290s"></i><i style="--d:0.090s"></i><i style="--d:0.125s"></i><i style="--d:0.160s"></i><i style="--d:0.195s"></i><i style="--d:0.230s"></i><i style="--d:0.265s"></i><i style="--d:0.300s"></i><i style="--d:0.335s"></i><i style="--d:0.135s"></i><i style="--d:0.170s"></i><i style="--d:0.205s"></i><i style="--d:0.240s"></i><i style="--d:0.275s"></i><i style="--d:0.310s"></i><i style="--d:0.345s"></i><i style="--d:0.380s"></i><i style="--d:0.180s"></i><i style="--d:0.215s"></i><i style="--d:0.250s"></i><i style="--d:0.285s"></i><i style="--d:0.320s"></i><i style="--d:0.355s"></i><i style="--d:0.390s"></i><i style="--d:0.425s"></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="st">
+  <div class="sti sg">
+    <div class="s1"><b><span data-c="2700">0</span>+</b><span>People reached</span></div>
+    <div class="s1"><b><span data-c="320">0</span>+</b><span>Outreach hours</span></div>
+    <div class="s1"><b><span data-c="12">0</span></b><span>Teams mentored</span></div>
+    <div class="s1"><b><span data-c="6">0</span></b><span>Seasons in FIRST</span></div>
+  </div>
+</section>
+
+<section class="teamband">
+  <div class="wrap">
+    <div class="tbandh">
+      <div><p class="eb">The team</p><h2 class="h2">Fourteen students from across North Texas</h2></div>
+      <a class="btn ln" href="#" data-go="team">Meet everyone <s aria-hidden="true">&rarr;</s></a>
+    </div>
+    <img class="shot tbandimg rv" src="images/web/team-whole.jpg" alt="Three TechnoBotz drivers at the field holding controllers, two in team hoodies and one in a pink pig hat" width="2600" height="1733" loading="lazy" decoding="async">
+  </div>
+</section>
+
+<section class="sec accsec"><div class="wrap">
+  <p class="eb">Recognition</p>
+  <h2 class="h2">What we have won</h2>
+  <div class="accgrid sg">
+    <div class="accitem">
+      <p class="accno">Texas House</p>
+      <h3>House Resolution No. 941</h3>
+      <p>Passed in 2023 by Representative Mihaela Plesa, recognizing our advocacy for K-12 robotics curriculum in Texas schools.</p>
+    </div>
+    <div class="accitem">
+      <p class="accno">UIL 5A</p>
+      <h3>State Runner-Up</h3>
+      <p>Second place at the UIL 5A state championship in 2024, during the CENTERSTAGE season and our rookie year in FIRST Tech Challenge.</p>
+    </div>
+    <div class="accitem">
+      <p class="accno">North Texas</p>
+      <h3>Ruby Division Finalists</h3>
+      <p>Finalists in the Ruby Division at the North Texas Championship in 2026, during the DECODE season, the year we built Porkchop.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec dp ftcx"><div class="wrap">
+  <img class="ftclogo" src="images/web/logo-first-tech-challenge.png" alt="FIRST Tech Challenge" width="356" height="280" loading="lazy" decoding="async">
+  <p class="eb">If you have not heard of it</p>
+  <h2 class="h2">What is FIRST Tech Challenge?</h2>
+  <p class="sub">A robotics competition for students in grades 7 through 12, run by the nonprofit FIRST. Thousands of teams compete worldwide. Here is the shape of a season.</p>
+  <div class="ftcgrid sg">
+    <div class="ftcstep"><p class="tg">Every September</p><h3>A brand new game</h3><p>FIRST reveals a new challenge with a new field, new scoring, and new rules. Last year&rsquo;s robot is useless. Everyone starts level.</p></div>
+    <div class="ftcstep"><p class="tg">Then a few months</p><h3>Design and build a robot</h3><p>Students do the CAD, machining, wiring, and Java programming. It has to drive itself for the first thirty seconds of every match, then a driver takes over.</p></div>
+    <div class="ftcstep"><p class="tg">Winter into spring</p><h3>Compete</h3><p>Qualifiers, league meets, then a regional championship. Teams that go far enough reach the FIRST World Championship. Matches are two and a half minutes, two teams a side.</p></div>
+  </div>
+  <p class="ftcnote">Judges also award teams on their engineering portfolio, their outreach, and how they mentor others. It is not only about who scores the most points.</p>
+  <p style="margin-top:30px"><a class="btn fl" href="#" data-go="involved">How to get involved <s aria-hidden="true">&rarr;</s></a> <a class="btn ln" href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener">Read about FTC on firstinspires.org</a></p>
+</div></section>
+
+<div class="rule"><i style="background:var(--orange)"></i><i style="background:var(--yellow)"></i><i style="background:var(--navy)"></i><i style="background:var(--pink)"></i><i style="background:var(--mint)"></i><i style="background:var(--navy)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i></div>
+
+<section class="sec wm">
+  <div class="wrap">
+    <p class="eb">What we do</p>
+    <h2 class="h2">What we spend the season doing</h2>
+    <div class="cds sg">
+      <div class="cd"><p class="tg">01 &middot; Compete</p><h3>Compete in FTC</h3><p>Every season FIRST Tech Challenge sets a new game and we design a robot to play it, from CAD through machining, wiring, and Java. Then we take it to competitions against other teams.</p><img class="shot cdph" src="images/web/in-the-shop-build.jpg" alt="Two students working on the robot at a build table covered in tools and parts" width="2000" height="1500" loading="lazy" decoding="async"></div>
+      <div class="cd"><p class="tg">02 &middot; Mentor</p><h3>Help other teams</h3><p>Twelve FIRST Tech Challenge teams across North Texas so far. Parts, code, portfolio review, and calls the night before a competition.</p><img class="shot cdph" src="images/web/mentoring.jpg" alt="Students from several teams around cafeteria tables at a build session, laptops open and robots on the bench" width="2400" height="1800" loading="lazy" decoding="async"></div>
+      <div class="cd"><p class="tg">03 &middot; Expand access</p><h3>Bring robotics where there is none</h3><p>Free camps and workshops, donated STEM kits, and new teams started in places with no robotics program at all.</p><img class="shot cdph" src="images/web/workshop-scouts.jpg" alt="Students in TechnoBotz shirts running a robot demonstration for a scout troop under a pavilion at dusk" width="620" height="465" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dp">
+  <div class="wrap">
+    <p class="eb">Support</p><h2 class="h2">The companies backing us</h2>
+    <p class="sub">We are community based, with no school district or corporate backing behind us.</p>
+    <div class="lgs big four">
+      <div class="logo"><img class="l-ally" src="images/web/logo-ally-health.png" alt="Ally Health Solutions" width="323" height="100" loading="lazy" decoding="async"></div>
+      <div class="logo"><img class="l-c2" src="images/web/logo-c2-education.png" alt="C2 Education" width="200" height="200" loading="lazy" decoding="async"></div>
+      <div class="logo"><img class="l-chase" src="images/web/logo-chase.png" alt="Chase" width="900" height="900" loading="lazy" decoding="async"></div>
+      <div class="logo"><img class="l-cold" src="images/web/logo-cold-stone.png" alt="Cold Stone Creamery" width="499" height="471" loading="lazy" decoding="async"></div>
+      <div class="logo"><img class="l-poly" src="images/web/logo-polymaker.png" alt="Polymaker" width="399" height="240" loading="lazy" decoding="async"></div>
+      <div class="logo"><img class="l-simple" src="images/web/logo-simple-interact.png" alt="Simple Interact" width="562" height="466" loading="lazy" decoding="async"></div>
+      <div class="logo"><img class="l-snap" src="images/web/logo-snapmaker.png" alt="Snapmaker" width="1170" height="253" loading="lazy" decoding="async"></div>
+      <div class="logo"><img class="l-ti" src="images/web/logo-texas-instruments.png" alt="Texas Instruments" width="406" height="97" loading="lazy" decoding="async"></div>
+    </div>
+    <p style="margin-top:40px"><a class="btn fl" href="#" data-go="sponsors">How sponsorship works <s aria-hidden="true">&rarr;</s></a></p>
+  </div>
+</section>
+
+<div class="rule"><i style="background:var(--navy)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--mint)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i></div>
+
+
+<section class="sec nlsec dp"><div class="wrap">
+  <div class="nlg">
+    <div>
+      <p class="eb">Newsletter</p><h2 class="h2">Robotics Roundup</h2>
+      <p class="sub">Once a month: which North Texas teams are recruiting, when their deadlines land, and where the next free workshop is. Nobody keeps that list in one place, so we do. Subscribing helps us more than it looks like it should. Every name on the list puts this work in front of one more family, and we would really appreciate yours.</p>
+    </div>
+    <div class="newsletter-embed">
+      <button class="btn fl" type="button" data-newsletter>Subscribe to the roundup <s aria-hidden="true">&rarr;</s></button>
+      <p class="nlnote">One email a month. Unsubscribe any time.</p>
+      <noscript><p class="nlnote">The signup form needs JavaScript. <a href="mailto:techno23542@gmail.com?subject=Roundup">Email us</a> and we will add you.</p></noscript>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec ctwrap"><div class="wrap">
+  <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
+  <p class="sub">Whatever you are here for, one of these goes straight to a student who will answer.</p>
+  <div class="ctb sg">
+    <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener"><b>Join the team</b><span>Applications are open year round</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Sponsoring%20TechnoBotz"><b>Sponsor us</b><span>Cash, parts, tools, or expertise</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentor%20our%20team"><b>Request mentoring</b><span>For a team that is stuck</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Book%20an%20event"><b>Book an event</b><span>We bring the robot to you</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentoring%20TechnoBotz"><b>Mentor us</b><span>Engineers, we would take the help</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Question"><b>Ask us anything</b><span>Parents, students, teachers</span></a>
+  </div>
+</div></section>
+</main>
+
+<!-- ================= TEAM ================= -->
+<main class="pg" id="p-team">
+<header class="ph1 tight"><div class="wrap">
+  <p class="eb">Meet the team</p><h1>Fourteen students,<br>one robot.</h1>
+  <p class="sub">Members come from middle schools and high schools all over North Texas.</p>
+</div></header>
+
+<section class="sec tight"><div class="wrap">
+  <!-- EDIT: headshots removed until photos exist. To restore them, put a
+       div with class "ph pfc" as the first child of each figure below,
+       then delete the "nophoto" class from the grid. -->
+  <div class="rs nophoto sg">
+      <figure class="pn">
+        <figcaption>
+          <b>Tanmay</b>
+          <span>Team Captain &middot; 12th grade</span>
+          <p class="pbio">Senior at Frisco Centennial High School and in their fourth year with TechnoBotz. Captains the team and runs the outreach subteam, which covers the school visits, the sponsor conversations, and most of the email that comes through this site.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Bryan</b>
+          <span>Lead CAD &middot; 8th grade</span>
+          <p class="pbio">Eighth grader at Erekson Middle School and in their second year on 23542. Leads the design subteam, modelling the robot in CAD before anything gets machined or printed.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Conner</b>
+          <span>CAD &middot; 12th grade</span>
+          <p class="pbio">Senior at Carroll Senior High School and in their third year of FTC. Works mostly on hardware and CAD, turning the design into parts that actually fit together, and helps with outreach on the side.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Pranav</b>
+          <span>CAD &middot; 12th grade</span>
+          <p class="pbio">Senior at Frisco Centennial High School and in their fourth year of FTC. Works on the design subteam, which spends about three months in CAD before the team commits to cutting metal.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Abhay</b>
+          <span>Lead Build &middot; 11th grade</span>
+          <p class="pbio">Junior at Independence High School and in their fourth year with TechnoBotz. Leads the build subteam, the group that machines, prints, and wires everything the design subteam draws.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Adi</b>
+          <span>Build &middot; 12th grade</span>
+          <p class="pbio">Senior at Frisco Centennial High School and in their third year of FTC. On the build subteam, assembling the robot and repairing it between matches.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Priyam</b>
+          <span>Programming &middot; 12th grade</span>
+          <p class="pbio">Senior at Plano West Senior High School. On the programming subteam, writing the Java that drives the robot and the autonomous routine it runs on its own at the start of every match.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Dheemanth</b>
+          <span>Programming &middot; 12th grade</span>
+          <p class="pbio">Senior at Frisco Centennial High School and in their third year of FTC. On the programming subteam, working on the code that controls the robot through a match.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Saamedh</b>
+          <span>Programming &middot; 11th grade</span>
+          <p class="pbio">Junior at Frisco Centennial High School and in their second year of FTC. Splits the season between programming and outreach, which means writing code some weeks and running workshops others.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Yash</b>
+          <span>Outreach &middot; 11th grade</span>
+          <p class="pbio">Junior at Reedy High School and in their fourth year of FTC. On the outreach subteam, running the school visits and robot demos that bring new students into FIRST.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Jessica</b>
+          <span>Outreach &middot; 12th grade</span>
+          <p class="pbio">Senior at Plano West Senior High School and in their sixth year of FTC, the longest run of anyone on the team. Works on outreach, from planning events to running the free workshops for younger students.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Arush</b>
+          <span>Outreach &middot; 11th grade</span>
+          <p class="pbio">Junior at Lebanon Trail High School and in their fourth year of FTC. On the outreach subteam, helping run the free camps and the community events where families drive the robot.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Rishi</b>
+          <span>Outreach &middot; 8th grade</span>
+          <p class="pbio">Eighth grader at Pearson Middle School and in their second year of FTC. On the outreach subteam, one of the students who demonstrates the robot at school events.</p>
+        </figcaption>
+      </figure>
+      <figure class="pn">
+        <figcaption>
+          <b>Grayson</b>
+          <span>Recruit &middot; 7th grade</span>
+          <p class="pbio">Seventh grader at Rushing Middle School in Prosper. New to FTC this season and the newest member of the team.</p>
+        </figcaption>
+      </figure>
+  </div>
+</div></section>
+
+
+<section class="bn big"><div class="bni">
+  <div><p class="eb">Join us</p><h2 class="h2" style="margin-top:12px">Applications are<br>open year round.</h2><p class="sub">We answer everyone, whether you are in middle school or about to graduate.</p></div>
+  <div class="bb"><a class="btn fl" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener">Apply to the team <s aria-hidden="true">&rarr;</s></a><a class="btn ln" href="mailto:techno23542@gmail.com?subject=Question">Ask a question first</a></div>
+</div></section>
+
+<section class="sec ctwrap"><div class="wrap">
+  <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
+  <div class="ctb sg">
+    <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener"><b>Join the team</b><span>Applications are open year round</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Sponsoring%20TechnoBotz"><b>Sponsor us</b><span>Cash, parts, tools, or expertise</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentor%20our%20team"><b>Request mentoring</b><span>For a team that is stuck</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Book%20an%20event"><b>Book an event</b><span>We bring the robot to you</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentoring%20TechnoBotz"><b>Mentor us</b><span>Engineers, we would take the help</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Question"><b>Ask us anything</b><span>Parents, students, teachers</span></a>
+  </div>
+</div></section>
+</main>
+
+<!-- ================= ROBOTS ================= -->
+<main class="pg" id="p-robots">
+<header class="ph1 tight"><div class="wrap">
+  <p class="eb">Our robots</p><h1>The robots<br>we have built.</h1>
+  <p class="sub">We compete in the FIRST Tech Challenge, which sets a brand new game every September. Everything from the last robot gets thrown out and every team starts level. Three robots so far, and a Think Award for the engineering portfolio behind them.</p>
+</div></header>
+
+
+<section class="sec tight"><div class="wrap">
+
+  <article class="rbt lead rv now">
+    <img class="shot rbtimg" src="images/web/porkchop.jpg" alt="Porkchop on the competition field, green artifact loaded in the intake, number plate reading 23542" width="2400" height="1600" loading="lazy" decoding="async">
+    <div class="rbtx">
+      <span class="yrtag">Current robot &middot; 2025&ndash;26 &middot; DECODE</span>
+      <h2 class="gm">Porkchop</h2>
+      <p class="bdy">Our best and highest performing robot yet. A fixed 60 degree hood, inspired by Steph Curry, that can shoot from anywhere on the field with nothing rotating.</p>
+      <div class="chips"><span class="chip">Fixed 60&deg; hood</span><span class="chip">Limelight 3A auto-aim</span><span class="chip">Printed vectored intake</span></div>
+    </div>
+  </article>
+
+  <article class="rbt rv">
+    <img class="shot rbtimg" src="images/web/nautilus.jpg" alt="Nautilus, the 2024-25 robot, on the competition field beside a tray of yellow and blue game blocks" width="2000" height="1500" loading="lazy" decoding="async">
+    <div class="rbtx">
+      <span class="yrtag">2024&ndash;25 &middot; INTO THE DEEP</span>
+      <h2 class="gm">Nautilus</h2>
+      <p class="bdy">An 18 by 18 robot built around an intake pincher and two-way scoring, so it could put game pieces in either place instead of committing to one.</p>
+      <div class="chips"><span class="chip">Intake pincher</span><span class="chip">Two-way scoring</span><span class="chip">18x18 robot</span></div>
+    </div>
+  </article>
+
+  <article class="rbt rv">
+    <img class="shot rbtimg fit-contain" src="images/web/metal-scraps.png" alt="Metal Scraps, the 2023-24 robot, photographed side-on against black, showing its yellow mecanum wheels, aluminium frame and arm" width="658" height="491" loading="lazy" decoding="async">
+    <div class="rbtx">
+      <span class="yrtag">2023&ndash;24 &middot; CENTERSTAGE</span>
+      <h2 class="gm">Metal Scraps</h2>
+      <p class="bdy">Our rookie year. We started with the starter bot, which had no endgame ability at all, and rebuilt it into a top 70 robot by endgame performance.</p>
+      <div class="chips"><span class="chip">Starter bot</span><span class="chip">Rookie season</span><span class="chip">Max endgame</span></div>
+    </div>
+  </article>
+
+  <div class="fllband">
+    <p class="eb">Before FTC</p>
+    <h3 class="fllh">Two seasons of FIRST LEGO League</h3>
+    <p class="bdy">From 2021 to 2023 we ran FIRST LEGO League, programming LEGO robots on a four by eight foot board and presenting a research project to judges.</p>
+  </div>
+</div></section>
+
+<section class="sec ctwrap"><div class="wrap">
+  <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
+  <div class="ctb sg">
+    <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener"><b>Join the team</b><span>Applications are open year round</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Sponsoring%20TechnoBotz"><b>Sponsor us</b><span>Cash, parts, tools, or expertise</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentor%20our%20team"><b>Request mentoring</b><span>For a team that is stuck</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Book%20an%20event"><b>Book an event</b><span>We bring the robot to you</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentoring%20TechnoBotz"><b>Mentor us</b><span>Engineers, we would take the help</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Question"><b>Ask us anything</b><span>Parents, students, teachers</span></a>
+  </div>
+</div></section>
+</main>
+
+<!-- ================= OUTREACH ================= -->
+<main class="pg" id="p-outreach">
+<header class="ph1 tight"><div class="wrap">
+  <p class="eb">Outreach</p><h1>Spreading access<br>to robotics.</h1>
+  <p class="sub">Robotics is not evenly available. We spend the year closing that gap in three ways: teaching it, equipping schools to run it, and starting teams where there are none.</p>
+</div></header>
+
+<section class="sec tight"><div class="wrap">
+  <img class="shot portraitfit rv" src="images/web/outreach-action.jpg" alt="A TechnoBotz student coaching a young child driving the competition robot at an outreach event while a parent films" width="1536" height="2048" loading="lazy" decoding="async">
+</div></section>
+
+<section class="st"><div class="sti sg">
+  <div class="s1"><b><span data-c="2700">0</span>+</b><span>People reached</span></div>
+  <div class="s1"><b><span data-c="320">0</span>+</b><span>Outreach hours</span></div>
+  <div class="s1"><b><span data-c="50">0</span>+</b><span>Administrators presented to</span></div>
+  <div class="s1"><b><span data-c="12">0</span></b><span>Teams mentored</span></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <p class="eb">How we work</p><h2 class="h2">Teach, equip, grow</h2>
+  <div class="ofs sg">
+    <div class="of">
+      <p class="tg">Phase 01</p>
+      <h3>Teach</h3>
+      <p>Free robotics camps and workshops for elementary and middle school students, taught by the students who compete. We also built a robotics curriculum for 1,700 students at a school for underprivileged and refugee children internationally.</p>
+      <img class="shot ofph" src="images/web/teaching.jpg" alt="A TechnoBotz student presenting a display board to scouts seated around a picnic table, robot parts laid out in front of them" width="1600" height="1200" loading="lazy" decoding="async">
+      <a class="btn fl" href="mailto:techno23542@gmail.com?subject=Book%20a%20workshop">Book a workshop <s aria-hidden="true">&rarr;</s></a>
+    </div>
+    <div class="of">
+      <p class="tg">Phase 02</p>
+      <h3>Equip</h3>
+      <p>We donate STEM kits and equipment to schools with no robotics program, targeting under-resourced and Title I campuses across North Texas.</p>
+      <img class="shot ofph" src="images/web/matt-shaheen.jpg" alt="Texas State Representative Matt Shaheen speaking to a seated audience at a TechnoBotz outreach event, the team's contact details on the screen behind him" width="2000" height="1126" loading="lazy" decoding="async">
+      <a class="btn fl" href="mailto:techno23542@gmail.com?subject=STEM%20kits%20for%20our%20school">Request kits <s aria-hidden="true">&rarr;</s></a>
+    </div>
+    <div class="of">
+      <p class="tg">Phase 03</p>
+      <h3>Grow</h3>
+      <p>We start new FIRST teams and mentor existing ones, and we have presented to more than 50 school administrators on how to build a robotics program from scratch.</p>
+      <img class="shot ofph" src="images/web/mentoring.jpg" alt="Students from several teams around cafeteria tables at a build session, laptops open and robots on the bench" width="2400" height="1800" loading="lazy" decoding="async">
+      <a class="btn fl" href="mailto:techno23542@gmail.com?subject=Starting%20a%20team">Start a team <s aria-hidden="true">&rarr;</s></a>
+    </div>
+  </div>
+</div></section>
+
+<div class="rule"><i style="background:var(--pink)"></i><i style="background:var(--orange)"></i><i style="background:var(--yellow)"></i><i style="background:var(--mint)"></i><i style="background:var(--navy)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i></div>
+
+<section class="sec dp"><div class="wrap">
+  <div class="sp">
+    <div class="stk">
+      <p class="eb">Mentoring</p><h2 class="h2">Ask us to mentor your team</h2>
+      <p class="sub">Twelve FIRST Tech Challenge teams so far across North Texas. Parts, code, portfolio review, and calls the night before a competition. It is free and it always has been.</p>
+      <p style="margin-top:32px"><a class="btn fl" href="mailto:techno23542@gmail.com?subject=Mentor%20our%20team">Ask us to mentor your team <s aria-hidden="true">&rarr;</s></a></p>
+    </div>
+    <div class="rv"><img class="shot w43" src="images/web/mentoring.jpg" alt="Students from several teams around cafeteria tables at a build session, laptops open and robots on the bench" width="2400" height="1800" loading="lazy" decoding="async"></div>
+  </div>
+</div></section>
+
+<section class="sec nlsec lt"><div class="wrap">
+  <div class="nlg">
+    <div>
+      <p class="eb">One of our programs</p><h2 class="h2">The Robotics Roundup</h2>
+      <p class="sub">A monthly email listing which North Texas teams are recruiting, when their deadlines hit, and where our next free workshop is. It costs nothing and you can leave whenever you like. A bigger list means more students hear about open spots before they close, so signing up is a real help to the team. We would appreciate you joining.</p>
+    </div>
+    <div class="newsletter-embed">
+      <button class="btn fl" type="button" data-newsletter>Subscribe to the roundup <s aria-hidden="true">&rarr;</s></button>
+      <p class="nlnote">One email a month. Unsubscribe any time.</p>
+      <noscript><p class="nlnote">The signup form needs JavaScript. <a href="mailto:techno23542@gmail.com?subject=Roundup">Email us</a> and we will add you.</p></noscript>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec lt"><div class="wrap">
+  <p class="eb">Finding the right fit</p><h2 class="h2">Every kid can find a program</h2>
+  <p class="sub">FIRST runs programs by age, and one of them will fit your student. Our Get Involved page walks through every program, how to find a team near you, and what to do if there is not one.</p>
+  <p style="margin-top:30px"><a class="btn dk" href="#" data-go="involved">See every way to get involved <s aria-hidden="true">&rarr;</s></a></p>
+  <div class="cds c2 sg">
+    <div class="cd"><p class="tg">Any age &middot; Any ability</p><h3>FIRST Access</h3><p>A FIRST in Texas initiative for students with disabilities. Teams choose the format that fits their students, so a disability does not decide whether a kid gets to compete.</p></div>
+    <div class="cd"><p class="tg">Grades 4 &ndash; 8</p><h3>FIRST LEGO League</h3><p>Program a LEGO robot to run missions, plus a research project. Where we started in 2021.</p></div>
+    <div class="cd"><p class="tg">Grades 7 &ndash; 12</p><h3>FIRST Tech Challenge</h3><p>Metal robots, Java, a twelve foot field. Up to fifteen students. What we do now.</p></div>
+    <div class="cd"><p class="tg">Not sure?</p><h3>Ask us</h3><p>Tell us your kid&rsquo;s grade and where you live and we will point you at the right program and the teams near you that are recruiting.</p><p style="margin-top:20px"><a class="btn dk" href="#" data-go="involved">Get involved <s aria-hidden="true">&rarr;</s></a></p></div>
+  </div>
+</div></section>
+
+<section class="sec ctwrap"><div class="wrap">
+  <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
+  <div class="ctb sg">
+    <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener"><b>Join the team</b><span>Applications are open year round</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Sponsoring%20TechnoBotz"><b>Sponsor us</b><span>Cash, parts, tools, or expertise</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentor%20our%20team"><b>Request mentoring</b><span>For a team that is stuck</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Book%20an%20event"><b>Book an event</b><span>We bring the robot to you</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentoring%20TechnoBotz"><b>Mentor us</b><span>Engineers, we would take the help</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Question"><b>Ask us anything</b><span>Parents, students, teachers</span></a>
+  </div>
+</div></section>
+</main>
+
+<!-- ================= SPONSORS ================= -->
+<main class="pg" id="p-sponsors">
+<header class="ph1 tight"><div class="wrap">
+  <p class="eb">Sponsors</p><h1>Who pays for<br>a team like ours.</h1>
+  <p class="sub">We are a community-based team with no school district or corporate backing. Our families have funded most of our first three seasons. Sponsorship is what changes that.</p>
+  <div class="hct" style="margin-top:38px">
+    <a class="btn fl" href="https://hcb.hackclub.com/donations/start/technobotz" target="_blank" rel="noopener">Donate to the team <s aria-hidden="true">&rarr;</s></a>
+    <a class="btn ln" href="mailto:techno23542@gmail.com?subject=Sponsorship%20packet">Request the sponsorship packet</a>
+  </div>
+</div></header>
+
+<section class="sec tight thanks"><div class="wrap">
+  <p class="eb">Thank you</p><h2 class="h2">The companies behind this season</h2>
+  <p class="sub">Every one of these gave parts, machines, or money to a team of students they had never met. We would not have a robot without them.</p>
+  <div class="lgs big four">
+    <div class="logo"><img class="l-ally" src="images/web/logo-ally-health.png" alt="Ally Health Solutions" width="323" height="100" loading="lazy" decoding="async"></div>
+    <div class="logo"><img class="l-c2" src="images/web/logo-c2-education.png" alt="C2 Education" width="200" height="200" loading="lazy" decoding="async"></div>
+    <div class="logo"><img class="l-chase" src="images/web/logo-chase.png" alt="Chase" width="900" height="900" loading="lazy" decoding="async"></div>
+    <div class="logo"><img class="l-cold" src="images/web/logo-cold-stone.png" alt="Cold Stone Creamery" width="499" height="471" loading="lazy" decoding="async"></div>
+    <div class="logo"><img class="l-poly" src="images/web/logo-polymaker.png" alt="Polymaker" width="399" height="240" loading="lazy" decoding="async"></div>
+    <div class="logo"><img class="l-simple" src="images/web/logo-simple-interact.png" alt="Simple Interact" width="562" height="466" loading="lazy" decoding="async"></div>
+    <div class="logo"><img class="l-snap" src="images/web/logo-snapmaker.png" alt="Snapmaker" width="1170" height="253" loading="lazy" decoding="async"></div>
+    <div class="logo"><img class="l-ti" src="images/web/logo-texas-instruments.png" alt="Texas Instruments" width="406" height="97" loading="lazy" decoding="async"></div>
+  </div>
+</div></section>
+
+<section class="sec tight"><div class="wrap">
+  <p class="eb">Where it goes</p><h2 class="h2">What we need funding for</h2>
+  <!-- TODO: the two "Request the sponsorship packet" buttons point to email as a placeholder. Swap them for the packet link when it exists. -->
+  <div class="cds sg">
+    <div class="cd"><p class="tg">01</p><h3>Free camps and workshops</h3><p>For students in under-resourced schools and community centers, at no cost to the school.</p></div>
+    <div class="cd"><p class="tg">02</p><h3>Donated STEM kits</h3><p>Equipment for schools that have no robotics program of their own.</p></div>
+    <div class="cd"><p class="tg">03</p><h3>Mentoring and curriculum</h3><p>Mentoring new teams and expanding our robotics curriculum to students around the world.</p></div>
+  </div>
+</div></section>
+
+<section class="sec dp"><div class="wrap">
+  <p class="eb">Tiers</p><h2 class="h2">What each tier includes</h2>
+  <p class="sub">In-kind donations of materials, equipment, or services are welcome and receive the same recognition based on value.</p>
+  <div class="tblwrap">
+  <table class="sptbl">
+    <caption class="vh">Sponsorship tiers and what each one includes</caption>
+    <thead><tr><td class="corner"></td><th scope="col" class="t1"><span class="tn">Tier 1</span><span class="ta">$250</span></th><th scope="col" class="t2"><span class="tn">Tier 2</span><span class="ta">$1,000</span></th><th scope="col" class="t3"><span class="tn">Tier 3</span><span class="ta">$2,500</span></th><th scope="col" class="t4"><span class="tn">Tier 4</span><span class="ta">$5,000</span></th></tr></thead>
+    <tbody>
+      <tr class="grp"><th scope="colgroup" colspan="5">Brand promotion</th></tr>
+      <tr><th scope="row">Logo feature on all social media and website platforms</th><td class="t1"><span class="yes" role="img" aria-label="Included"></span></td><td class="t2"><span class="yes" role="img" aria-label="Included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Logo feature on all team merch</th><td class="t1"><span class="yes" role="img" aria-label="Included"></span></td><td class="t2"><span class="yes" role="img" aria-label="Included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Logo feature on 2026-2027 competition robot</th><td class="t1"><span class="no" role="img" aria-label="Not included"></span></td><td class="t2"><span class="yes" role="img" aria-label="Included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Hand out company merch and brand materials at competitions</th><td class="t1"><span class="no" role="img" aria-label="Not included"></span></td><td class="t2"><span class="yes" role="img" aria-label="Included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Exclusive event booths at all our events for a year</th><td class="t1"><span class="no" role="img" aria-label="Not included"></span></td><td class="t2"><span class="yes" role="img" aria-label="Included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Tailored social media campaign for your products, including video content and digital models</th><td class="t1"><span class="no" role="img" aria-label="Not included"></span></td><td class="t2"><span class="no" role="img" aria-label="Not included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Product promotion and showcase at our competitions and events</th><td class="t1"><span class="no" role="img" aria-label="Not included"></span></td><td class="t2"><span class="no" role="img" aria-label="Not included"></span></td><td class="t3"><span class="no" role="img" aria-label="Not included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Host a tailored event to promote your products and services</th><td class="t1"><span class="no" role="img" aria-label="Not included"></span></td><td class="t2"><span class="no" role="img" aria-label="Not included"></span></td><td class="t3"><span class="no" role="img" aria-label="Not included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr class="grp"><th scope="colgroup" colspan="5">Community involvement</th></tr>
+      <tr><th scope="row">Provide robotics volunteering opportunities for your team</th><td class="t1"><span class="yes" role="img" aria-label="Included"></span></td><td class="t2"><span class="yes" role="img" aria-label="Included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Host a STEM event with us</th><td class="t1"><span class="no" role="img" aria-label="Not included"></span></td><td class="t2"><span class="no" role="img" aria-label="Not included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Collaborate with us to establish a year-long STEM initiative</th><td class="t1"><span class="no" role="img" aria-label="Not included"></span></td><td class="t2"><span class="no" role="img" aria-label="Not included"></span></td><td class="t3"><span class="no" role="img" aria-label="Not included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr class="grp"><th scope="colgroup" colspan="5">Program involvement</th></tr>
+      <tr><th scope="row">Robot demonstration at your office or event</th><td class="t1"><span class="yes" role="img" aria-label="Included"></span></td><td class="t2"><span class="yes" role="img" aria-label="Included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Become an official TechnoBotz season advisor</th><td class="t1"><span class="yes" role="img" aria-label="Included"></span></td><td class="t2"><span class="yes" role="img" aria-label="Included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Incorporate company products into our robot design</th><td class="t1"><span class="no" role="img" aria-label="Not included"></span></td><td class="t2"><span class="no" role="img" aria-label="Not included"></span></td><td class="t3"><span class="no" role="img" aria-label="Not included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr class="grp"><th scope="colgroup" colspan="5">Reminders of gratitude</th></tr>
+      <tr><th scope="row">Receive a thank-you box</th><td class="t1"><span class="yes" role="img" aria-label="Included"></span></td><td class="t2"><span class="yes" role="img" aria-label="Included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+      <tr><th scope="row">Receive personalized and general monthly impact reports</th><td class="t1"><span class="yes" role="img" aria-label="Included"></span></td><td class="t2"><span class="yes" role="img" aria-label="Included"></span></td><td class="t3"><span class="yes" role="img" aria-label="Included"></span></td><td class="t4"><span class="yes" role="img" aria-label="Included"></span></td></tr>
+    </tbody>
+  </table>
+</div>
+  <div class="sptiers">
+    <div class="sc t1">
+      <div class="sc-h"><span class="tn">Tier 1</span><span class="ta">$250</span></div>
+      <p class="sc-g">Brand promotion</p><ul><li>Logo feature on all social media and website platforms</li><li>Logo feature on all team merch</li></ul><p class="sc-g">Community involvement</p><ul><li>Provide robotics volunteering opportunities for your team</li></ul><p class="sc-g">Program involvement</p><ul><li>Robot demonstration at your office or event</li><li>Become an official TechnoBotz season advisor</li></ul><p class="sc-g">Reminders of gratitude</p><ul><li>Receive a thank-you box</li><li>Receive personalized and general monthly impact reports</li></ul>
+      <a class="btn fl" href="https://hcb.hackclub.com/donations/start/technobotz" target="_blank" rel="noopener">Donate to the team <s aria-hidden="true">&rarr;</s></a>
+    </div>
+    <div class="sc t2">
+      <div class="sc-h"><span class="tn">Tier 2</span><span class="ta">$1,000</span></div>
+      <p class="sc-g">Brand promotion</p><ul><li>Logo feature on all social media and website platforms</li><li>Logo feature on all team merch</li><li>Logo feature on 2026-2027 competition robot</li><li>Hand out company merch and brand materials at competitions</li><li>Exclusive event booths at all our events for a year</li></ul><p class="sc-g">Community involvement</p><ul><li>Provide robotics volunteering opportunities for your team</li></ul><p class="sc-g">Program involvement</p><ul><li>Robot demonstration at your office or event</li><li>Become an official TechnoBotz season advisor</li></ul><p class="sc-g">Reminders of gratitude</p><ul><li>Receive a thank-you box</li><li>Receive personalized and general monthly impact reports</li></ul>
+      <a class="btn fl" href="https://hcb.hackclub.com/donations/start/technobotz" target="_blank" rel="noopener">Donate to the team <s aria-hidden="true">&rarr;</s></a>
+    </div>
+    <div class="sc t3">
+      <div class="sc-h"><span class="tn">Tier 3</span><span class="ta">$2,500</span></div>
+      <p class="sc-g">Brand promotion</p><ul><li>Logo feature on all social media and website platforms</li><li>Logo feature on all team merch</li><li>Logo feature on 2026-2027 competition robot</li><li>Hand out company merch and brand materials at competitions</li><li>Exclusive event booths at all our events for a year</li><li>Tailored social media campaign for your products, including video content and digital models</li></ul><p class="sc-g">Community involvement</p><ul><li>Provide robotics volunteering opportunities for your team</li><li>Host a STEM event with us</li></ul><p class="sc-g">Program involvement</p><ul><li>Robot demonstration at your office or event</li><li>Become an official TechnoBotz season advisor</li></ul><p class="sc-g">Reminders of gratitude</p><ul><li>Receive a thank-you box</li><li>Receive personalized and general monthly impact reports</li></ul>
+      <a class="btn fl" href="https://hcb.hackclub.com/donations/start/technobotz" target="_blank" rel="noopener">Donate to the team <s aria-hidden="true">&rarr;</s></a>
+    </div>
+    <div class="sc t4">
+      <div class="sc-h"><span class="tn">Tier 4</span><span class="ta">$5,000</span></div>
+      <p class="sc-g">Brand promotion</p><ul><li>Logo feature on all social media and website platforms</li><li>Logo feature on all team merch</li><li>Logo feature on 2026-2027 competition robot</li><li>Hand out company merch and brand materials at competitions</li><li>Exclusive event booths at all our events for a year</li><li>Tailored social media campaign for your products, including video content and digital models</li><li>Product promotion and showcase at our competitions and events</li><li>Host a tailored event to promote your products and services</li></ul><p class="sc-g">Community involvement</p><ul><li>Provide robotics volunteering opportunities for your team</li><li>Host a STEM event with us</li><li>Collaborate with us to establish a year-long STEM initiative</li></ul><p class="sc-g">Program involvement</p><ul><li>Robot demonstration at your office or event</li><li>Become an official TechnoBotz season advisor</li><li>Incorporate company products into our robot design</li></ul><p class="sc-g">Reminders of gratitude</p><ul><li>Receive a thank-you box</li><li>Receive personalized and general monthly impact reports</li></ul>
+      <a class="btn fl" href="https://hcb.hackclub.com/donations/start/technobotz" target="_blank" rel="noopener">Donate to the team <s aria-hidden="true">&rarr;</s></a>
+    </div>
+  </div>
+  <p class="taxline"><b>All donations are tax deductible.</b> TechnoBotz Nonprofit is fiscally sponsored by The Hack Foundation (d.b.a. Hack Club), a registered 501(c)(3) nonprofit.</p>
+  <div class="hct" style="margin-top:34px">
+    <a class="btn fl" href="https://hcb.hackclub.com/donations/start/technobotz" target="_blank" rel="noopener">Donate to the team <s aria-hidden="true">&rarr;</s></a>
+    <a class="btn ln" href="mailto:techno23542@gmail.com?subject=Sponsorship%20packet">Request the sponsorship packet</a>
+  </div>
+</div></section>
+
+<section class="sec ctwrap"><div class="wrap">
+  <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
+  <div class="ctb sg">
+    <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener"><b>Join the team</b><span>Applications are open year round</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Sponsoring%20TechnoBotz"><b>Sponsor us</b><span>Cash, parts, tools, or expertise</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentor%20our%20team"><b>Request mentoring</b><span>For a team that is stuck</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Book%20an%20event"><b>Book an event</b><span>We bring the robot to you</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentoring%20TechnoBotz"><b>Mentor us</b><span>Engineers, we would take the help</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Question"><b>Ask us anything</b><span>Parents, students, teachers</span></a>
+  </div>
+</div></section>
+</main>
+
+<!-- ================= UPDATES ================= -->
+<main class="pg" id="p-updates">
+<header class="ph1 tight"><div class="wrap">
+  <p class="eb">Updates</p><h1>What we have<br>been doing.</h1>
+  <p class="sub">More resources for you to be in touch and get involved.</p>
+</div></header>
+
+<section class="sec tight"><div class="wrap">
+  <p class="eb">Posts</p><h2 class="h2">Recent posts</h2>
+  <div class="posts">
+    <article class="post rv">
+      <a class="posth" href="#" data-go="post-mentorship">
+        <img class="shot postimg" src="images/web/mentoring.jpg" alt="Students from several teams around cafeteria tables at a build session, laptops open and robots on the bench" width="2400" height="1800" loading="lazy" decoding="async">
+        <div class="postx">
+          <p class="pdate">August 2026</p>
+          <h3>Twelve teams mentored, and we are open to more</h3>
+          <p class="pex">We are open to mentoring any FIRST Tech Challenge team that asks, and it is free. Twelve teams across North Texas so far, whether that means spare parts, a look at your code, or a portfolio read before judging.</p>
+          <span class="plink">Read the update <s aria-hidden="true">&rarr;</s></span>
+        </div>
+      </a>
+    </article>
+  </div>
+  <!-- TODO: add new posts above this one. Each one can have its own page, the same way the mentorship write-up does. -->
+</div></section>
+
+<section class="sec tight"><div class="wrap">
+  <p class="eb">Upcoming</p><h2 class="h2">Where to find us next</h2>
+  <div class="ev sg">
+    <div class="evi"><span class="evd">Sept 12, 2026</span><div><div class="evn">Season kickoff</div><p class="evx">The new game is revealed and the build clock starts.</p></div><span class="evt">Kickoff</span></div>
+  </div>
+  <!-- TODO: add competitions and outreach dates here as they are confirmed. -->
+</div></section>
+
+<section class="sec dp"><div class="wrap">
+  <p class="eb">Previously</p><h2 class="h2">Where we have been</h2>
+  <div class="ev sg">
+    <div class="evi"><span class="evd">Aug 8, 2026</span><div><div class="evn">STEAM Festival</div><p class="evx">Texas Discovery Gardens, Dallas. Hosted by 2 Inspire Peace.</p></div><span class="evt">~100 reached</span></div>
+  </div>
+  <!-- TODO: add each event here as it happens, newest first. -->
+</div></section>
+
+<section class="sec ctwrap"><div class="wrap">
+  <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
+  <div class="ctb sg">
+    <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener"><b>Join the team</b><span>Applications are open year round</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Sponsoring%20TechnoBotz"><b>Sponsor us</b><span>Cash, parts, tools, or expertise</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentor%20our%20team"><b>Request mentoring</b><span>For a team that is stuck</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Book%20an%20event"><b>Book an event</b><span>We bring the robot to you</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentoring%20TechnoBotz"><b>Mentor us</b><span>Engineers, we would take the help</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Question"><b>Ask us anything</b><span>Parents, students, teachers</span></a>
+  </div>
+</div></section>
+</main>
+
+<!-- ================= POST: MENTORSHIP ================= -->
+<main class="pg" id="p-post-mentorship">
+<header class="ph1 tight"><div class="wrap">
+  <p class="pdate">August 2026</p>
+  <h1 class="posth1">Our mentorship<br>program.</h1>
+  <p class="sub">We mentor twelve FIRST Tech Challenge teams across North Texas, and we have never charged any of them.</p>
+</div></header>
+
+<section class="sec tight"><div class="wrap">
+  <img class="shot hero43 rv" src="images/web/mentoring.jpg" alt="Students from several teams around cafeteria tables at a build session, laptops open and robots on the bench" width="2400" height="1800" loading="lazy" decoding="async">
+</div></section>
+
+<article class="sec tight"><div class="wrap">
+  <div class="prose">
+    <p class="plead">Most teams do not fail because their students are not smart enough. They fail because nobody told them what a portfolio is until the week before judging, or because a motor burned out and there was no spare, or because the one adult who understood the code moved away.</p>
+
+    <h2>What mentoring actually means</h2>
+    <p>It is rarely a lecture. Most of what we do is small and specific: a spare part driven across town on a Saturday, a second pair of eyes on an autonomous routine that keeps drifting, a portfolio read through before judging with honest notes in the margin. Sometimes it is a call at eleven at night the day before a competition because something snapped and nobody knows what to do next.</p>
+    <p>We have been the team on the other end of that call. Our first Tech Challenge season was 2023, and we were making the jump from LEGO robots on a four by eight foot board to a metal machine on a twelve by twelve foot field. Java instead of blocks. Machining instead of clicking bricks together. Having made that jump recently is most of why we are useful to teams making it now.</p>
+
+    <h2>Twelve teams, and counting</h2>
+    <p>Twelve FIRST Tech Challenge teams across North Texas have worked with us so far. Some needed one conversation. Some we have worked with across a whole season. We do not track it as a program with tiers and deliverables, because the moment it becomes that, it stops being the thing teams actually need.</p>
+    <p>It is free, and it always has been. We are a nonprofit, and mentoring costs us time rather than money.</p>
+
+    <h2>Starting teams from nothing</h2>
+    <p>The harder and more permanent version of this is helping a family start a team where none exists. We have done it: FLL Techno Raiders exists because we started it.</p>
+    <p>The bar is much lower than most people think. A team needs four students and two adults, and the adults need no technical background at all. That surprises nearly everyone we tell. We have also presented to more than fifty school administrators on how to stand up a robotics program from scratch, because a school that runs its own team reaches far more students than we ever could visiting once a year.</p>
+
+    <h2>If your team is stuck</h2>
+    <p>Ask. We would rather answer a question in October than watch a team scratch a season in February. There is no form and no minimum, and you do not have to be near Frisco.</p>
+  </div>
+  <div class="postcta">
+    <a class="btn fl" href="mailto:techno23542@gmail.com?subject=Mentor%20our%20team">Ask us to mentor your team <s aria-hidden="true">&rarr;</s></a>
+    <a class="btn ln" href="mailto:techno23542@gmail.com?subject=Starting%20a%20team">Help us start a team</a>
+    <a class="btn ln" href="#" data-go="updates">Back to updates</a>
+  </div>
+</div></article>
+
+<section class="sec ctwrap"><div class="wrap">
+  <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
+  <div class="ctb sg">
+    <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener"><b>Join the team</b><span>Applications are open year round</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Sponsoring%20TechnoBotz"><b>Sponsor us</b><span>Cash, parts, tools, or expertise</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentor%20our%20team"><b>Request mentoring</b><span>For a team that is stuck</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Book%20an%20event"><b>Book an event</b><span>We bring the robot to you</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentoring%20TechnoBotz"><b>Mentor us</b><span>Engineers, we would take the help</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Question"><b>Ask us anything</b><span>Parents, students, teachers</span></a>
+  </div>
+</div></section>
+</main>
+
+<!-- ================= GET INVOLVED ================= -->
+<main class="pg" id="p-involved">
+<header class="ph1 tight"><div class="wrap">
+  <p class="eb">Get involved</p><h1>There is more than<br>one way in.</h1>
+  <p class="sub">FIRST Tech Challenge runs on students, mentors, and volunteers, and every one of those is in short supply. Find yourself below.</p>
+  <nav class="jump" aria-label="Jump to a section">
+    <a class="jl" href="#gi-parents">Parents and students</a>
+    <a class="jl" href="#gi-adults">Adults who want to help</a>
+    <a class="jl" href="#gi-companies">Companies</a>
+  </nav>
+</div></header>
+
+<!-- ===== 1. PARENTS AND STUDENTS ===== -->
+<section class="sec tight" id="gi-parents"><div class="wrap">
+  <div class="giband">
+    <p class="eb">First up</p>
+    <h2 class="h2">For parents and students</h2>
+    <p class="sub">There is a FIRST program for every grade from kindergarten through twelfth. Your kid does not need any experience, and you do not need a technical background to help them start.</p>
+  </div>
+  <div class="ofs sg">
+    <div class="of">
+      <p class="tg">Option one</p>
+      <h3>Join our team</h3>
+      <p>We take middle and high school students from anywhere in North Texas. Applications are open year round and we answer everyone, and no experience is needed. Ask us about dues and what sponsorship covers before you decide.</p>
+      <img class="shot ofph" src="images/web/first-meeting.jpg" alt="Team members gathered in a garage workshop for a meeting, with the robot on the floor in front of them" width="1600" height="1200" loading="lazy" decoding="async">
+      <div class="oflinks">
+        <a class="btn fl" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener">Apply to TechnoBotz <s aria-hidden="true">&rarr;</s></a>
+      </div>
+    </div>
+    <div class="of">
+      <p class="tg">Option two</p>
+      <h3>Find a team near you</h3>
+      <p>If we are not the right fit, we know most of the teams in North Texas and which ones are recruiting. Tell us your kid&rsquo;s grade and your city and we will point you at the right program and the teams close by.</p>
+      <img class="shot ofph" src="images/web/at-competition.jpg" alt="The TechnoBotz pit at a competition: banners reading 23542, sponsor logos, display boards and game pieces on the table" width="1600" height="1200" loading="lazy" decoding="async">
+      <div class="oflinks">
+        <a class="btn fl" href="mailto:techno23542@gmail.com?subject=Finding%20a%20team">Help me find a team <s aria-hidden="true">&rarr;</s></a>
+        <a class="oflink" href="https://www.firstinspires.org/team-event-search" target="_blank" rel="noopener">Search teams on firstinspires.org <s aria-hidden="true">&rarr;</s></a>
+      </div>
+    </div>
+    <div class="of">
+      <p class="tg">Option three</p>
+      <h3>Start a new team</h3>
+      <p>If there is nothing near you, start one. A team needs four students and two adults, and the adults need no technical background at all. We have done it from nothing and we will walk you through every step.</p>
+      <img class="shot ofph" src="images/web/mentoring.jpg" alt="Students from several teams around cafeteria tables at a build session, laptops open and robots on the bench" width="2400" height="1800" loading="lazy" decoding="async">
+      <div class="oflinks">
+        <a class="btn fl" href="mailto:techno23542@gmail.com?subject=Starting%20a%20team">Start a team with us <s aria-hidden="true">&rarr;</s></a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec lt" style="padding-top:clamp(50px,6vw,86px)"><div class="wrap">
+  <p class="eb">The programs</p><h2 class="h2">Where your kid fits</h2>
+  <p class="sub">FIRST runs several programs by age. Most families do not know the younger ones exist.</p>
+  <div class="cds sg">
+    <div class="cd"><p class="tg">PreK &ndash; Grade 1</p><h3>FLL Discover</h3><p>DUPLO bricks and play-based STEM, usually run inside a classroom rather than as a standalone team.</p></div>
+    <div class="cd"><p class="tg">Grades 2 &ndash; 4</p><h3>FLL Explore</h3><p>Motorized LEGO models and the basics of coding. No competition pressure.</p></div>
+    <div class="cd"><p class="tg">Grades 4 &ndash; 8</p><h3>FLL Challenge</h3><p>Program a LEGO robot to run missions, plus a research project. Where we started in 2021.</p></div>
+    <div class="cd"><p class="tg">Grades 7 &ndash; 12</p><h3>FIRST Tech Challenge</h3><p>Metal robots, Java, a twelve foot field. Up to fifteen students. What we compete in now.</p></div>
+    <div class="cd"><p class="tg">Grades 9 &ndash; 12</p><h3>FIRST Robotics Competition</h3><p>Larger robots, larger teams, larger budgets. The next step after FTC for some students.</p></div>
+    <div class="cd"><p class="tg">Any age &middot; Any ability</p><h3>FIRST Access</h3><p>A FIRST in Texas initiative for students with disabilities. Teams pick the format that fits their students, so a disability does not decide whether a kid competes.</p></div>
+  </div>
+  <p style="margin-top:40px"><a class="btn dk" href="mailto:techno23542@gmail.com?subject=Which%20program%20fits">Not sure which one? Ask us <s aria-hidden="true">&rarr;</s></a></p>
+</div></section>
+
+<div class="rule"><i style="background:var(--orange)"></i><i style="background:var(--yellow)"></i><i style="background:var(--navy)"></i><i style="background:var(--pink)"></i><i style="background:var(--mint)"></i><i style="background:var(--navy)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i></div>
+
+<!-- ===== 2. ADULTS WHO WANT TO HELP ===== -->
+<section class="sec" id="gi-adults"><div class="wrap">
+  <div class="giband">
+    <p class="eb">Next</p>
+    <h2 class="h2">For adults who want to help</h2>
+    <p class="sub">You do not need a robotics background for either of these. Teams are short on engineers, and events are short on hands.</p>
+  </div>
+  <div class="ofs two sg">
+    <div class="of">
+      <p class="tg">Ongoing, a few hours a month</p>
+      <h3>Become a mentor</h3>
+      <p>Mentoring is not a full-time commitment. Most mentors give a couple of hours a month: a design review over a call, a second pair of eyes on some code, or an hour at a build session answering questions.</p>
+      <p>Machining, CAD, programming, project management, public speaking, and fundraising all matter to a team, and most teams are short on all of them. If you have done any of that professionally, you already know more than enough.</p>
+      <img class="shot ofph" src="images/web/mentor-at-work.jpg" alt="A mentor and two students in safety glasses working together on a tall robot mechanism" width="1280" height="850" loading="lazy" decoding="async">
+      <div class="oflinks">
+        <a class="btn fl" href="mailto:techno23542@gmail.com?subject=Becoming%20a%20mentor">Mentor a team <s aria-hidden="true">&rarr;</s></a>
+        <a class="oflink" href="https://www.firstinspires.org/volunteer" target="_blank" rel="noopener">Mentor roles on firstinspires.org <s aria-hidden="true">&rarr;</s></a>
+      </div>
+    </div>
+    <div class="of">
+      <p class="tg">One Saturday a season</p>
+      <h3>Volunteer at an event</h3>
+      <p>FIRST events run entirely on volunteers, and they are chronically short. A single qualifier needs judges, referees, field resetters, queuers, scorekeepers, and robot inspectors, often forty or more people for one day.</p>
+      <p>Most roles need no robotics knowledge and come with training that morning. If you can give one Saturday a season, that is enough to keep an event running.</p>
+      <img class="shot ofph" src="images/web/event-volunteers.jpg" alt="Three event volunteers in FIRST shirts and caps at a competition venue" width="1280" height="850" loading="lazy" decoding="async">
+      <div class="oflinks">
+        <a class="btn fl" href="mailto:techno23542@gmail.com?subject=Volunteering%20at%20an%20event">Volunteer with us <s aria-hidden="true">&rarr;</s></a>
+        <a class="oflink" href="https://www.firstinspires.org/volunteer" target="_blank" rel="noopener">Volunteer roles on firstinspires.org <s aria-hidden="true">&rarr;</s></a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<div class="rule"><i style="background:var(--navy)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--mint)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i></div>
+
+<!-- ===== 3. COMPANIES AND EMPLOYERS ===== -->
+<section class="sec dp" id="gi-companies"><div class="wrap">
+  <div class="giband">
+    <p class="eb">And finally</p>
+    <h2 class="h2">For companies and employers</h2>
+    <p class="sub">We are looking for volunteers and for companies willing to help. If your company runs volunteer days, a FIRST event is one of the easiest places to put a group to work.</p>
+  </div>
+  <div class="sp" style="margin-top:clamp(36px,4vw,58px)">
+    <div class="rv">
+      <p style="color:rgba(255,255,255,.82);font-size:17px">One qualifier can absorb a large group for a single Saturday. The roles are varied enough to suit anyone in your team, from judging and refereeing to running the field and the scoring table, and none of them need a robotics background.</p>
+      <p style="margin-top:19px;color:rgba(255,255,255,.82);font-size:17px">Your employees spend the day in front of a few hundred students doing real engineering, which is a better story than most volunteer days produce. Tell us roughly how many people and when, and we will tell you which North Texas events need them and put you in touch with the organizers.</p>
+      <p style="margin-top:19px;color:rgba(255,255,255,.82);font-size:17px">If you would rather support a team directly, sponsorship covers parts, travel, and the free workshops we run for schools with no robotics program.</p>
+      <div class="oflinks" style="margin-top:30px">
+        <a class="btn fl" href="mailto:techno23542@gmail.com?subject=Corporate%20volunteer%20day">Ask about a volunteer day <s aria-hidden="true">&rarr;</s></a>
+        <a class="btn ln" href="#" data-go="sponsors">See sponsorship tiers</a>
+        <a class="oflink" href="https://www.firstinspires.org/support" target="_blank" rel="noopener">Ways to support FIRST on firstinspires.org <s aria-hidden="true">&rarr;</s></a>
+      </div>
+    </div>
+    <div class="rv"><img class="shot w32" src="images/web/company-group.jpg" alt="A large corporate volunteer group in matching shirts at a FIRST Robotics Competition event" width="1800" height="1200" loading="lazy" decoding="async"></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <p class="eb">The competition</p><h2 class="h2">What FIRST Tech Challenge actually is</h2>
+  <div class="sp" style="margin-top:40px">
+    <div class="rv">
+      <p class="sub" style="margin-top:0">FIRST Tech Challenge is a robotics competition for students in grades 7 through 12, run by the nonprofit FIRST. Every September a brand new game is released. Teams have a few months to design, build, and program a robot that competes in qualifiers, league play, a regional championship, and for some teams the World Championship.</p>
+      <p style="margin-top:19px;color:rgba(255,255,255,.78)">A match lasts two and a half minutes, two teams to a side. The robot drives itself for the first thirty seconds, then a student driver takes over. Robots are built from metal, programmed in Java, and play on a twelve by twelve foot field.</p>
+      <p style="margin-top:19px;color:rgba(255,255,255,.78)">Beyond the robot, teams document their engineering process in a portfolio, present to judges, mentor other teams, and run community outreach. Awards are decided as much on that as on match results.</p>
+      <p style="margin-top:30px"><a class="btn ln" href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener">Read about FTC on firstinspires.org</a></p>
+    </div>
+    <div class="rv"><img class="shot w43" src="images/web/competition-match.jpg" alt="Two robots facing off on the competition field mid-match, an AprilTag and a green game ball in frame" width="2200" height="1357" loading="lazy" decoding="async"></div>
+  </div>
+</div></section>
+
+<section class="sec nlsec dp"><div class="wrap">
+  <div class="nlg">
+    <div>
+      <p class="eb">Stay connected</p><h2 class="h2">Get the monthly roundup</h2>
+      <p class="sub">Recruiting teams across North Texas, the deadlines that matter, and where the free workshops are. One email a month, and it is the easiest way to stay in this without joining anything. Subscribers make a bigger difference to us than most people expect, and we would really appreciate you being one.</p>
+    </div>
+    <div class="newsletter-embed">
+      <button class="btn fl" type="button" data-newsletter>Subscribe to the roundup <s aria-hidden="true">&rarr;</s></button>
+      <p class="nlnote">One email a month. Unsubscribe any time.</p>
+      <noscript><p class="nlnote">The signup form needs JavaScript. <a href="mailto:techno23542@gmail.com?subject=Roundup">Email us</a> and we will add you.</p></noscript>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec ctwrap"><div class="wrap">
+  <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
+  <div class="ctb sg">
+    <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener"><b>Join the team</b><span>Applications are open year round</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Finding%20a%20team"><b>Find a team</b><span>Tell us a grade and a city</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Becoming%20a%20mentor"><b>Become a mentor</b><span>A couple of hours a month</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Volunteering%20at%20an%20event"><b>Volunteer at an event</b><span>One Saturday keeps it running</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Mentoring%20TechnoBotz"><b>Mentor us</b><span>Engineers, we would take the help</span></a>
+    <a class="ct" href="mailto:techno23542@gmail.com?subject=Corporate%20volunteer%20day"><b>Company volunteer day</b><span>We will find you an event</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer class="ft2">
+  <div class="fg">
+    <div>
+      <div class="bd" style="margin-bottom:18px"><img src="technobotz-pig.png" alt="" width="319" height="302"><div><b>TechnoBotz</b> <i>FTC 23542</i></div></div>
+      <p style="max-width:48ch">TechnoBotz Nonprofit is a competitive robotics team of middle and high school students in Frisco, Texas. We compete in the FIRST Tech Challenge, a robotics competition for grades 7 to 12 run by the nonprofit FIRST. FIRST LEGO League since 2021, FTC since 2023.</p>
+      <p class="acc"><span>Texas House Resolution No. 941</span><span>UIL 5A State Runner-Up</span><span>Ruby Division Finalists, North Texas Championship</span></p>
+    </div>
+    <div><h4>Explore</h4>
+      <a href="#" data-go="home">Home</a><a href="#" data-go="team">Meet the Team</a><a href="#" data-go="robots">Our Robots</a>
+      <a href="#" data-go="outreach">Outreach</a><a href="#" data-go="updates">Updates</a>
+      <a href="#" data-go="sponsors">Sponsors</a><a href="#" data-go="involved">Get Involved</a>
+    </div>
+    <div><h4>Contact</h4>
+      <p>Frisco, Texas</p><p>FTC Team #23542</p>
+      <a href="mailto:techno23542@gmail.com">techno23542@gmail.com</a>
+      <a href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener">Apply to the team</a>
+      <a class="fdon" href="https://hcb.hackclub.com/donations/start/technobotz" target="_blank" rel="noopener">Donate to the team</a>
+    </div>
+  </div>
+  <div class="fb"><span>TechnoBotz Nonprofit &middot; FTC Team 23542</span><span>Fiscally sponsored by The Hack Foundation (d.b.a. Hack Club), a 501(c)(3)</span><span class="sp2">FIRST&reg; Tech Challenge is a program of FIRST&reg;</span></div>
+</footer>
+
+<script>
+(function(){
+var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- hero field ---- */
+var fld=document.getElementById('fld'), tiles=[];
+if(fld){
+  var acc={0:'a',7:'b',8:'d',15:'c',56:'c',63:'a',55:'d',48:'b',18:'d',21:'d',42:'d',45:'d',27:'d',28:'d',35:'d',36:'d'};
+  for(var i=0;i<64;i++){var t=document.createElement('div');t.className='tl'+(acc[i]?' '+acc[i]:'');fld.appendChild(t);tiles.push(t);}
+  if(reduce){tiles.forEach(function(t){t.classList.add('on')});var L=document.getElementById('flg');if(L)L.classList.add('on');}
+  else{
+    tiles.forEach(function(t,i){var r=(i/8)|0,c=i%8,d=Math.abs(r-3.5)+Math.abs(c-3.5);setTimeout(function(){t.classList.add('on')},d*52+80);});
+    setTimeout(function(){var L=document.getElementById('flg');if(L)L.classList.add('on')},880);
+    fld.addEventListener('pointermove',function(e){
+      var b=fld.getBoundingClientRect(),mx=(e.clientX-b.left)/(b.width/8),my=(e.clientY-b.top)/(b.height/8);
+      tiles.forEach(function(t,i){var r=((i/8)|0)+.5,c=i%8+.5;t.classList.toggle('nr',Math.hypot(c-mx,r-my)<1.6);});
+    });
+    fld.addEventListener('pointerleave',function(){tiles.forEach(function(t){t.classList.remove('nr')})});
+  }
+}
+
+/* ---- count up ---- */
+function cnt(el){
+  var tgt=parseInt(el.dataset.c,10),d=1200,t0=null;
+  if(reduce){el.textContent=tgt.toLocaleString();return;}
+  function s(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/d,1);
+    el.textContent=Math.round(tgt*(1-Math.pow(1-p,3))).toLocaleString();
+    if(p<1)requestAnimationFrame(s);}
+  requestAnimationFrame(s);
+}
+
+/* ---- reveals ---- */
+function arm(scope){
+  var els=(scope||document).querySelectorAll('.rv:not(.in),.sg:not(.in),.cd:not(.in),.rule:not(.lit)');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in','lit');e.querySelectorAll('[data-c]').forEach(cnt)});return;}
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(x){
+      if(!x.isIntersecting)return;
+      var el=x.target;
+      el.classList.add(el.classList.contains('rule')?'lit':'in');
+      if(el.classList.contains('rule'))el.querySelectorAll('i').forEach(function(b,k){b.style.animationDelay=(k*.045)+'s'});
+      el.querySelectorAll('[data-c]').forEach(cnt);
+      io.unobserve(el);
+    });
+  },{threshold:.14,rootMargin:'0px 0px -60px 0px'});
+  els.forEach(function(e){io.observe(e)});
+}
+arm();
+
+/* ---- scroll-linked: hero fade, parallax, progress, pinned steps ---- */
+var hcopy=document.getElementById('hcopy'), fsh=document.getElementById('fsh'),
+    prog=document.getElementById('prog'), track=document.getElementById('track'),
+    steps=document.querySelectorAll('#steps .step'), dots=document.querySelectorAll('#dots .dot'),
+    pars=document.querySelectorAll('.par'), ticking=false;
+
+function frame(){
+  var y=window.pageYOffset, h=document.documentElement;
+  prog.style.width=((y/(h.scrollHeight-h.clientHeight))*100)+'%';
+  if(!reduce){
+    if(hcopy && y<900){var p=Math.min(y/620,1);
+      hcopy.style.opacity=1-p*.92; hcopy.style.transform='translateY('+(y*.14)+'px)';
+      if(fsh){fsh.style.opacity=1-p*.75;fsh.style.transform='translateY('+(y*.07)+'px) scale('+(1-p*.09)+')';}}
+    pars.forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.bottom>0 && r.top<innerHeight){
+        var off=(r.top+r.height/2-innerHeight/2)*parseFloat(el.dataset.par||.05);
+        el.style.transform='translateY('+(-off)+'px)';
+      }
+    });
+    if(track && steps.length){
+      var r=track.getBoundingClientRect(), total=track.offsetHeight-innerHeight;
+      if(total>0){
+        var p=Math.min(Math.max(-r.top/total,0),.999);
+        var idx=Math.floor(p*steps.length);
+        if(idx!==activeStep())setStep(idx);
+      }
+    }
+  }
+  ticking=false;
+}
+addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(frame);ticking=true;}},{passive:true});
+frame();
+
+/* ---- newsletter ----
+   The EmailOctopus form is configured as a popup, so instead of embedding it
+   inline we load their script on first click and let it open. src and data-form
+   are exactly as supplied. Their script mounts the popup to the body carrying
+   an inline display:none and only clears that on its own trigger. An inline
+   style outranks their own .active stylesheet rule, so opening the popup means
+   clearing the inline value, not just adding the class. */
+var NL_SRC='https://eomail5.com/form/bc46b9ca-9f27-11f1-b06f-7f41f19c1b0a.js';
+var NL_ID='bc46b9ca-9f27-11f1-b06f-7f41f19c1b0a';
+var NL_MAIL='mailto:techno23542@gmail.com?subject=Roundup';
+var nlLoaded=false;
+function nlModal(){return document.querySelector('.modal-container');}
+function nlOpen(m){
+  if(!m)return false;
+  m.classList.add('active');
+  m.style.display='flex';
+  m.style.visibility='visible';
+  m.style.opacity='1';
+  var inner=m.querySelector('.modal-container-inner,.form-container');
+  if(inner&&getComputedStyle(inner).display==='none')inner.style.display='block';
+  var r=m.getBoundingClientRect();
+  return r.width>0&&r.height>0;
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-newsletter]');
+  if(!b)return;
+  e.preventDefault();
+  if(nlOpen(nlModal()))return;
+  if(nlLoaded){location.href=NL_MAIL;return;}
+  nlLoaded=true;
+  b.setAttribute('aria-busy','true');
+  var done=false,tries=0;
+  function finish(ok){
+    if(done)return; done=true;
+    b.removeAttribute('aria-busy');
+    /* blocked by an extension, offline, or their script never mounted: the
+       button still has to do something, so fall back to email */
+    if(!ok)location.href=NL_MAIL;
+  }
+  var sc=document.createElement('script');
+  sc.async=true; sc.src=NL_SRC; sc.setAttribute('data-form',NL_ID);
+  sc.onerror=function(){nlLoaded=false;finish(false);};
+  document.body.appendChild(sc);
+  var wait=setInterval(function(){
+    if(done){clearInterval(wait);return;}
+    if(nlOpen(nlModal())){clearInterval(wait);finish(true);}
+    else if(++tries>60){clearInterval(wait);finish(false);}
+  },200);
+});
+
+/* ---- pinned steps: manual prev/next ---- */
+var pcount=document.getElementById('pcount'),pprev=document.getElementById('pprev'),pnext=document.getElementById('pnext');
+function activeStep(){for(var i=0;i<steps.length;i++){if(steps[i].classList.contains('on'))return i;}return 0;}
+function syncPin(idx){
+  if(pcount)pcount.textContent=('0'+(idx+1)).slice(-2)+' / '+('0'+steps.length).slice(-2);
+  if(pprev)pprev.disabled=idx<=0;
+  if(pnext)pnext.disabled=idx>=steps.length-1;
+}
+/* single place that owns which step is showing, so a click updates instantly
+   instead of waiting on the rAF-throttled scroll handler */
+function setStep(idx){
+  steps.forEach(function(s,i){s.classList.toggle('on',i===idx)});
+  dots.forEach(function(d,i){d.classList.toggle('on',i===idx)});
+  syncPin(idx);
+}
+function goStep(idx){
+  if(!track||!steps.length)return;
+  idx=Math.max(0,Math.min(steps.length-1,idx));
+  var total=track.offsetHeight-innerHeight;
+  if(total<=0){ /* stacked layout: just scroll the step into view */
+    steps[idx].scrollIntoView({block:'center'}); return; }
+  /* .pin is position:relative, so offsetTop is 0 here. Use the rect. */
+  var top=track.getBoundingClientRect().top+pageYOffset;
+  setStep(idx);
+  scrollTo(0,Math.round(top+total*((idx+0.5)/steps.length)));
+}
+if(pprev)pprev.addEventListener('click',function(){goStep(activeStep()-1)});
+if(pnext)pnext.addEventListener('click',function(){goStep(activeStep()+1)});
+syncPin(0);
+
+/* ---- curtain + routing ---- */
+var ct=document.getElementById('ct');
+/* one source of truth so the cover time and the swap time cannot drift apart */
+var CT_DUR=260, CT_COL=11, CT_ROW=13, CT_COVER=9*CT_COL+5*CT_ROW+CT_DUR; /* = 424ms */
+for(var k=0;k<60;k++){var d2=document.createElement('div');
+  d2.style.transitionDelay=((k%10)*CT_COL+((k/10)|0)*CT_ROW)+'ms';ct.appendChild(d2);}
+function show(id){
+  document.querySelectorAll('.pg').forEach(function(p){p.classList.toggle('on',p.id==='p-'+id)});
+  document.querySelectorAll('.nav a.lk[data-go],.mb a[data-go]').forEach(function(a){
+    if(a.dataset.go===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  var de=document.documentElement, sb=de.style.scrollBehavior;
+  de.style.scrollBehavior='auto'; scrollTo(0,0); de.style.scrollBehavior=sb;
+  arm(document.getElementById('p-'+id));
+  if(hcopy){hcopy.style.opacity='';hcopy.style.transform='';}
+  if(fsh){fsh.style.opacity='';fsh.style.transform='';}
+  /* sandboxed frames throw SecurityError here; routing must survive it */
+  try{if(history.replaceState)history.replaceState(null,'','#'+id);}catch(e){}
+}
+var ctT=null;
+function go(id){
+  if(!document.getElementById('p-'+id))return;
+  document.getElementById('mb').classList.remove('open');
+  document.getElementById('bg').setAttribute('aria-expanded','false');
+  if(reduce){show(id);return;}
+  ct.classList.add('in');ct.classList.remove('out');
+    clearTimeout(ctT);
+  ctT=setTimeout(function(){show(id);ct.classList.remove('in');ct.classList.add('out');},CT_COVER);
+}
+document.addEventListener('click',function(e){
+  var a=e.target.closest('[data-go]');if(!a)return;e.preventDefault();go(a.dataset.go);});
+document.getElementById('bg').addEventListener('click',function(){
+  this.setAttribute('aria-expanded',String(document.getElementById('mb').classList.toggle('open')));});
+var st=(location.hash||'').replace('#','');
+if(st&&document.getElementById('p-'+st))show(st);
+})();
+</script>
+</body>
+</html>
