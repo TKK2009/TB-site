@@ -115,9 +115,10 @@ numbers are correct, they are not a contradiction) · presented to 50+ school ad
 **Sponsorship** — Four tiers: $250 / $1,000 / $2,500 / $5,000, compared across Brand
 Promotion, Community Involvement, Program Involvement, Reminders of Gratitude. Tax
 deductible through The Hack Foundation. Donate:
-`https://hcb.hackclub.com/donations/start/technobotz`. Eight sponsor logos, one grid,
-equal size, no featured tier: ally-health, c2-education, chase, cold-stone, polymaker,
-simple-interact, snapmaker, texas-instruments.
+`https://hcb.hackclub.com/donations/start/technobotz`. Ten sponsor logos, one grid,
+equal size, no featured tier: ally-health, c2-education, chase, cold-stone, fabworks,
+frctees, polymaker, simple-interact, snapmaker, texas-instruments. Only Fabworks links
+out (to fabworks.com).
 
 ## Things that were removed — do not reintroduce
 
