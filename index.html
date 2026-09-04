@@ -19,6 +19,13 @@
   --orange:#F58B4C; --hot:#E8722E; --yellow:#F5C842; --pink:#F2938E; --mint:#7FD1B9;
   --paper:#F3F6FB; --warm:#E8EEF7; --ink:#08172E; --soft:#3C506E;
   --line:rgba(255,255,255,.13); --dline:rgba(8,23,46,.11);
+  /* --orange and --yellow are fills, not text: on paper they read at 2.2:1
+     and 1.5:1. --hotink is the same orange hue darkened until accent TEXT
+     clears 4.5:1 on paper, warm and white alike. Fills keep --orange. */
+  --hotink:#9D5931;
+  /* card edges on light grounds. --dline is a 1.26:1 hairline, which vanishes
+     under a white card on paper; this matches the weight --line carries on navy. */
+  --cardline:rgba(8,23,46,.20);
   --dsp:'Archivo',system-ui,sans-serif; --bdy:'IBM Plex Sans',system-ui,sans-serif; --mn:'IBM Plex Mono',ui-monospace,monospace;
   --gut:clamp(20px,5vw,80px); --ez:cubic-bezier(.22,.68,.28,1); --ctd:260ms;
 }
@@ -34,8 +41,8 @@ a{color:inherit} img{display:block;max-width:100%}
 .h2{font-family:var(--dsp);font-weight:900;font-size:clamp(32px,6.6vw,86px);line-height:1.02;letter-spacing:-.042em;margin-top:16px;text-wrap:balance}
 .sub{font-size:clamp(17px,2.05vw,23px);max-width:58ch;margin-top:24px;color:rgba(255,255,255,.82);line-height:1.55;text-wrap:pretty}
 .sec{padding:clamp(90px,13vw,190px) 0;position:relative}
-.lt{background:var(--paper);color:var(--ink)} .lt .eb{color:var(--hot)} .lt .sub{color:var(--soft)}
-.wm{background:var(--warm);color:var(--ink)} .wm .eb{color:var(--hot)} .wm .sub{color:var(--soft)}
+.lt{background:var(--paper);color:var(--ink)} .lt .eb{color:var(--hotink)} .lt .sub{color:var(--soft)}
+.wm{background:var(--warm);color:var(--ink)} .wm .eb{color:var(--hotink)} .wm .sub{color:var(--soft)}
 .dp{background:var(--deep)}
 
 /* progress bar */
@@ -82,7 +89,7 @@ a{color:inherit} img{display:block;max-width:100%}
 .btn:hover s{transform:translateX(5px)}
 .fl{background:var(--orange);color:var(--deep)} .fl:hover{background:var(--yellow)}
 .ln{border-color:rgba(255,255,255,.3);color:#fff} .ln:hover{border-color:var(--orange);color:var(--orange)}
-.dk{border-color:rgba(8,23,46,.25);color:var(--ink)} .dk:hover{border-color:var(--hot);color:var(--hot)}
+.dk{border-color:rgba(8,23,46,.25);color:var(--ink)} .dk:hover{border-color:var(--hotink);color:var(--hotink)}
 
 /* tile rules */
 .rule{display:flex;height:8px}
@@ -176,7 +183,7 @@ a{color:inherit} img{display:block;max-width:100%}
 .cd:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(8,23,46,.14)}
 .cd h3{font-family:var(--dsp);font-weight:800;font-size:26px;letter-spacing:-.025em;margin:15px 0 13px}
 .cd p{font-size:15.5px;color:var(--soft);line-height:1.62}
-.cd .tg{font-family:var(--mn);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
+.cd .tg{font-family:var(--mn);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--hotink)}
 .cdk{background:var(--lift);border-color:var(--line);color:#fff}
 .cdk p{color:rgba(255,255,255,.72)} .cdk .tg{color:var(--orange)}
 .cdk:hover{box-shadow:0 20px 48px rgba(0,0,0,.36)}
@@ -195,7 +202,7 @@ img.shot.rv.in{opacity:1;transform:none}
 .ph{position:relative;display:grid;place-items:center;text-align:center;border:2px dashed rgba(245,139,76,.5);background:repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0 11px,transparent 11px 22px),rgba(255,255,255,.028);padding:26px;color:rgba(255,255,255,.76)}
 .lt .ph,.wm .ph,.cd .ph{border-color:rgba(232,114,46,.45);background:repeating-linear-gradient(45deg,rgba(8,23,46,.033) 0 11px,transparent 11px 22px),rgba(8,23,46,.028);color:var(--soft)}
 .ph b{display:block;font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:9px}
-.lt .ph b,.wm .ph b,.cd .ph b{color:var(--hot)}
+.lt .ph b,.wm .ph b,.cd .ph b{color:var(--hotink)}
 .ph span{display:block;font-size:15px;line-height:1.5;max-width:36ch}
 .ph em{display:block;font-style:normal;font-family:var(--mn);font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.62);margin-top:11px}
 .lt .ph em,.wm .ph em,.cd .ph em{color:var(--soft)}
@@ -260,7 +267,7 @@ img.shot.rv.in{opacity:1;transform:none}
 .ft.fp .tx{order:2}
 @media(max-width:920px){.ft.fp .tx{order:0}}
 .kk{font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
-.lt .kk,.wm .kk{color:var(--hot)}
+.lt .kk,.wm .kk{color:var(--hotink)}
 .ft h3{font-family:var(--dsp);font-weight:900;font-size:clamp(28px,4.2vw,50px);line-height:1;letter-spacing:-.038em;margin-top:13px}
 .ft p{margin-top:18px;font-size:16.5px;line-height:1.65;max-width:52ch}
 .ft ul{margin-top:20px;list-style:none;display:grid;gap:10px}
@@ -381,8 +388,14 @@ img.shot.rv.in{opacity:1;transform:none}
 .giband{max-width:74ch;margin-bottom:clamp(34px,4vw,54px)}
 .giband .sub{margin-top:20px}
 .jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
-.jl{font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.82);border:1px solid var(--line);padding:11px 16px;transition:.25s var(--ez)}
-.jl:hover{border-color:var(--orange);color:var(--orange)}
+/* these pick which route through the page you take, so they have to read as
+   controls rather than as text links. They ride the .btn system for padding,
+   border and hover (square corners, like every other button on the site) and
+   add a filled active state that scroll position keeps in sync. */
+.jl{cursor:pointer}
+.jl[aria-current="true"]{background:var(--orange);border-color:var(--orange);color:var(--deep)}
+.jl[aria-current="true"]:hover{background:var(--yellow);border-color:var(--yellow);color:var(--deep)}
+.lt .jl[aria-current="true"],.wm .jl[aria-current="true"]{color:var(--deep)}
 [id^="gi-"]{scroll-margin-top:96px}
 .oflinks{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:28px}
 .oflinks .btn{margin-top:0}
@@ -481,7 +494,7 @@ img.shot.rv.in{opacity:1;transform:none}
 .nlnote{margin-top:16px;font-family:var(--mn);font-size:12.5px;letter-spacing:.06em;line-height:1.6;color:rgba(255,255,255,.72)}
 .nlnote a{color:var(--yellow)}
 .lt .nlnote,.wm .lt .nlnote{color:var(--soft)}
-.lt .nlnote a{color:var(--hot)}
+.lt .nlnote a{color:var(--hotink)}
 
 /* the injected form, wherever it lands */
 .newsletter-embed .emailoctopus-form,
@@ -514,6 +527,9 @@ img.shot.rv.in{opacity:1;transform:none}
 .lt .mentline,.wm .mentline{border-top-color:var(--dline);color:var(--soft)}
 .edit{margin-top:18px;font-family:var(--mn);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);max-width:72ch}
 .fine{margin-top:26px;font-family:var(--mn);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+/* body paragraphs that used to carry an inline colour. Inline styles cannot be
+   overridden by the light-section rules, so the colour lives here instead. */
+.pbody{color:rgba(255,255,255,.82)}
 .bn.big .bni{padding:clamp(84px,11vw,164px) var(--gut)}
 .bn.big .h2{font-size:clamp(34px,8vw,104px)}
 
@@ -649,7 +665,8 @@ img.shot.rv.in{opacity:1;transform:none}
 .sc-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:20px}
 .sc-h .tn{font-family:var(--mn);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)}
 .sc-h .ta{font-family:var(--dsp);font-weight:900;font-size:34px;letter-spacing:-.03em}
-.sc-g{font-family:var(--mn);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-top:20px}
+.sc-g{font-family:var(--mn);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+.sc-g:first-of-type{padding-top:0;border-top:0}
 .sc ul{list-style:none;margin-top:10px;display:grid;gap:9px}
 .sc li{font-size:15px;color:rgba(255,255,255,.82);padding-left:22px;position:relative}
 .sc li::before{content:'\25AA';position:absolute;left:0;color:var(--orange)}
@@ -669,7 +686,7 @@ img.shot.rv.in{opacity:1;transform:none}
 .prose{max-width:68ch}
 .prose p{font-size:17.5px;line-height:1.72;color:rgba(255,255,255,.84);margin-top:20px}
 .prose .plead{font-size:clamp(19px,2.2vw,24px);line-height:1.55;color:#fff}
-.prose h2{font-family:var(--dsp);font-weight:900;font-size:clamp(24px,3vw,36px);line-height:1.04;letter-spacing:-.03em;margin-top:clamp(40px,4.4vw,62px);text-wrap:balance}
+.prose h2{font-family:var(--dsp);font-weight:900;font-size:clamp(24px,3vw,36px);line-height:1.04;letter-spacing:-.03em;margin-top:clamp(40px,4.4vw,62px);text-wrap:balance;padding-top:clamp(30px,3.4vw,44px);border-top:1px solid var(--line)}
 .prose h2::before{content:'';display:block;width:44px;height:3px;background:var(--orange);margin-bottom:18px}
 .postcta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(44px,5vw,70px);padding-top:32px;border-top:1px solid var(--line)}
 
@@ -717,6 +734,115 @@ img.shot.rv.in{opacity:1;transform:none}
   .cd:hover,.pn:hover,.evi:hover,.tm:hover,.tr:hover,.of:hover,.ct:hover,.posth:hover,.bd:hover img,.tbl:hover img,.flg img:hover,.btn:hover s,.oflink:hover s{transform:none!important}
   .rveil{display:none!important}
 }
+
+/* ============================================================
+   LIGHT SECTIONS
+   The palette is navy-forward, so nearly every component below was
+   written against a dark ground. These are the inversions that let the
+   same component sit in a .lt (paper) or .wm (warm) section without
+   dropping under 4.5:1. No new colors: --ink for headings, --soft for
+   body copy, --hot for accents. --orange and --yellow are the two
+   tokens that fail on paper, so anything using them as TEXT switches
+   to --hot here; they stay untouched as fills, where the text on top
+   of them is --deep and the contrast is already high.
+   ============================================================ */
+
+/* sections whose own rule sets a background need the extra class to win */
+.rshowsec.lt,.accsec.lt,.ctwrap.lt,.teamband.lt,.bn.lt{background:var(--paper)}
+.rshowsec.wm,.accsec.wm,.ctwrap.wm,.teamband.wm,.bn.wm{background:var(--warm)}
+.ctwrap.lt,.ctwrap.wm,.accsec.lt,.accsec.wm,.bn.lt,.bn.wm{border-top-color:var(--dline)}
+
+/* yellow focus ring is invisible on paper */
+.lt :focus-visible,.wm :focus-visible{outline-color:var(--hotink)}
+
+/* buttons: .fl is dark-on-orange and already fine. .ln is white-on-transparent. */
+.lt .btn.ln,.wm .btn.ln{border-color:rgba(8,23,46,.25);color:var(--ink)}
+.lt .btn.ln:hover,.wm .btn.ln:hover{border-color:var(--hot);color:var(--hotink)}
+
+/* generic copy */
+.lt .pbody,.wm .pbody,.lt .fine,.wm .fine{color:var(--soft)}
+.lt .disc,.wm .disc{color:var(--soft)}
+.lt .edit,.wm .edit{color:var(--hotink)}
+
+/* accolades */
+.lt .acc,.wm .acc{color:var(--soft)}
+.lt .acc span::before,.wm .acc span::before{color:var(--hotink)}
+.lt .acc.row,.wm .acc.row{border-top-color:var(--dline)}
+.lt .accitem,.wm .accitem{border-top-color:var(--hot)}
+.lt .accno,.wm .accno{color:var(--hotink)}
+.lt .accitem p,.wm .accitem p{color:var(--soft)}
+
+/* robots and seasons */
+.lt .rbt,.wm .rbt,.lt .era,.wm .era,.lt .ssn,.wm .ssn{border-bottom-color:var(--dline)}
+.lt .bdy,.wm .bdy,.lt .era p,.wm .era p{color:var(--soft)}
+.lt .bot,.wm .bot,.lt .yrtag,.wm .yrtag,.lt .era .lb,.wm .era .lb{color:var(--hotink)}
+/* .rbt.lead .yrtag outranks the line above on specificity, so it is restated */
+.lt .rbt.lead .yrtag,.wm .rbt.lead .yrtag{color:var(--hotink)}
+.lt .rbt.now .gm,.wm .rbt.now .gm,.lt .ssn.now .gm,.wm .ssn.now .gm{color:var(--hotink)}
+.lt .chip,.wm .chip{border-color:var(--dline);color:var(--soft)}
+.lt .chip.w,.wm .chip.w{border-color:var(--hot);color:var(--hotink)}
+
+/* roster */
+.lt .pbio,.wm .pbio{color:var(--soft)}
+.lt .pn figcaption span,.wm .pn figcaption span{color:var(--hotink)}
+.lt .grp,.wm .grp{color:var(--hotink)}
+
+/* events */
+.lt .evi,.wm .evi{background:#fff;border-color:var(--cardline)}
+.lt .evd,.wm .evd{color:var(--hotink)}
+.lt .evx,.wm .evx{color:var(--soft)}
+.lt .evt,.wm .evt{color:var(--soft);border-color:var(--dline)}
+
+/* offer cards */
+.lt .of,.wm .of{background:#fff;border-color:var(--cardline)}
+.lt .of p,.wm .of p{color:var(--soft)}
+.lt .of .tg,.wm .of .tg{color:var(--hotink)}
+.lt .oflink,.wm .oflink{color:var(--hotink)}
+.lt .oflink:hover,.wm .oflink:hover{color:var(--ink)}
+
+/* contact tiles */
+.lt .ct,.wm .ct{background:#fff;border-color:var(--cardline)}
+.lt .ct span,.wm .ct span{color:var(--soft)}
+
+/* post teasers */
+.lt .posth,.wm .posth{background:#fff;border-color:var(--cardline)}
+.lt .pdate,.wm .pdate,.lt .plink,.wm .plink{color:var(--hotink)}
+.lt .pex,.wm .pex{color:var(--soft)}
+
+/* long-form prose */
+.lt .prose p,.wm .prose p{color:var(--soft)}
+.lt .prose .plead,.wm .prose .plead{color:var(--ink)}
+.lt .prose h2,.wm .prose h2{border-top-color:var(--dline)}
+.lt .postcta,.wm .postcta{border-top-color:var(--dline)}
+
+/* FTC explainer */
+.lt.ftcx,.wm.ftcx{border-top-color:var(--dline)}
+.lt .ftcstep p,.wm .ftcstep p{color:var(--soft)}
+.lt .ftcstep .tg,.wm .ftcstep .tg{color:var(--hotink)}
+.lt .ftcnote,.wm .ftcnote{color:var(--soft);border-top-color:var(--dline)}
+
+/* the veil has to match the ground it sits on, or the tiles show as a
+   navy grid over a light section before they peel away */
+.lt .rveil i{background:var(--paper);border-color:rgba(8,23,46,.06)}
+.wm .rveil i{background:var(--warm);border-color:rgba(8,23,46,.06)}
+
+/* tier cards and the tax note, for whichever section they land in */
+.lt .sc,.wm .sc{background:#fff;border-color:var(--cardline)}
+.lt .sc li,.wm .sc li{color:var(--soft)}
+.lt .sc-h,.wm .sc-h,.lt .sc-g,.wm .sc-g{border-color:var(--dline)}
+.lt .sc-h .tn,.wm .sc-h .tn,.lt .sc-g,.wm .sc-g{color:var(--hotink)}
+.lt .taxline,.wm .taxline{color:var(--soft);border-color:rgba(232,114,46,.4);background:rgba(245,200,66,.16)}
+.lt .taxline b,.wm .taxline b{color:var(--hotink)}
+
+/* the plate is white and paper is nearly white, so the tile needs its edge
+   back. Size, ratio, radius, per-logo height caps and links are untouched. */
+.lt .logo,.wm .logo{border-color:var(--cardline)}
+
+/* mentor/utility lines already had a light variant; the newsletter note's
+   was scoped to a selector that never matched, so it is restated here */
+.lt .nlnote,.wm .nlnote{color:var(--soft)}
+.lt .nlnote a,.wm .nlnote a{color:var(--hotink)}
+
 </style>
 <noscript><style>
   .pg{display:block!important;border-top:1px solid var(--line)}
@@ -781,7 +907,7 @@ img.shot.rv.in{opacity:1;transform:none}
 </header>
 
 <!-- ROBOT SHOWCASE: the tile veil peels off the photo on scroll -->
-<section class="rshowsec">
+<section class="rshowsec lt">
   <div class="wrap">
     <div class="rshowhead">
       <div><p class="eb">This season</p><h2 class="h2">Porkchop</h2></div>
@@ -813,7 +939,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </section>
 
-<section class="sec accsec"><div class="wrap">
+<section class="sec accsec lt"><div class="wrap">
   <p class="eb">Recognition</p>
   <h2 class="h2">What we have won</h2>
   <div class="accgrid sg">
@@ -886,7 +1012,7 @@ img.shot.rv.in{opacity:1;transform:none}
 <div class="rule"><i style="background:var(--navy)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--mint)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i></div>
 
 
-<section class="sec tight"><div class="wrap">
+<section class="sec tight lt"><div class="wrap">
   <p class="eb">Shop and give</p><h2 class="h2">Support the team</h2>
   <p class="sub">Buying through these two links sends a percentage back to the team. Use code FTC23542 at Fabworks for 5% off your order.</p>
   <p class="disc">TechnoBotz earns a commission on some purchases made through these links, at no additional cost to you.</p>
@@ -911,7 +1037,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec ctwrap"><div class="wrap">
+<section class="sec ctwrap wm"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <p class="sub">Whatever you are here for, one of these goes straight to a student who will answer.</p>
   <div class="ctb sg">
@@ -932,7 +1058,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <p class="sub">Members come from middle schools and high schools all over North Texas.</p>
 </div></header>
 
-<section class="sec tight"><div class="wrap">
+<section class="sec tight lt"><div class="wrap">
   <!-- EDIT: headshots removed until photos exist. To restore them, put a
        div with class "ph pfc" as the first child of each figure below,
        then delete the "nophoto" class from the grid. -->
@@ -1044,7 +1170,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <div class="bb"><a class="btn fl" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form">Apply to the team <s aria-hidden="true">&rarr;</s></a><a class="btn ln" href="mailto:techno23542@gmail.com?subject=Question">Ask a question first</a></div>
 </div></section>
 
-<section class="sec ctwrap"><div class="wrap">
+<section class="sec ctwrap wm"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1061,11 +1187,11 @@ img.shot.rv.in{opacity:1;transform:none}
 <main class="pg" id="p-robots">
 <header class="ph1 tight"><div class="wrap">
   <p class="eb">Our robots</p><h1>The robots<br>we have built.</h1>
-  <p class="sub">We compete in the FIRST Tech Challenge, which sets a brand new game every September. Everything from the last robot gets thrown out and every team starts level. Three robots so far, and a Think Award for the engineering portfolio behind them.</p>
+  <p class="sub">We compete in the FIRST Tech Challenge, which sets a brand new game every September, so every team starts the season on the same footing. Three robots so far.</p>
 </div></header>
 
 
-<section class="sec tight"><div class="wrap">
+<section class="sec tight lt"><div class="wrap">
 
   <article class="rbt lead rv now">
     <img class="shot rbtimg" src="images/web/porkchop.jpg" alt="Porkchop on the competition field, green artifact loaded in the intake, number plate reading 23542" width="2400" height="1600" loading="lazy" decoding="async">
@@ -1104,7 +1230,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec ctwrap"><div class="wrap">
+<section class="sec ctwrap wm"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1124,7 +1250,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <p class="sub">Robotics is not evenly available. We spend the year closing that gap in three ways: teaching it, equipping schools to run it, and starting teams where there are none.</p>
 </div></header>
 
-<section class="sec tight"><div class="wrap">
+<section class="sec tight lt"><div class="wrap">
   <img class="shot portraitfit rv" src="images/web/outreach-action.jpg" alt="A TechnoBotz student coaching a young child driving the competition robot at an outreach event while a parent films" width="1536" height="2048" loading="lazy" decoding="async">
 </div></section>
 
@@ -1135,7 +1261,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <div class="s1"><b><span data-c="12">0</span></b><span>Teams mentored</span></div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec lt"><div class="wrap">
   <p class="eb">How we work</p><h2 class="h2">Teach, equip, grow</h2>
   <div class="ofs sg">
     <div class="of">
@@ -1175,7 +1301,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec nlsec lt"><div class="wrap">
+<section class="sec nlsec wm"><div class="wrap">
   <div class="nlg">
     <div>
       <p class="eb">One of our programs</p><h2 class="h2">The Robotics Roundup</h2>
@@ -1201,7 +1327,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec ctwrap"><div class="wrap">
+<section class="sec ctwrap wm"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1225,7 +1351,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></header>
 
-<section class="sec tight thanks"><div class="wrap">
+<section class="sec tight thanks lt"><div class="wrap">
   <p class="eb">Thank you</p><h2 class="h2">The companies behind this season</h2>
   <p class="sub">Every one of these gave parts, machines, or money to a team of students they had never met. We would not have a robot without them.</p>
   <div class="lgs big four">
@@ -1252,7 +1378,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec tight"><div class="wrap">
+<section class="sec tight lt"><div class="wrap">
   <p class="eb">Where it goes</p><h2 class="h2">What we need funding for</h2>
   <!-- TODO: the two "Request the sponsorship packet" buttons point to email as a placeholder. Swap them for the packet link when it exists. -->
   <div class="cds sg">
@@ -1322,7 +1448,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec ctwrap"><div class="wrap">
+<section class="sec ctwrap wm"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1342,7 +1468,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <p class="sub">More resources for you to be in touch and get involved.</p>
 </div></header>
 
-<section class="sec tight"><div class="wrap">
+<section class="sec tight lt"><div class="wrap">
   <p class="eb">Posts</p><h2 class="h2">Recent posts</h2>
   <div class="posts">
     <article class="post rv">
@@ -1368,15 +1494,15 @@ img.shot.rv.in{opacity:1;transform:none}
   <!-- TODO: add competitions and outreach dates here as they are confirmed. -->
 </div></section>
 
-<section class="sec dp"><div class="wrap">
+<section class="sec lt"><div class="wrap">
   <p class="eb">Previously</p><h2 class="h2">Where we have been</h2>
   <div class="ev sg">
-    <div class="evi"><span class="evd">Aug 8, 2026</span><div><div class="evn">STEAM Festival</div><p class="evx">Texas Discovery Gardens, Dallas. Hosted by 2 Inspire Peace.</p></div><span class="evt">~100 reached</span></div>
+    <div class="evi"><span class="evd">Aug 8, 2026</span><div><div class="evn">STEAM Festival</div><p class="evx">Texas Discovery Gardens, Dallas. Hosted by 2 Inspire Peace.</p></div><span class="evt">Outreach</span></div>
   </div>
   <!-- TODO: add each event here as it happens, newest first. -->
 </div></section>
 
-<section class="sec ctwrap"><div class="wrap">
+<section class="sec ctwrap wm"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1397,7 +1523,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <p class="sub">We mentor twelve FIRST Tech Challenge teams across North Texas, and we have never charged any of them.</p>
 </div></header>
 
-<section class="sec tight"><div class="wrap">
+<section class="sec tight lt"><div class="wrap">
   <img class="shot hero43 rv" src="images/web/mentoring.jpg" alt="Students from several teams around cafeteria tables at a build session, laptops open and robots on the bench" width="2400" height="1800" loading="lazy" decoding="async">
 </div></section>
 
@@ -1427,7 +1553,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></article>
 
-<section class="sec ctwrap"><div class="wrap">
+<section class="sec ctwrap wm"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1446,14 +1572,14 @@ img.shot.rv.in{opacity:1;transform:none}
   <p class="eb">Get involved</p><h1>There is more than<br>one way in.</h1>
   <p class="sub">FIRST Tech Challenge runs on students, mentors, and volunteers, and every one of those is in short supply. Find yourself below.</p>
   <nav class="jump" aria-label="Jump to a section">
-    <a class="jl" href="#gi-parents">Parents and students</a>
-    <a class="jl" href="#gi-adults">Adults who want to help</a>
-    <a class="jl" href="#gi-companies">Companies</a>
+    <a class="btn ln jl" href="#gi-parents">Parents and students</a>
+    <a class="btn ln jl" href="#gi-adults">Adults who want to help</a>
+    <a class="btn ln jl" href="#gi-companies">Companies</a>
   </nav>
 </div></header>
 
 <!-- ===== 1. PARENTS AND STUDENTS ===== -->
-<section class="sec tight" id="gi-parents"><div class="wrap">
+<section class="sec tight lt" id="gi-parents"><div class="wrap">
   <div class="giband">
     <p class="eb">First up</p>
     <h2 class="h2">For parents and students</h2>
@@ -1491,7 +1617,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec lt" style="padding-top:clamp(50px,6vw,86px)"><div class="wrap">
+<section class="sec wm" style="padding-top:clamp(50px,6vw,86px)"><div class="wrap">
   <p class="eb">The programs</p><h2 class="h2">Where your kid fits</h2>
   <p class="sub">FIRST runs several programs by age. Most families do not know the younger ones exist.</p>
   <div class="cds sg">
@@ -1543,7 +1669,7 @@ img.shot.rv.in{opacity:1;transform:none}
 <div class="rule"><i style="background:var(--navy)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--mint)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i></div>
 
 <!-- ===== 3. COMPANIES AND EMPLOYERS ===== -->
-<section class="sec dp" id="gi-companies"><div class="wrap">
+<section class="sec lt" id="gi-companies"><div class="wrap">
   <div class="giband">
     <p class="eb">And finally</p>
     <h2 class="h2">For companies and employers</h2>
@@ -1551,9 +1677,9 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
   <div class="sp" style="margin-top:clamp(36px,4vw,58px)">
     <div class="rv">
-      <p style="color:rgba(255,255,255,.82);font-size:17px">One qualifier can absorb a large group for a single Saturday. The roles are varied enough to suit anyone in your team, from judging and refereeing to running the field and the scoring table, and none of them need a robotics background.</p>
-      <p style="margin-top:19px;color:rgba(255,255,255,.82);font-size:17px">Your employees spend the day in front of a few hundred students doing real engineering, which is a better story than most volunteer days produce. Tell us roughly how many people and when, and we will tell you which North Texas events need them and put you in touch with the organizers.</p>
-      <p style="margin-top:19px;color:rgba(255,255,255,.82);font-size:17px">If you would rather support a team directly, sponsorship covers parts, travel, and the free workshops we run for schools with no robotics program.</p>
+      <p class="pbody" style="font-size:17px">One qualifier can absorb a large group for a single Saturday. The roles are varied enough to suit anyone in your team, from judging and refereeing to running the field and the scoring table, and none of them need a robotics background.</p>
+      <p class="pbody" style="margin-top:19px;font-size:17px">Your employees spend the day in front of a few hundred students doing real engineering, which is a better story than most volunteer days produce. Tell us roughly how many people and when, and we will tell you which North Texas events need them and put you in touch with the organizers.</p>
+      <p class="pbody" style="margin-top:19px;font-size:17px">If you would rather support a team directly, sponsorship covers parts, travel, and the free workshops we run for schools with no robotics program.</p>
       <div class="oflinks" style="margin-top:30px">
         <a class="btn fl" href="mailto:techno23542@gmail.com?subject=Corporate%20volunteer%20day">Ask about a volunteer day <s aria-hidden="true">&rarr;</s></a>
         <a class="btn ln" href="#" data-go="sponsors">See sponsorship tiers</a>
@@ -1569,15 +1695,15 @@ img.shot.rv.in{opacity:1;transform:none}
   <div class="sp" style="margin-top:40px">
     <div class="rv">
       <p class="sub" style="margin-top:0">FIRST Tech Challenge is a robotics competition for students in grades 7 through 12, run by the nonprofit FIRST. Every September a brand new game is released. Teams have a few months to design, build, and program a robot that competes in qualifiers, league play, a regional championship, and for some teams the World Championship.</p>
-      <p style="margin-top:19px;color:rgba(255,255,255,.78)">A match lasts two and a half minutes, two teams to a side. The robot drives itself for the first thirty seconds, then a student driver takes over. Robots are built from metal, programmed in Java, and play on a twelve by twelve foot field.</p>
-      <p style="margin-top:19px;color:rgba(255,255,255,.78)">Beyond the robot, teams document their engineering process in a portfolio, present to judges, mentor other teams, and run community outreach. Awards are decided as much on that as on match results.</p>
+      <p class="pbody" style="margin-top:19px">A match lasts two and a half minutes, two teams to a side. The robot drives itself for the first thirty seconds, then a student driver takes over. Robots are built from metal, programmed in Java, and play on a twelve by twelve foot field.</p>
+      <p class="pbody" style="margin-top:19px">Beyond the robot, teams document their engineering process in a portfolio, present to judges, mentor other teams, and run community outreach. Awards are decided as much on that as on match results.</p>
       <p style="margin-top:30px"><a class="btn ln" href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener">Read about FTC on firstinspires.org</a></p>
     </div>
     <div class="rv"><img class="shot w43" src="images/web/competition-match.jpg" alt="Two robots facing off on the competition field mid-match, an AprilTag and a green game ball in frame" width="2200" height="1357" loading="lazy" decoding="async"></div>
   </div>
 </div></section>
 
-<section class="sec nlsec dp"><div class="wrap">
+<section class="sec nlsec lt"><div class="wrap">
   <div class="nlg">
     <div>
       <p class="eb">Stay connected</p><h2 class="h2">Get the monthly roundup</h2>
@@ -1591,7 +1717,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec ctwrap"><div class="wrap">
+<section class="sec ctwrap wm"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1788,6 +1914,28 @@ function goStep(idx){
 if(pprev)pprev.addEventListener('click',function(){goStep(activeStep()-1)});
 if(pnext)pnext.addEventListener('click',function(){goStep(activeStep()+1)});
 syncPin(0);
+
+/* ---- get involved: the audience selector tracks what you are looking at ---- */
+var jls=document.querySelectorAll('.jump .jl');
+if(jls.length&&'IntersectionObserver' in window){
+  var jvis={};
+  var jsync=function(){
+    var best=null,bv=0;
+    for(var k in jvis){if(jvis[k]>bv){bv=jvis[k];best=k;}}
+    jls.forEach(function(a){
+      if(best&&a.getAttribute('href')==='#'+best)a.setAttribute('aria-current','true');
+      else a.removeAttribute('aria-current');
+    });
+  };
+  var jo=new IntersectionObserver(function(es){
+    es.forEach(function(e){jvis[e.target.id]=e.isIntersecting?e.intersectionRatio:0;});
+    jsync();
+  },{rootMargin:'-96px 0px -55% 0px',threshold:[0,.2,.5,.8,1]});
+  jls.forEach(function(a){
+    var sec=document.getElementById(a.getAttribute('href').slice(1));
+    if(sec)jo.observe(sec);
+  });
+}
 
 /* ---- curtain + routing ---- */
 var ct=document.getElementById('ct');
