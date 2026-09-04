@@ -399,9 +399,27 @@ img.shot.rv.in{opacity:1;transform:none}
 
 /* sponsors thank-you */
 .thanks .lgs{margin-top:clamp(30px,3.6vw,46px)}
-.lgs.big.four,.lgs.four{grid-template-columns:repeat(4,1fr)}
-@media(max-width:900px){.lgs.big.four,.lgs.four{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.lgs.big.four,.lgs.four{grid-template-columns:1fr}}
+/* A leftover last row (ten logos in a four-across grid leaves two) would sit
+   hard left under the full rows. Fix: double the track count and span every
+   tile across two. Tile width and gap come out identical either way
+   (2c+g where c=(W-7g)/8 is exactly (W-3g)/4, and the same holds at the 2-up
+   and 1-up breakpoints), but the spare half-column of play lets the final row
+   be nudged into the centre. Placing only its FIRST tile is enough; the rest
+   auto-flow after it, so this keeps working at any number of sponsors. */
+.lgs.big.four,.lgs.four{grid-template-columns:repeat(8,1fr)}
+.lgs.big.four>*,.lgs.four>*{grid-column:span 2}
+/* the ranges are mutually exclusive so a wider rule never has to be undone by
+   a narrower one it outranks on specificity */
+@media(min-width:901px){    /* 4 across: centre a trailing row of 3, 2, or 1 */
+  .lgs.big.four>:nth-child(4n+1):nth-last-child(3),.lgs.four>:nth-child(4n+1):nth-last-child(3){grid-column:2/span 2}
+  .lgs.big.four>:nth-child(4n+1):nth-last-child(2),.lgs.four>:nth-child(4n+1):nth-last-child(2){grid-column:3/span 2}
+  .lgs.big.four>:nth-child(4n+1):nth-last-child(1),.lgs.four>:nth-child(4n+1):nth-last-child(1){grid-column:4/span 2}
+}
+@media(max-width:900px){.lgs.big.four,.lgs.four{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:481px) and (max-width:900px){   /* 2 across: centre a trailing 1 */
+  .lgs.big.four>:nth-child(2n+1):nth-last-child(1),.lgs.four>:nth-child(2n+1):nth-last-child(1){grid-column:2/span 2}
+}
+@media(max-width:480px){.lgs.big.four,.lgs.four{grid-template-columns:repeat(2,1fr)}}
 
 /* previews (home) */
 .pvh{display:flex;flex-wrap:wrap;gap:24px 40px;align-items:flex-end;justify-content:space-between}
@@ -843,16 +861,16 @@ img.shot.rv.in{opacity:1;transform:none}
     <p class="eb">Support</p><h2 class="h2">The companies backing us</h2>
     <p class="sub">We are community based, with no school district or corporate backing behind us.</p>
     <div class="lgs big four">
+      <div class="logo"><img class="l-snap" src="images/web/logo-snapmaker.png" alt="Snapmaker" width="1170" height="253" loading="lazy" decoding="async"></div>
+      <div class="logo"><a href="https://www.fabworks.com" target="_blank" rel="noopener noreferrer"><img class="l-fab" src="images/web/logo-fabworks.png" alt="Fabworks" width="272" height="88" loading="lazy" decoding="async"></a></div>
+      <div class="logo"><img class="l-frct" src="images/web/logo-frctees.png" alt="FRCtees" width="252" height="82" loading="lazy" decoding="async"></div>
+      <div class="logo"><img class="l-poly" src="images/web/logo-polymaker.png" alt="Polymaker" width="399" height="240" loading="lazy" decoding="async"></div>
       <div class="logo"><img class="l-ally" src="images/web/logo-ally-health.png" alt="Ally Health Solutions" width="323" height="100" loading="lazy" decoding="async"></div>
       <div class="logo"><img class="l-c2" src="images/web/logo-c2-education.png" alt="C2 Education" width="200" height="200" loading="lazy" decoding="async"></div>
       <div class="logo"><img class="l-chase" src="images/web/logo-chase.png" alt="Chase" width="900" height="900" loading="lazy" decoding="async"></div>
       <div class="logo"><img class="l-cold" src="images/web/logo-cold-stone.png" alt="Cold Stone Creamery" width="499" height="471" loading="lazy" decoding="async"></div>
-      <div class="logo"><img class="l-poly" src="images/web/logo-polymaker.png" alt="Polymaker" width="399" height="240" loading="lazy" decoding="async"></div>
       <div class="logo"><img class="l-simple" src="images/web/logo-simple-interact.png" alt="Simple Interact" width="562" height="466" loading="lazy" decoding="async"></div>
-      <div class="logo"><img class="l-snap" src="images/web/logo-snapmaker.png" alt="Snapmaker" width="1170" height="253" loading="lazy" decoding="async"></div>
       <div class="logo"><img class="l-ti" src="images/web/logo-texas-instruments.png" alt="Texas Instruments" width="406" height="97" loading="lazy" decoding="async"></div>
-      <div class="logo"><img class="l-frct" src="images/web/logo-frctees.png" alt="FRCtees" width="252" height="82" loading="lazy" decoding="async"></div>
-      <div class="logo"><a href="https://www.fabworks.com" target="_blank" rel="noopener noreferrer"><img class="l-fab" src="images/web/logo-fabworks.png" alt="Fabworks" width="272" height="88" loading="lazy" decoding="async"></a></div>
     </div>
     <p style="margin-top:40px"><a class="btn fl" href="#" data-go="sponsors">How sponsorship works <s aria-hidden="true">&rarr;</s></a></p>
   </div>
@@ -1193,16 +1211,16 @@ img.shot.rv.in{opacity:1;transform:none}
   <p class="eb">Thank you</p><h2 class="h2">The companies behind this season</h2>
   <p class="sub">Every one of these gave parts, machines, or money to a team of students they had never met. We would not have a robot without them.</p>
   <div class="lgs big four">
+    <div class="logo"><img class="l-snap" src="images/web/logo-snapmaker.png" alt="Snapmaker" width="1170" height="253" loading="lazy" decoding="async"></div>
+    <div class="logo"><a href="https://www.fabworks.com" target="_blank" rel="noopener noreferrer"><img class="l-fab" src="images/web/logo-fabworks.png" alt="Fabworks" width="272" height="88" loading="lazy" decoding="async"></a></div>
+    <div class="logo"><img class="l-frct" src="images/web/logo-frctees.png" alt="FRCtees" width="252" height="82" loading="lazy" decoding="async"></div>
+    <div class="logo"><img class="l-poly" src="images/web/logo-polymaker.png" alt="Polymaker" width="399" height="240" loading="lazy" decoding="async"></div>
     <div class="logo"><img class="l-ally" src="images/web/logo-ally-health.png" alt="Ally Health Solutions" width="323" height="100" loading="lazy" decoding="async"></div>
     <div class="logo"><img class="l-c2" src="images/web/logo-c2-education.png" alt="C2 Education" width="200" height="200" loading="lazy" decoding="async"></div>
     <div class="logo"><img class="l-chase" src="images/web/logo-chase.png" alt="Chase" width="900" height="900" loading="lazy" decoding="async"></div>
     <div class="logo"><img class="l-cold" src="images/web/logo-cold-stone.png" alt="Cold Stone Creamery" width="499" height="471" loading="lazy" decoding="async"></div>
-    <div class="logo"><img class="l-poly" src="images/web/logo-polymaker.png" alt="Polymaker" width="399" height="240" loading="lazy" decoding="async"></div>
     <div class="logo"><img class="l-simple" src="images/web/logo-simple-interact.png" alt="Simple Interact" width="562" height="466" loading="lazy" decoding="async"></div>
-    <div class="logo"><img class="l-snap" src="images/web/logo-snapmaker.png" alt="Snapmaker" width="1170" height="253" loading="lazy" decoding="async"></div>
     <div class="logo"><img class="l-ti" src="images/web/logo-texas-instruments.png" alt="Texas Instruments" width="406" height="97" loading="lazy" decoding="async"></div>
-    <div class="logo"><img class="l-frct" src="images/web/logo-frctees.png" alt="FRCtees" width="252" height="82" loading="lazy" decoding="async"></div>
-    <div class="logo"><a href="https://www.fabworks.com" target="_blank" rel="noopener noreferrer"><img class="l-fab" src="images/web/logo-fabworks.png" alt="Fabworks" width="272" height="88" loading="lazy" decoding="async"></a></div>
   </div>
 </div></section>
 
