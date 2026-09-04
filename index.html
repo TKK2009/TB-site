@@ -44,6 +44,25 @@ a{color:inherit} img{display:block;max-width:100%}
 .lt{background:var(--paper);color:var(--ink)} .lt .eb{color:var(--hotink)} .lt .sub{color:var(--soft)}
 .wm{background:var(--warm);color:var(--ink)} .wm .eb{color:var(--hotink)} .wm .sub{color:var(--soft)}
 .dp{background:var(--deep)}
+/* ---- section tone rotation ----
+   The site reads navy and should keep reading navy; the original problem was
+   monotony, not the colour. So adjacent sections step through three tones of
+   the SAME family instead of flipping to white: --deep, --navy, --lift. Each
+   step is about 1.18:1, which is the separation this design already uses
+   between a card and the ground under it, so an edge reads without a break.
+   Two sections site-wide stay light, where a real pause earns it. */
+.nv{background:var(--navy)}
+.lf{background:var(--lift)}
+/* sections that set their own background need the second class to win */
+.rshowsec.nv,.accsec.nv,.bn.nv,.ctwrap.nv,.teamband.nv{background:var(--navy)}
+.rshowsec.dp,.accsec.dp,.bn.dp,.ctwrap.dp,.teamband.dp{background:var(--deep)}
+.rshowsec.lf,.accsec.lf,.bn.lf,.ctwrap.lf,.teamband.lf{background:var(--lift)}
+/* a --lift card on a --lift ground would vanish, so on those sections the
+   cards take the next tone up, which the palette already carries */
+.lf .of,.lf .evi,.lf .ct,.lf .posth,.lf .sc,.lf .gear{background:var(--card)}
+/* the veil hides the photo until it peels, so it matches its own section */
+.rshowsec.dp .rveil i{background:var(--deep)}
+.rshowsec.lf .rveil i{background:var(--lift)}
 
 /* progress bar */
 #prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),var(--yellow));z-index:1200;transition:width .1s linear}
@@ -681,6 +700,45 @@ img.shot.rv.in{opacity:1;transform:none}
 /* the only card in the set that ends in a button, so it owns its own gap */
 .cdact{margin-top:26px}
 
+/* ---- gear blocks ----
+   Two suppliers, given the room the sponsor wall cannot give them. Same card
+   chassis as .of (lift ground, hairline border, colour bar, lift on hover),
+   but the whole block is the link, so the plate is sized up well past the
+   sponsor tiles and a .gmore line carries the affordance. */
+.gears{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:clamp(34px,4vw,54px)}
+@media(max-width:940px){.gears{grid-template-columns:1fr}}
+.gear{display:flex;flex-direction:column;text-decoration:none;color:inherit;
+      background:var(--lift);border:1px solid var(--line);padding:clamp(26px,3.2vw,42px);
+      position:relative;overflow:hidden;transition:transform .4s var(--ez),border-color .35s}
+.gear::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:var(--orange)}
+.gear:nth-child(2)::before{background:var(--yellow)}
+.gear:hover{transform:translateY(-6px);border-color:rgba(245,139,76,.42)}
+/* the same white plate the sponsor grid uses, deliberately taller: these two
+   are the pitch rather than part of the wall */
+.gearplate{display:flex;align-items:center;justify-content:center;height:300px;
+           background:#fff;border:1px solid rgba(8,23,46,.10);border-radius:8px;
+           padding:26px;margin-bottom:clamp(22px,2.4vw,32px)}
+.gearplate img{width:auto;height:auto;max-width:96%;object-fit:contain}
+.gearplate img.g-snap{max-height:172px}   /* sponsor tile caps this at 116px */
+.gearplate img.g-fab {max-height:150px}   /* sponsor tile caps this at 104px */
+@media(max-width:600px){.gearplate{height:200px;padding:18px}
+  .gearplate img.g-snap{max-height:112px} .gearplate img.g-fab{max-height:98px}}
+.gear h3{font-family:var(--dsp);font-weight:900;font-size:clamp(23px,2.6vw,33px);
+         line-height:1.04;letter-spacing:-.03em;margin-bottom:14px;text-wrap:balance}
+.gear p{font-size:16px;line-height:1.62;color:rgba(255,255,255,.8)}
+.gcode{margin-top:16px;font-family:var(--mn);font-size:12.5px;font-weight:600;
+       letter-spacing:.1em;text-transform:uppercase;color:var(--yellow)}
+.gmore{margin-top:auto;padding-top:26px;display:inline-flex;align-items:center;gap:9px;
+       font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.12em;
+       text-transform:uppercase;color:var(--orange)}
+.gmore s{text-decoration:none;transition:transform .28s var(--ez)}
+.gear:hover .gmore s{transform:translateX(5px)}
+/* and the light-section versions, should either block ever sit on paper */
+.lt .gear,.wm .gear{background:#fff;border-color:var(--cardline)}
+.lt .gear p,.wm .gear p{color:var(--soft)}
+.lt .gcode,.wm .gcode,.lt .gmore,.wm .gmore{color:var(--hotink)}
+.lt .gearplate,.wm .gearplate{border-color:var(--cardline)}
+
 /* long-form post */
 .posth1{font-size:clamp(38px,7.4vw,92px)}
 .prose{max-width:68ch}
@@ -907,7 +965,7 @@ img.shot.rv.in{opacity:1;transform:none}
 </header>
 
 <!-- ROBOT SHOWCASE: the tile veil peels off the photo on scroll -->
-<section class="rshowsec lt">
+<section class="rshowsec dp">
   <div class="wrap">
     <div class="rshowhead">
       <div><p class="eb">This season</p><h2 class="h2">Porkchop</h2></div>
@@ -939,7 +997,28 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </section>
 
-<section class="sec accsec lt"><div class="wrap">
+<section class="sec tight dp"><div class="wrap">
+  <p class="eb">What we build with</p><h2 class="h2">Gear we actually use</h2>
+  <p class="sub">These are the two companies whose tools show up in almost every build we do. Click either logo to order. It costs you nothing extra and sends a little back to the team.</p>
+  <p class="disc">TechnoBotz earns a commission on purchases made through these links, at no additional cost to you.</p>
+  <div class="gears sg">
+    <a class="gear" href="https://snapmaker.sjv.io/c/7675884/1346054/16240" target="_blank" rel="sponsored noopener" data-goatcounter-click="gear-home-snapmaker" data-goatcounter-title="Snapmaker gear block">
+      <span class="gearplate"><img class="g-snap" src="images/web/logo-snapmaker.png" alt="Snapmaker" width="1170" height="253" loading="lazy" decoding="async"></span>
+      <h3>Three machines in one footprint</h3>
+      <p>3D printing, laser engraving, and CNC carving on the same machine, with toolheads that swap in about a minute. Dual extrusion handles soluble supports and two-color parts. The Artisan gives you a 400 x 400 x 400 mm build volume, well past what most desktop printers offer, and one piece of software drives all three processes.</p>
+      <span class="gmore">Order from Snapmaker <s aria-hidden="true">&rarr;</s></span>
+    </a>
+    <a class="gear" href="https://www.fabworks.com" target="_blank" rel="noopener noreferrer" data-goatcounter-click="gear-home-fabworks" data-goatcounter-title="Fabworks gear block">
+      <span class="gearplate"><img class="g-fab" src="images/web/logo-fabworks.png" alt="Fabworks" width="272" height="88" loading="lazy" decoding="async"></span>
+      <h3>Custom sheet metal, quoted in seconds</h3>
+      <p>Upload a DXF or STEP file and get a price and a ship date immediately, with no order minimum. Laser-cut aluminum, steel, and stainless, plus bending, tapping, and PEM hardware in the same order. Parts typically ship in one to two business days at &plusmn;0.005 inch tolerance, and they review your file first and flag anything that will come out flimsy. If you CAD in Onshape, they have a guide for exporting STEP straight into a quote.</p>
+      <p class="gcode">Use code FTC23542 for 5% off.</p>
+      <span class="gmore">Order from Fabworks <s aria-hidden="true">&rarr;</s></span>
+    </a>
+  </div>
+</div></section>
+
+<section class="sec accsec"><div class="wrap">
   <p class="eb">Recognition</p>
   <h2 class="h2">What we have won</h2>
   <div class="accgrid sg">
@@ -989,7 +1068,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </section>
 
-<section class="sec dp">
+<section class="sec">
   <div class="wrap">
     <p class="eb">Support</p><h2 class="h2">The companies backing us</h2>
     <p class="sub">We are community based, with no school district or corporate backing behind us.</p>
@@ -1012,7 +1091,7 @@ img.shot.rv.in{opacity:1;transform:none}
 <div class="rule"><i style="background:var(--navy)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--mint)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i></div>
 
 
-<section class="sec tight lt"><div class="wrap">
+<section class="sec tight dp"><div class="wrap">
   <p class="eb">Shop and give</p><h2 class="h2">Support the team</h2>
   <p class="sub">Buying through these two links sends a percentage back to the team. Use code FTC23542 at Fabworks for 5% off your order.</p>
   <p class="disc">TechnoBotz earns a commission on some purchases made through these links, at no additional cost to you.</p>
@@ -1023,7 +1102,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec nlsec dp"><div class="wrap">
+<section class="sec nlsec lf"><div class="wrap">
   <div class="nlg">
     <div>
       <p class="eb">Newsletter</p><h2 class="h2">Robotics Roundup</h2>
@@ -1037,7 +1116,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec ctwrap wm"><div class="wrap">
+<section class="sec ctwrap"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <p class="sub">Whatever you are here for, one of these goes straight to a student who will answer.</p>
   <div class="ctb sg">
@@ -1058,7 +1137,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <p class="sub">Members come from middle schools and high schools all over North Texas.</p>
 </div></header>
 
-<section class="sec tight lt"><div class="wrap">
+<section class="sec tight lf"><div class="wrap">
   <!-- EDIT: headshots removed until photos exist. To restore them, put a
        div with class "ph pfc" as the first child of each figure below,
        then delete the "nophoto" class from the grid. -->
@@ -1170,7 +1249,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <div class="bb"><a class="btn fl" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form">Apply to the team <s aria-hidden="true">&rarr;</s></a><a class="btn ln" href="mailto:techno23542@gmail.com?subject=Question">Ask a question first</a></div>
 </div></section>
 
-<section class="sec ctwrap wm"><div class="wrap">
+<section class="sec ctwrap nv"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1191,7 +1270,7 @@ img.shot.rv.in{opacity:1;transform:none}
 </div></header>
 
 
-<section class="sec tight lt"><div class="wrap">
+<section class="sec tight lf"><div class="wrap">
 
   <article class="rbt lead rv now">
     <img class="shot rbtimg" src="images/web/porkchop.jpg" alt="Porkchop on the competition field, green artifact loaded in the intake, number plate reading 23542" width="2400" height="1600" loading="lazy" decoding="async">
@@ -1230,7 +1309,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec ctwrap wm"><div class="wrap">
+<section class="sec ctwrap"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1250,7 +1329,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <p class="sub">Robotics is not evenly available. We spend the year closing that gap in three ways: teaching it, equipping schools to run it, and starting teams where there are none.</p>
 </div></header>
 
-<section class="sec tight lt"><div class="wrap">
+<section class="sec tight dp"><div class="wrap">
   <img class="shot portraitfit rv" src="images/web/outreach-action.jpg" alt="A TechnoBotz student coaching a young child driving the competition robot at an outreach event while a parent films" width="1536" height="2048" loading="lazy" decoding="async">
 </div></section>
 
@@ -1261,7 +1340,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <div class="s1"><b><span data-c="12">0</span></b><span>Teams mentored</span></div>
 </div></section>
 
-<section class="sec lt"><div class="wrap">
+<section class="sec"><div class="wrap">
   <p class="eb">How we work</p><h2 class="h2">Teach, equip, grow</h2>
   <div class="ofs sg">
     <div class="of">
@@ -1301,7 +1380,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec nlsec wm"><div class="wrap">
+<section class="sec nlsec lf"><div class="wrap">
   <div class="nlg">
     <div>
       <p class="eb">One of our programs</p><h2 class="h2">The Robotics Roundup</h2>
@@ -1315,10 +1394,10 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec lt"><div class="wrap">
+<section class="sec"><div class="wrap">
   <p class="eb">Finding the right fit</p><h2 class="h2">Every kid can find a program</h2>
   <p class="sub">FIRST runs programs by age, and one of them will fit your student. Our Get Involved page walks through every program, how to find a team near you, and what to do if there is not one.</p>
-  <p style="margin-top:30px"><a class="btn dk" href="#" data-go="involved">See every way to get involved <s aria-hidden="true">&rarr;</s></a></p>
+  <p style="margin-top:30px"><a class="btn ln" href="#" data-go="involved">See every way to get involved <s aria-hidden="true">&rarr;</s></a></p>
   <div class="cds c2 sg">
     <div class="cd"><p class="tg">Any age &middot; Any ability</p><h3>FIRST Access</h3><p>A FIRST in Texas initiative for students with disabilities. Teams choose the format that fits their students, so a disability does not decide whether a kid gets to compete.</p></div>
     <div class="cd"><p class="tg">Grades 4 &ndash; 8</p><h3>FIRST LEGO League</h3><p>Program a LEGO robot to run missions, plus a research project. Where we started in 2021.</p></div>
@@ -1327,7 +1406,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec ctwrap wm"><div class="wrap">
+<section class="sec ctwrap"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1351,7 +1430,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></header>
 
-<section class="sec tight thanks lt"><div class="wrap">
+<section class="sec tight thanks lf"><div class="wrap">
   <p class="eb">Thank you</p><h2 class="h2">The companies behind this season</h2>
   <p class="sub">Every one of these gave parts, machines, or money to a team of students they had never met. We would not have a robot without them.</p>
   <div class="lgs big four">
@@ -1369,6 +1448,27 @@ img.shot.rv.in{opacity:1;transform:none}
 </div></section>
 
 <section class="sec tight dp"><div class="wrap">
+  <p class="eb">What we build with</p><h2 class="h2">Gear we actually use</h2>
+  <p class="sub">These are the two companies whose tools show up in almost every build we do. Click either logo to order. It costs you nothing extra and sends a little back to the team.</p>
+  <p class="disc">TechnoBotz earns a commission on purchases made through these links, at no additional cost to you.</p>
+  <div class="gears sg">
+    <a class="gear" href="https://snapmaker.sjv.io/c/7675884/1346054/16240" target="_blank" rel="sponsored noopener" data-goatcounter-click="gear-snapmaker" data-goatcounter-title="Snapmaker gear block">
+      <span class="gearplate"><img class="g-snap" src="images/web/logo-snapmaker.png" alt="Snapmaker" width="1170" height="253" loading="lazy" decoding="async"></span>
+      <h3>Three machines in one footprint</h3>
+      <p>3D printing, laser engraving, and CNC carving on the same machine, with toolheads that swap in about a minute. Dual extrusion handles soluble supports and two-color parts. The Artisan gives you a 400 x 400 x 400 mm build volume, well past what most desktop printers offer, and one piece of software drives all three processes.</p>
+      <span class="gmore">Order from Snapmaker <s aria-hidden="true">&rarr;</s></span>
+    </a>
+    <a class="gear" href="https://www.fabworks.com" target="_blank" rel="noopener noreferrer" data-goatcounter-click="gear-fabworks" data-goatcounter-title="Fabworks gear block">
+      <span class="gearplate"><img class="g-fab" src="images/web/logo-fabworks.png" alt="Fabworks" width="272" height="88" loading="lazy" decoding="async"></span>
+      <h3>Custom sheet metal, quoted in seconds</h3>
+      <p>Upload a DXF or STEP file and get a price and a ship date immediately, with no order minimum. Laser-cut aluminum, steel, and stainless, plus bending, tapping, and PEM hardware in the same order. Parts typically ship in one to two business days at &plusmn;0.005 inch tolerance, and they review your file first and flag anything that will come out flimsy. If you CAD in Onshape, they have a guide for exporting STEP straight into a quote.</p>
+      <p class="gcode">Use code FTC23542 for 5% off.</p>
+      <span class="gmore">Order from Fabworks <s aria-hidden="true">&rarr;</s></span>
+    </a>
+  </div>
+</div></section>
+
+<section class="sec tight"><div class="wrap">
   <p class="eb">Shop and give</p><h2 class="h2">Support the team</h2>
   <p class="disc">TechnoBotz earns a commission on some purchases made through these links, at no additional cost to you.</p>
   <div class="cds sg">
@@ -1378,7 +1478,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec tight lt"><div class="wrap">
+<section class="sec tight dp"><div class="wrap">
   <p class="eb">Where it goes</p><h2 class="h2">What we need funding for</h2>
   <!-- TODO: the two "Request the sponsorship packet" buttons point to email as a placeholder. Swap them for the packet link when it exists. -->
   <div class="cds sg">
@@ -1388,7 +1488,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec dp"><div class="wrap">
+<section class="sec"><div class="wrap">
   <p class="eb">Tiers</p><h2 class="h2">What each tier includes</h2>
   <p class="sub">In-kind donations of materials, equipment, or services are welcome and receive the same recognition based on value.</p>
   <div class="tblwrap">
@@ -1448,7 +1548,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec ctwrap wm"><div class="wrap">
+<section class="sec ctwrap"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1468,7 +1568,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <p class="sub">More resources for you to be in touch and get involved.</p>
 </div></header>
 
-<section class="sec tight lt"><div class="wrap">
+<section class="sec tight dp"><div class="wrap">
   <p class="eb">Posts</p><h2 class="h2">Recent posts</h2>
   <div class="posts">
     <article class="post rv">
@@ -1486,7 +1586,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <!-- TODO: add new posts above this one. Each one can have its own page, the same way the mentorship write-up does. -->
 </div></section>
 
-<section class="sec tight"><div class="wrap">
+<section class="sec tight lf"><div class="wrap">
   <p class="eb">Upcoming</p><h2 class="h2">Where to find us next</h2>
   <div class="ev sg">
     <div class="evi"><span class="evd">Sept 12, 2026</span><div><div class="evn">Season kickoff</div><p class="evx">The new game is revealed and the build clock starts.</p></div><span class="evt">Kickoff</span></div>
@@ -1494,7 +1594,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <!-- TODO: add competitions and outreach dates here as they are confirmed. -->
 </div></section>
 
-<section class="sec lt"><div class="wrap">
+<section class="sec dp"><div class="wrap">
   <p class="eb">Previously</p><h2 class="h2">Where we have been</h2>
   <div class="ev sg">
     <div class="evi"><span class="evd">Aug 8, 2026</span><div><div class="evn">STEAM Festival</div><p class="evx">Texas Discovery Gardens, Dallas. Hosted by 2 Inspire Peace.</p></div><span class="evt">Outreach</span></div>
@@ -1502,7 +1602,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <!-- TODO: add each event here as it happens, newest first. -->
 </div></section>
 
-<section class="sec ctwrap wm"><div class="wrap">
+<section class="sec ctwrap nv"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1523,7 +1623,7 @@ img.shot.rv.in{opacity:1;transform:none}
   <p class="sub">We mentor twelve FIRST Tech Challenge teams across North Texas, and we have never charged any of them.</p>
 </div></header>
 
-<section class="sec tight lt"><div class="wrap">
+<section class="sec tight dp"><div class="wrap">
   <img class="shot hero43 rv" src="images/web/mentoring.jpg" alt="Students from several teams around cafeteria tables at a build session, laptops open and robots on the bench" width="2400" height="1800" loading="lazy" decoding="async">
 </div></section>
 
@@ -1553,7 +1653,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></article>
 
-<section class="sec ctwrap wm"><div class="wrap">
+<section class="sec ctwrap"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
@@ -1579,7 +1679,7 @@ img.shot.rv.in{opacity:1;transform:none}
 </div></header>
 
 <!-- ===== 1. PARENTS AND STUDENTS ===== -->
-<section class="sec tight lt" id="gi-parents"><div class="wrap">
+<section class="sec tight dp" id="gi-parents"><div class="wrap">
   <div class="giband">
     <p class="eb">First up</p>
     <h2 class="h2">For parents and students</h2>
@@ -1669,7 +1769,7 @@ img.shot.rv.in{opacity:1;transform:none}
 <div class="rule"><i style="background:var(--navy)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--mint)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i></div>
 
 <!-- ===== 3. COMPANIES AND EMPLOYERS ===== -->
-<section class="sec lt" id="gi-companies"><div class="wrap">
+<section class="sec dp" id="gi-companies"><div class="wrap">
   <div class="giband">
     <p class="eb">And finally</p>
     <h2 class="h2">For companies and employers</h2>
@@ -1690,7 +1790,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec lf"><div class="wrap">
   <p class="eb">The competition</p><h2 class="h2">What FIRST Tech Challenge actually is</h2>
   <div class="sp" style="margin-top:40px">
     <div class="rv">
@@ -1703,7 +1803,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec nlsec lt"><div class="wrap">
+<section class="sec nlsec dp"><div class="wrap">
   <div class="nlg">
     <div>
       <p class="eb">Stay connected</p><h2 class="h2">Get the monthly roundup</h2>
@@ -1717,7 +1817,7 @@ img.shot.rv.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="sec ctwrap wm"><div class="wrap">
+<section class="sec ctwrap nv"><div class="wrap">
   <p class="eb">Contact</p><h2 class="h2">Ways to reach us</h2>
   <div class="ctb sg">
     <a class="ct" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form"><b>Join the team</b><span>Applications are open year round</span></a>
