@@ -13,9 +13,14 @@ git add -A && git commit -m "..." && git push   # deploys via GitHub Pages
 
 ## Structure
 
-One file, `index.html` (~135KB), containing **eight** pages switched client-side by the
+One file, `index.html` (~135KB), containing **nine** pages switched client-side by the
 router in the main IIFE. Page ids: `p-home`, `p-team`, `p-robots`, `p-outreach`,
-`p-updates`, `p-post-mentorship`, `p-sponsors`, `p-involved`.
+`p-updates`, `p-post-mentorship`, `p-sponsors`, `p-involved`, `p-support`.
+
+The router is generic: a page needs only a `<main class="pg" id="p-NAME">` and links
+carrying `data-go="NAME"`. There is no page registry to update. The desktop nav fits
+eight links at 1201px and no more, which is why `.nl`/`.bg` swap to the hamburger at
+1200px rather than the 1100px it used to be.
 
 Images live in `images/` (originals, never edited) and `images/web/` (the 25 derivatives
 the site actually references). `images/embed/` holds smaller copies used only when
@@ -131,8 +136,8 @@ log · "we recruit in late summer" · "There are towns with nothing" · "Come wa
 ## Newsletter
 
 EmailOctopus, form id `bc46b9ca-9f27-11f1-b06f-7f41f19c1b0a`. Their form is configured as a
-**popup**, not an inline embed, and appears on Home, Outreach, and Get Involved behind a
-`[data-newsletter]` button.
+**popup**, not an inline embed, and appears on Home, Outreach, Get Involved, and Support
+Us behind a `[data-newsletter]` button. One per page, never two.
 
 Two constraints that cost real debugging time:
 
