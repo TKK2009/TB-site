@@ -27,7 +27,7 @@
      under a white card on paper; this matches the weight --line carries on navy. */
   --cardline:rgba(8,23,46,.20);
   --dsp:'Archivo',system-ui,sans-serif; --bdy:'IBM Plex Sans',system-ui,sans-serif; --mn:'IBM Plex Mono',ui-monospace,monospace;
-  --gut:clamp(20px,5vw,80px); --ez:cubic-bezier(.22,.68,.28,1); --ctd:260ms;
+  --gut:clamp(20px,5vw,80px); --navgut:clamp(20px,2.2vw,32px); --ez:cubic-bezier(.22,.68,.28,1); --ctd:260ms;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -69,14 +69,14 @@ a{color:inherit} img{display:block;max-width:100%}
 
 /* nav */
 .nav{position:sticky;top:0;z-index:900;background:rgba(6,23,49,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.nvi{max-width:1280px;margin:0 auto;padding:13px var(--gut);display:flex;align-items:center;gap:clamp(20px,2.4vw,34px)}
-.bd{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto;padding-right:16px;flex:none}
+.nvi{max-width:1280px;margin:0 auto;padding:13px var(--navgut);display:flex;align-items:center;gap:clamp(14px,1.4vw,22px)}
+.bd{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto;padding-right:8px;flex:none}
 .bd>div{white-space:nowrap}
 .bd img{width:54px;height:51px;object-fit:contain;object-position:center;flex:none;transition:transform .5s var(--ez)}
 .bd:hover img{transform:rotate(-8deg) scale(1.08)}
 .bd b{font-family:var(--dsp);font-weight:900;font-size:20px;letter-spacing:-.028em;white-space:nowrap}
 .bd i{font-family:var(--mn);font-size:13px;color:var(--orange);font-weight:600;font-style:normal}
-.nl{display:flex;gap:clamp(16px,1.7vw,28px);align-items:center}
+.nl{display:flex;gap:clamp(14px,1.3vw,20px);align-items:center}
 .ncta{display:flex;gap:10px;align-items:center}
 .nav .btn{white-space:nowrap}
 @media(max-width:1700px){.ncta .btn.ln{display:none}}
