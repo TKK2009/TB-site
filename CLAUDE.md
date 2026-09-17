@@ -19,8 +19,14 @@ router in the main IIFE. Page ids: `p-home`, `p-team`, `p-robots`, `p-outreach`,
 
 The router is generic: a page needs only a `<main class="pg" id="p-NAME">` and links
 carrying `data-go="NAME"`. There is no page registry to update. The desktop nav fits
-eight links at 1201px and no more, which is why `.nl`/`.bg` swap to the hamburger at
-1200px rather than the 1100px it used to be.
+eight links plus the single "Join a FIRST team" button at 1201px and no more, which is
+why `.nl`/`.ncta`/`.bg` swap to the hamburger at 1200px rather than the 1100px it used
+to be. The bar is also zoom-locked: a script sets `zoom: 1/z` on `.nav` (z read from
+`outerWidth/innerWidth`, snapped to the browser's zoom steps, compensated up to 200% and
+no further), so browser zoom leaves the bar alone while the page below it zooms. Because
+the viewport no longer describes the bar's width once that is on, the nav breakpoints are
+restated as `@container nb` queries on `.nav`; the matching `@media` rules stay for
+browsers with no container query support. Nav breakpoints must be changed in both places.
 
 Images live in `images/` (originals, never edited) and `images/web/` (the 25 derivatives
 the site actually references). `images/embed/` holds smaller copies used only when

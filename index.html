@@ -97,6 +97,33 @@ a{color:inherit} img{display:block;max-width:100%}
   .bd b{font-size:18px}
   .nav .bd i{display:none}
 }
+/* Zoom lock. When the page is zoomed the script scales the bar back down to the
+   size it has at 100%, so the layout above it can no longer key off the viewport:
+   at 200% zoom a 1440px laptop reports a 720px viewport and the bar would collapse
+   to the hamburger. These container queries measure the bar's own width instead,
+   which the inverse zoom keeps at its unzoomed value. The media queries above stay
+   as the answer for browsers with no container query support. */
+@supports (container-type:inline-size){
+  .nav{container-type:inline-size;container-name:nb}
+  @container nb (min-width:1201px){.nl{display:flex}.ncta{display:flex}.bg{display:none}}
+  @container nb (max-width:1200px){.nl{display:none}.ncta{display:none}.bg{display:block}}
+  @container nb (min-width:601px){
+    .nvi{gap:clamp(14px,1.4vw,22px);padding:13px var(--navgut)}
+    .bd img{width:54px;height:51px}
+    .bd b{font-size:20px}
+  }
+  @container nb (max-width:600px){
+    .nvi{gap:12px;padding:11px var(--gut)}
+    .bd img{width:42px;height:42px}
+    .bd b{font-size:18px}
+  }
+  @container nb (max-width:600px){.nav .bd i{display:none}}
+  @container nb (min-width:601px) and (max-width:1200px){.nav .bd i{display:inline}}
+  @container nb (min-width:1201px) and (max-width:1560px){.nav .bd i{display:none}}
+  @container nb (min-width:1561px){.nav .bd i{display:inline}}
+  /* the dropdown is inside the scaled bar, so its height comes from the script too */
+  .mb.open{max-height:var(--mbmax,calc(100dvh - 76px))}
+}
 .mb{display:none;border-top:1px solid var(--line);background:var(--deep)}
 .mb.open{display:block;max-height:calc(100vh - 76px);max-height:calc(100dvh - 76px);overflow-y:auto;overscroll-behavior:contain}
 .mb a{display:block;padding:15px var(--gut);font-family:var(--mn);font-size:14px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.8);border-bottom:1px solid var(--line)}
@@ -1147,7 +1174,7 @@ img.shot.rv.in{opacity:1;transform:none}
         <figcaption>
           <b>Bryan</b>
           <span>Lead CAD &middot; 8th grade</span>
-          <p class="pbio">Eighth grader at Erekson Middle School and in their second year on 23542. Leads the design subteam, modelling the robot in CAD before anything gets machined or printed.</p>
+          <p class="pbio">Eighth grader at Ereckson Middle School and in their second year on 23542. Leads the design subteam, modelling the robot in CAD before anything gets machined or printed.</p>
         </figcaption>
       </figure>
       <figure class="pn">
@@ -2092,6 +2119,39 @@ document.getElementById('bg').addEventListener('click',function(){
   this.setAttribute('aria-expanded',String(document.getElementById('mb').classList.toggle('open')));});
 var st=(location.hash||'').replace('#','');
 if(st&&document.getElementById('p-'+st))show(st);
+})();
+
+/* NAV ZOOM LOCK
+   Browser zoom scales the whole page, which squeezes the nav into the hamburger
+   long before the window is actually narrow. This scales the bar back by the same
+   factor, so the bar looks identical at every zoom level while the page below it
+   zooms normally. Needs the container queries in the stylesheet to go with it. */
+(function(){
+  var nav=document.querySelector('.nav');
+  if(!nav||!('zoom' in nav.style))return;
+  if(!(window.CSS&&CSS.supports&&CSS.supports('container-type','inline-size')))return;
+  /* outerWidth ignores page zoom, innerWidth does not, so their ratio is the zoom
+     level. Window chrome skews it by a few pixels, so snap to the steps browsers
+     actually offer and read anything that lands between them as no zoom at all. */
+  var STEP=[.25,.33,.5,.67,.75,.8,.9,1,1.1,1.25,1.5,1.75,2,2.5,3,4,5],cur=0;
+  function level(){
+    var iw=window.innerWidth,ow=window.outerWidth;
+    if(!iw||!ow)return 1;
+    var r=ow/iw,best=1,d=Infinity,i,t;
+    for(i=0;i<STEP.length;i++){t=Math.abs(STEP[i]-r);if(t<d){d=t;best=STEP[i];}}
+    return d>.08?1:best;
+  }
+  function apply(){
+    var z=level();
+    if(z>2)z=2;   /* past 200% someone is zooming to read: let the bar grow again */
+    if(z===cur)return;
+    cur=z;
+    nav.style.zoom=z===1?'':String(1/z);
+    nav.style.setProperty('--mbmax',z===1?'':Math.max(160,window.innerHeight*z-76)+'px');
+  }
+  apply();
+  addEventListener('resize',apply);
+  if(window.visualViewport)visualViewport.addEventListener('resize',apply);
 })();
 </script>
 <script data-goatcounter="https://technobotz.goatcounter.com/count"
