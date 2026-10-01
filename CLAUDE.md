@@ -28,7 +28,7 @@ the viewport no longer describes the bar's width once that is on, the nav breakp
 restated as `@container nb` queries on `.nav`; the matching `@media` rules stay for
 browsers with no container query support. Nav breakpoints must be changed in both places.
 
-Images live in `images/` (originals, never edited) and `images/web/` (the 25 derivatives
+Images live in `images/` (originals, never edited) and `images/web/` (the derivatives
 the site actually references). `images/embed/` holds smaller copies used only when
 building the standalone file. `technobotz-site-standalone.html` is a portable build with
 every image inlined as a data URI; it is generated, not hand-edited.
@@ -126,10 +126,11 @@ numbers are correct, they are not a contradiction) · presented to 50+ school ad
 **Sponsorship** — Four tiers: $250 / $1,000 / $2,500 / $5,000, compared across Brand
 Promotion, Community Involvement, Program Involvement, Reminders of Gratitude. Tax
 deductible through The Hack Foundation. Donate:
-`https://hcb.hackclub.com/donations/start/technobotz`. Ten sponsor logos, one grid,
-equal size, no featured tier: ally-health, c2-education, chase, cold-stone, fabworks,
-frctees, polymaker, simple-interact, snapmaker, texas-instruments. Only Fabworks links
-out (to fabworks.com).
+`https://hcb.hackclub.com/donations/start/technobotz`. Eleven sponsor logos, equal size,
+no featured tier: ally-health, c2-education, chase, cold-stone, fabworks, frctees,
+intuitive-foundation, polymaker, simple-interact, snapmaker, texas-instruments. The same
+grid appears twice (home and Sponsors page) and must be kept in sync. Every logo links
+to its sponsor's site with GoatCounter click tracking (`sponsor-<name>`).
 
 ## Things that were removed — do not reintroduce
 
