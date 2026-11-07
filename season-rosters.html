@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Season Rosters | TechnoBotz FTC 23542</title>
+<meta name="description" content="Every student who has competed with TechnoBotz, FIRST Tech Challenge Team 23542 in Frisco, Texas, from 2021 to the present.">
+<link rel="canonical" href="https://technobotz.org/season-rosters">
+<meta property="og:title" content="Season Rosters | TechnoBotz FTC 23542">
+<meta property="og:description" content="Every student who has competed with TechnoBotz, FTC Team 23542, Frisco, Texas, season by season.">
+<meta property="og:image" content="https://tkk2009.github.io/technobotz-logo.png">
+<link rel="icon" href="technobotz-pig.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Copied from index.html so this page renders the same without a shared
+   stylesheet. If a token or one of these components changes there, change it here. */
+:root{
+  --navy:#0B2450; --deep:#061731; --lift:#12315F; --card:#153A72;
+  --orange:#F58B4C; --yellow:#F5C842; --pink:#F2938E; --mint:#7FD1B9;
+  --line:rgba(255,255,255,.13);
+  --dsp:'Archivo',system-ui,sans-serif; --bdy:'IBM Plex Sans',system-ui,sans-serif; --mn:'IBM Plex Mono',ui-monospace,monospace;
+  --gut:clamp(20px,5vw,80px); --navgut:clamp(20px,2.2vw,32px); --ez:cubic-bezier(.22,.68,.28,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:#fff;font-family:var(--bdy);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit} img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+::selection{background:var(--orange);color:var(--deep)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--gut)}
+.eb{font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--orange)}
+.h2{font-family:var(--dsp);font-weight:900;font-size:clamp(32px,6.6vw,86px);line-height:1.02;letter-spacing:-.042em;margin-top:16px;text-wrap:balance}
+.sub{font-size:clamp(17px,2.05vw,23px);max-width:58ch;margin-top:24px;color:rgba(255,255,255,.82);line-height:1.55;text-wrap:pretty}
+.sec{padding:clamp(90px,13vw,190px) 0;position:relative}
+.sec.tight{padding-top:clamp(38px,4.6vw,68px)}
+
+/* nav (brand and CTA only; the page list lives on index.html) */
+.nav{position:sticky;top:0;z-index:900;background:rgba(6,23,49,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nvi{max-width:1280px;margin:0 auto;padding:13px var(--navgut);display:flex;align-items:center;gap:clamp(14px,1.4vw,22px)}
+.bd{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto;padding-right:8px;flex:none}
+.bd>div{white-space:nowrap}
+.bd img{width:54px;height:51px;object-fit:contain;object-position:center;flex:none;transition:transform .5s var(--ez)}
+.bd:hover img{transform:rotate(-8deg) scale(1.08)}
+.bd b{font-family:var(--dsp);font-weight:900;font-size:20px;letter-spacing:-.028em;white-space:nowrap}
+.bd i{font-family:var(--mn);font-size:13px;color:var(--orange);font-weight:600;font-style:normal}
+.nav .btn{white-space:nowrap}
+@media(max-width:440px){.nvi{flex-wrap:wrap;row-gap:10px}}
+
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:14px 24px;border:2px solid transparent;transition:.24s var(--ez);cursor:pointer}
+.btn.sm{padding:11px 16px;font-size:12px}
+.btn s{text-decoration:none;transition:transform .28s var(--ez)}
+.btn:hover s{transform:translateX(5px)}
+.fl{background:var(--orange);color:var(--deep)} .fl:hover{background:var(--yellow)}
+.ln{border-color:rgba(255,255,255,.3);color:#fff} .ln:hover{border-color:var(--orange);color:var(--orange)}
+
+/* tile rules */
+.rule{display:flex;height:8px}
+.rule i{flex:1;transform:scaleY(0);transform-origin:bottom}
+.rule.lit i{animation:ru .55s var(--ez) forwards}
+@keyframes ru{to{transform:scaleY(1)}}
+
+/* page header */
+.ph1{padding:clamp(76px,10vw,156px) 0 clamp(52px,6vw,90px);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.ph1::before{content:'';position:absolute;top:-40%;left:-10%;width:60vw;height:60vw;max-width:780px;max-height:780px;background:radial-gradient(circle,rgba(245,200,66,.09),transparent 62%);pointer-events:none}
+.ph1 h1{font-family:var(--dsp);font-weight:900;font-size:clamp(38px,9.6vw,124px);line-height:.98;letter-spacing:-.042em;margin-top:18px;position:relative}
+.ph1.tight{padding-bottom:clamp(28px,3.4vw,48px)}
+/* bundle:start  build-standalone.py copies everything down to bundle:end into the
+   standalone build, where this page becomes a tenth .pg. Keep page-only rules here. */
+.ph1 .sub,.ph1 .pdf{position:relative}
+.pdf{margin-top:18px;font-size:clamp(15px,1.6vw,17px);color:rgba(255,255,255,.82)}
+.pdf a{color:var(--orange);text-decoration:none}
+.pdf a:hover{text-decoration:underline}
+
+/* season jump list */
+.sjump{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;list-style:none;position:relative}
+.sjump a{font-family:var(--mn);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-decoration:none;color:rgba(255,255,255,.72)}
+.sjump a:hover{color:var(--orange)}
+
+/* one season */
+.season{padding-top:clamp(44px,5vw,72px)}
+.season:first-child{padding-top:0}
+.season h2{font-family:var(--dsp);font-weight:900;font-size:clamp(28px,4.4vw,52px);line-height:1.02;letter-spacing:-.035em;margin-top:22px;scroll-margin-top:110px}
+.season .ctx{font-size:16.5px;color:rgba(255,255,255,.72);margin-top:8px;max-width:60ch}
+.roster{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));column-gap:clamp(20px,3vw,44px);margin-top:22px}
+.roster li{padding:13px 0;border-bottom:1px solid var(--line)}
+.roster b{display:block;font-weight:600;font-size:17px}
+.roster span{display:block;font-family:var(--mn);font-size:12.5px;font-weight:500;letter-spacing:.06em;color:var(--orange);margin-top:2px}
+/* bundle:end */
+
+/* band + footer */
+.bn{background:var(--deep);border-top:1px solid var(--line)}
+.bni{max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,116px) var(--gut);display:grid;grid-template-columns:1fr auto;gap:38px;align-items:center}
+@media(max-width:880px){.bni{grid-template-columns:1fr}}
+.bb{display:flex;flex-direction:column;gap:12px}
+.ft2{background:var(--deep);border-top:1px solid var(--line);padding:58px 0 44px}
+.fg{max-width:1280px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+@media(max-width:820px){.fg{grid-template-columns:1fr;gap:32px}}
+.fg h4{font-family:var(--dsp);font-weight:800;font-size:15px;margin-bottom:16px}
+.fg a,.fg p{display:block;font-size:15.5px;color:rgba(255,255,255,.58);text-decoration:none;margin-bottom:11px}
+.fg a:hover{color:var(--orange)}
+.fb{max-width:1280px;margin:44px auto 0;padding:22px var(--gut) 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px 30px;font-family:var(--mn);font-size:12.5px;letter-spacing:.07em;color:rgba(255,255,255,.62)}
+.fb .sp2{margin-left:auto}
+.acc{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:20px;font-family:var(--mn);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.acc span::before{content:'\25AA';color:var(--yellow);margin-right:9px}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rule i{transform:scaleY(1)!important;animation:none!important}
+  .bd img,.btn,.btn s{transition:none!important}
+}
+</style>
+<noscript><style>.rule i{transform:scaleY(1)!important}</style></noscript>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="nvi">
+    <a class="bd" href="index.html"><img src="technobotz-pig.png" alt="" width="319" height="302"><div><b>TechnoBotz</b> <i>23542</i></div></a>
+    <a class="btn fl sm" href="index.html#involved">Join a FIRST team <s aria-hidden="true">&rarr;</s></a>
+  </div>
+</nav>
+
+<main>
+<header class="ph1 tight"><div class="wrap">
+  <p class="eb">FTC 23542 &middot; Frisco, Texas</p>
+  <h1>TechnoBotz Season Rosters</h1>
+  <p class="sub">This is the full roster history of TechnoBotz, FIRST Tech Challenge Team 23542, in Frisco, Texas. It covers every student who has competed with us, from our first FIRST LEGO League season in 2021 to the current FTC season.</p>
+  <p class="pdf"><a href="TechnoBotz-Season-Rosters.pdf" target="_blank" rel="noopener">Official PDF roster</a></p>
+  <ul class="sjump" aria-label="Jump to a season">
+    <li><a href="#2026-27">2026-27</a></li>
+    <li><a href="#2025-26">2025-26</a></li>
+    <li><a href="#2024-25">2024-25</a></li>
+    <li><a href="#2023-24">2023-24</a></li>
+    <li><a href="#2022-23">2022-23</a></li>
+    <li><a href="#2021-22">2021-22</a></li>
+  </ul>
+</div></header>
+
+<section class="sec tight"><div class="wrap">
+
+  <section class="season" aria-labelledby="2026-27">
+    <div class="rule" aria-hidden="true"><i style="background:var(--orange)"></i><i style="background:var(--yellow)"></i><i style="background:var(--deep)"></i><i style="background:var(--pink)"></i><i style="background:var(--mint)"></i><i style="background:var(--deep)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i></div>
+    <h2 id="2026-27">2026-27 Season (2026-2027)</h2>
+    <p class="ctx">TechnoBotz is competing in the FIRST Tech Challenge BIOBUZZ season in 2026 and 2027.</p>
+    <ul class="roster">
+      <li><b>Tanmay Kandi</b><span>Co-Team Captain</span></li>
+      <li><b>Priyam Poddar</b></li>
+      <li><b>Dheemanth Suddekunte</b></li>
+      <li><b>Pranav Varma</b></li>
+      <li><b>Advait Lonkar</b><span>Co-Hardware Lead/Captain</span></li>
+      <li><b>Jessica Zhang</b></li>
+      <li><b>Conner Hopkins</b></li>
+      <li><b>Abhay Chilka</b><span>Co-Team Captain, Co-Hardware Lead/Captain</span></li>
+      <li><b>Arush Garlapad</b></li>
+      <li><b>Saamedh Shethia</b><span>Software Lead/Captain</span></li>
+      <li><b>Yash Menon</b><span>Outreach Lead/Captain</span></li>
+      <li><b>Bryan Zhong</b><span>Design Lead/Captain</span></li>
+      <li><b>Rishi Menon</b></li>
+      <li><b>Grayson Scott</b></li>
+    </ul>
+  </section>
+
+  <section class="season" aria-labelledby="2025-26">
+    <div class="rule" aria-hidden="true"><i style="background:var(--deep)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--mint)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i></div>
+    <h2 id="2025-26">2025-26 Season (2025-2026)</h2>
+    <p class="ctx">TechnoBotz competed in the FIRST Tech Challenge DECODE season in 2025 and 2026.</p>
+    <ul class="roster">
+      <li><b>Tanmay Kandi</b><span>Co-Team Captain, Outreach Lead/Captain</span></li>
+      <li><b>Abhay Chilka</b><span>Co-Team Captain, Hardware Lead/Captain</span></li>
+      <li><b>Arush Garlapad</b><span>Software Lead/Captain</span></li>
+      <li><b>Santhosh Thota</b></li>
+      <li><b>Bryan Zhong</b><span>Design Lead/Captain</span></li>
+      <li><b>Anish Makani</b></li>
+      <li><b>Navin Giridharan</b></li>
+      <li><b>Naisha Shrivastava</b></li>
+      <li><b>Prema Haneesha Bijinepally</b></li>
+      <li><b>Sahith Chaganti</b></li>
+      <li><b>Vihaan Garapaty</b></li>
+      <li><b>Abhi Vemula</b></li>
+    </ul>
+  </section>
+
+  <section class="season" aria-labelledby="2024-25">
+    <div class="rule" aria-hidden="true"><i style="background:var(--pink)"></i><i style="background:var(--orange)"></i><i style="background:var(--yellow)"></i><i style="background:var(--mint)"></i><i style="background:var(--deep)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i></div>
+    <h2 id="2024-25">2024-25 Season (2024-2025)</h2>
+    <p class="ctx">TechnoBotz competed in the FIRST Tech Challenge INTO THE DEEP season in 2024 and 2025.</p>
+    <ul class="roster">
+      <li><b>Advait Lonkar</b><span>Hardware Lead/Captain</span></li>
+      <li><b>Tanmay Kandi</b><span>Team Captain, Outreach Lead/Captain</span></li>
+      <li><b>Pranav Varma</b><span>Design Lead/Captain</span></li>
+      <li><b>Abhay Chilka</b></li>
+      <li><b>Rameez Nathoo</b></li>
+      <li><b>Santhosh Thota</b></li>
+      <li><b>Advaith Ananth</b></li>
+      <li><b>Arush Garlapad</b></li>
+      <li><b>Ishvar Vijayakumar</b></li>
+      <li><b>Pranav Venkatraman</b><span>Software Lead/Captain</span></li>
+    </ul>
+  </section>
+
+  <section class="season" aria-labelledby="2023-24">
+    <div class="rule" aria-hidden="true"><i style="background:var(--orange)"></i><i style="background:var(--yellow)"></i><i style="background:var(--deep)"></i><i style="background:var(--pink)"></i><i style="background:var(--mint)"></i><i style="background:var(--deep)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i></div>
+    <h2 id="2023-24">2023-24 Season (2023-2024)</h2>
+    <p class="ctx">TechnoBotz competed in the FIRST Tech Challenge CENTERSTAGE season in 2023 and 2024.</p>
+    <ul class="roster">
+      <li><b>Tanmay Kandi</b><span>Team Captain, Outreach Lead/Captain</span></li>
+      <li><b>Pranav Varma</b></li>
+      <li><b>Abhay Chilka</b></li>
+      <li><b>Rameez Nathoo</b><span>Hardware Lead/Captain</span></li>
+      <li><b>Advaith Ananth</b></li>
+      <li><b>Arush Garlapad</b></li>
+      <li><b>Pranav Venkatraman</b><span>Software Lead/Captain</span></li>
+      <li><b>Arush Deshpande</b></li>
+      <li><b>Santhosh Thota</b></li>
+    </ul>
+  </section>
+
+  <section class="season" aria-labelledby="2022-23">
+    <div class="rule" aria-hidden="true"><i style="background:var(--deep)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--mint)"></i><i style="background:var(--yellow)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i></div>
+    <h2 id="2022-23">2022-23 Season (2022-2023)</h2>
+    <p class="ctx">TechnoBotz competed in the FIRST LEGO League SUPERPOWERED season in 2022 and 2023.</p>
+    <ul class="roster">
+      <li><b>Tanmay Kandi</b><span>Team Captain</span></li>
+      <li><b>Abhay Chilka</b></li>
+      <li><b>Arush Garlapad</b></li>
+      <li><b>Rameez Nathoo</b></li>
+    </ul>
+  </section>
+
+  <section class="season" aria-labelledby="2021-22">
+    <div class="rule" aria-hidden="true"><i style="background:var(--pink)"></i><i style="background:var(--orange)"></i><i style="background:var(--yellow)"></i><i style="background:var(--mint)"></i><i style="background:var(--deep)"></i><i style="background:var(--orange)"></i><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i></div>
+    <h2 id="2021-22">2021-22 Season (2021-2022)</h2>
+    <p class="ctx">TechnoBotz competed in the FIRST LEGO League CARGO CONNECT season in 2021 and 2022.</p>
+    <ul class="roster">
+      <li><b>Akshob Vajramani</b></li>
+      <li><b>Agamya Vajramani</b></li>
+      <li><b>Tanmay Kandi</b><span>Team Captain</span></li>
+      <li><b>Abhay Chilka</b></li>
+      <li><b>Krishang Burra</b></li>
+      <li><b>Raghav Srini</b></li>
+      <li><b>Arush Garlapad</b></li>
+    </ul>
+  </section>
+
+</div></section>
+
+<section class="bn big"><div class="bni">
+  <div><p class="eb">Join us</p><p class="h2" style="margin-top:12px">Put your name<br>on next season.</p><p class="sub">Applications are open year round. We answer everyone, whether you are in middle school or about to graduate.</p></div>
+  <div class="bb"><a class="btn fl" href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form">Apply to the team <s aria-hidden="true">&rarr;</s></a><a class="btn ln" href="index.html#team">Meet the current team</a></div>
+</div></section>
+</main>
+
+<footer class="ft2">
+  <div class="fg">
+    <div>
+      <div class="bd" style="margin-bottom:18px"><img src="technobotz-pig.png" alt="" width="319" height="302"><div><b>TechnoBotz</b> <i>FTC 23542</i></div></div>
+      <p style="max-width:48ch">TechnoBotz Nonprofit is a competitive robotics team of middle and high school students in Frisco, Texas. We compete in the FIRST Tech Challenge, a robotics competition for grades 7 to 12 run by the nonprofit FIRST. FIRST LEGO League since 2021, FTC since 2023.</p>
+      <p class="acc"><span>Texas House Resolution No. 941</span><span>UIL 5A State Runner-Up</span><span>Ruby Division Finalists, North Texas Championship</span></p>
+    </div>
+    <div><h4>Explore</h4>
+      <a href="index.html#home">Home</a><a href="index.html#team">Meet the Team</a><a href="index.html#robots">Our Robots</a>
+      <a href="index.html#outreach">Outreach</a><a href="index.html#updates">Updates</a>
+      <a href="index.html#sponsors">Sponsors</a><a href="index.html#involved">Get Involved</a>
+      <a href="index.html#support">Support Us</a>
+      <a href="season-rosters.html" aria-current="page">Season Rosters</a>
+    </div>
+    <div><h4>Contact</h4>
+      <p>Frisco, Texas</p><p>FTC Team #23542</p>
+      <a href="mailto:techno23542@gmail.com">techno23542@gmail.com</a>
+      <a href="https://forms.gle/1kyidNzhAGq9CZub8" target="_blank" rel="noopener" data-goatcounter-click="interest-form" data-goatcounter-title="Interest form">Apply to the team</a>
+      <a class="fdon" href="https://hcb.hackclub.com/donations/start/technobotz" target="_blank" rel="noopener">Donate to the team</a>
+    </div>
+  </div>
+  <div class="fb"><span>TechnoBotz Nonprofit &middot; FTC Team 23542</span><span>Fiscally sponsored by The Hack Foundation (d.b.a. Hack Club), a 501(c)(3)</span><span class="sp2">FIRST&reg; Tech Challenge is a program of FIRST&reg;</span></div>
+</footer>
+
+<script>
+/* Tile rules rise as each season scrolls in, the same as on index.html.
+   Purely decorative: every name above is already in the HTML. */
+(function(){
+  var rules=document.querySelectorAll('.rule');
+  function lite(el){el.classList.add('lit');el.querySelectorAll('i').forEach(function(b,k){b.style.animationDelay=(k*.045)+'s'});}
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){rules.forEach(lite);return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){lite(e.target);io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+  rules.forEach(function(r){io.observe(r)});
+})();
+</script>
+<script data-goatcounter="https://technobotz.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
