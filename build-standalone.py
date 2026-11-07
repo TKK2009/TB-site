@@ -61,9 +61,9 @@ PDF = 'TechnoBotz-Season-Rosters.pdf'
 
 
 def live_pdf(t):
-    """The roster PDF is not bundled, so every link to it (the Meet the Team
-    line and the rosters page's "Official PDF roster") points at the live copy.
-    index.html itself keeps the relative link."""
+    """The roster PDF is not bundled, so the link to it (on the rosters page,
+    the only place that links it) points at the live copy. season-rosters.html
+    itself keeps the relative link."""
     return t.replace('href="%s"' % PDF, 'href="https://technobotz.org/%s"' % PDF)
 
 

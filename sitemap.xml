@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Every crawlable URL on technobotz.org. The nine pages inside index.html
+     (Meet the Team, Our Robots, ...) are switched client-side and share the
+     single URL https://technobotz.org/, so they are covered by that one entry. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://technobotz.org/</loc>
+    <lastmod>2026-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://technobotz.org/season-rosters</loc>
+    <lastmod>2026-11-07</lastmod>
+  </url>
+</urlset>
